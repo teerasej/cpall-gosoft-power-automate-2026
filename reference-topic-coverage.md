@@ -1,34 +1,31 @@
 # Reference topic coverage — Power Automate Day 1
 
-เอกสารนี้เชื่อม proposed reference กับสิ่งที่สอนจริงใน learner journey สำหรับผู้เริ่มต้น
+เอกสารนี้เชื่อมหัวข้ออ้างอิงกับ learner journey ที่ปรับตามผลประชุม 14 September 2026
 
 | Reference topic | Delivery | Location / note |
 |---|---|---|
 | Overview and use cases | Teach | Slides 3–5 |
-| Licensing considerations | Teach + readiness check | Slides 8–9; Standard connectors only |
-| Automated, instant, scheduled flows | Teach and build | Exercises 1, 2 and 4 |
-| Standard connectors | Teach and build | Core: Forms, Outlook, Excel Online (Business); optional: SharePoint and Microsoft Teams |
-| Approval connector | Demonstrate | Slides 20–21; separate from core email decision |
-| Data operations | Build | Filter array in Exercise 4; Create HTML table optional |
-| Testing and debugging | Build | Every exercise; Exercise 5 focuses on Run history |
-| Sharing and permissions | Teach | Slides 32–33; no production sharing during class |
-| Templates | Demonstrate | Slide 12 |
-| Monitoring and analytics | Teach and build | Exercises 1–5; slides 14 and 31–32 |
-| Dynamic content | Build | Exercises 1–4 |
-| Expressions | Build | Exercises 4–5 |
-| Variables and input parameters | Build | Exercises 1 and 4 |
-| Conditions | Build | Exercises 3–4 |
-| Apply to each | Build | Exercise 4 |
-| Do Until | Demonstrate / optional | Slide 26; excluded from beginner core |
-| Error handling and Run After | Build | Exercise 5 |
-| Code view | Demonstrate | Slide 34; read-only observation |
-| Multi-stage approval | Demonstrate / optional | Slide 21 |
-| Custom response approval | Demonstrate / optional | Slide 21 |
-| Teams notifications | Optional hands-on / demonstrate | Optional Exercise 8 sends a direct `Chat with Flow bot`; no Team or channel required. Workflows app and tenant rehearsal required |
-| SharePoint automation | Optional hands-on / adapted | Optional Exercise 7 creates an Approved request file in one existing `Documents` library; no custom list required |
-| Document approval scenario | Optional hands-on / adapted | Exercise 3 supplies the decision and Optional Exercise 7 archives the Approved request summary |
-| End-to-end workflow | Build | Core: Forms → Excel → Outlook decision → Excel → Outlook; optional outputs: SharePoint file and Teams direct message |
+| Trigger, Action and Connector | Teach and build | Slides 6–8; Exercises 1–3 |
+| Standard connectors | Teach and build | Outlook, Forms, Excel Online (Business), Standard approvals, SharePoint and Microsoft Teams |
+| OneDrive for Business | Prepared storage | Stores each learner’s workbook; no repetitive standalone flow |
+| Instant cloud flow | Build | Exercise 1 |
+| Automated cloud flow | Build | Exercises 2–3 and continued journey |
+| Scheduled cloud flow | Optional/take-home | Exercise 4 |
+| Dynamic content | Build | Exercises 1–3, 7–8 |
+| Conditions | Build | Exercise 3 |
+| Approval connector | Build | Exercise 3 uses `Start and wait for an approval` |
+| SharePoint automation | Build | Exercise 7 creates one text file in an existing library for Approved only |
+| Teams notifications | Build | Exercise 8 posts the result to a direct chat; Workflows app required |
+| Testing and monitoring | Build | Observable checkpoint in every exercise; integrated two-path test at 14:45 |
+| Error handling and Run After | Build live | Exercise 5 |
+| Data operations | Optional/take-home | Exercise 4; HTML table remains optional |
+| Workplace transfer canvas | Optional/take-home | Exercise 6 and `automation-canvas.md` |
+| Governance and DLP | Embedded teaching | Slides 9–10 and connector readiness checkpoints |
+| AI Builder | Instructor demonstration/discussion | Slide 35; no hands-on preparation |
+| Multi-stage/custom approvals | Explain only | Beyond beginner core |
+| Do Until and code view | Explain only if asked | Not part of required journey |
+| End-to-end workflow | Build | Forms → Excel → Approval → Excel → SharePoint for Approved → Teams for both results |
 
 ## Scope decision
 
-The learner core uses no Premium connectors. SharePoint and Microsoft Teams are optional hands-on extensions using Standard connectors, but they become instructor demonstrations or saved-result examples unless participant-account rehearsal passes. The lowest-preparation path needs one existing SharePoint `Documents` library and direct Teams chat; a custom SharePoint list and dedicated Team/channel are not required. Dedicated Approvals, production deployment, shared connections, service accounts, custom connectors and Premium connectors remain outside the learner build.
+The learner build uses no Premium connectors. SharePoint and Teams are required touchpoints, but their setup stays deliberately small: one existing document library and one rehearsed direct-chat route. OneDrive stores the prepared workbook; it is not a separate connector exercise. The scheduled Pending summary and Automation Canvas remain optional/take-home references. Production deployment, shared service accounts, custom connectors and Premium connectors remain outside the learner build.

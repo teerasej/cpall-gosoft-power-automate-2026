@@ -1,10 +1,10 @@
-# แบบฝึกหัดเสริมที่ 8: แจ้งผลผู้ขอผ่าน Microsoft Teams
+# แบบฝึกหัดที่ 8: แจ้งผลผู้ขอผ่าน Microsoft Teams
 
 เราจะต่อยอด flow จากแบบฝึกหัดที่ 3 ให้ส่งข้อความตรงถึงผู้ขอผ่าน `Microsoft Teams` หลังจากทราบผล Approve หรือ Reject โดยไม่ต้องสร้าง Team หรือ channel สำหรับห้องเรียน
 
 > **License:** ใช้ Microsoft Teams connector ซึ่งเป็น Standard connector ใน Power Automate ไม่ใช้ Premium connector
 
-> **สถานะการตรวจสอบ:** ขั้นตอนนี้ยังไม่ได้ rehearsal ใน training tenant — `ต้องตรวจสอบก่อนเริ่มอบรม` และต้องยืนยันว่า Teams `Workflows` app ถูกตั้งเป็น Allow
+> **Readiness:** ใช้บัญชีและเส้นทาง direct chat ที่วิทยากร rehearsal แล้ว และต้องยืนยันว่า Teams `Workflows` app ถูกตั้งเป็น Allow
 
 ## Prerequisites
 
@@ -12,7 +12,7 @@
 - ผู้เรียนเข้า Microsoft Teams ด้วยบัญชีเดียวกับที่ใช้สร้าง flow ได้
 - ใช้อีเมลของตนเองในช่อง `RequesterEmail` ระหว่างทดสอบ
 - Client IT ยืนยันว่า Teams `Workflows` app ใช้งานได้
-- เส้นทาง `Flow bot` ต้องทดสอบใน commercial Microsoft 365 tenant ก่อนวันอบรม
+- เส้นทาง direct chat ต้องทดสอบด้วย participant-equivalent account ก่อนวันอบรม
 
 > **💡 Analogy:** อีเมลเหมือนส่งจดหมายเข้ากล่อง ส่วน direct Teams chat เหมือนนำโน้ตไปวางบนโต๊ะของผู้รับโดยตรง
 
@@ -34,7 +34,7 @@ flowchart LR
 **Primary target:** ส่งผล Approved ไปยัง direct chat ของผู้ขอด้วย Dynamic content จากคำขอเดิม
 
 1. เปิด flow `Record Task Request - [Your Name]`
-2. ในแขนง **If yes** เพิ่ม action หลัง `Update a row` หรือหลัง `Create file` หากทำแบบฝึกหัดเสริมที่ 7 แล้ว
+2. ในแขนง **If yes** เพิ่ม action หลัง `Create file` จากแบบฝึกหัดที่ 7
 3. ค้นหา connector `Microsoft Teams`
 4. เลือก action `Post message in a chat or channel`
 5. หากระบบขอ connection ให้ Sign in ด้วยบัญชี Microsoft 365 สำหรับการฝึก
@@ -132,7 +132,7 @@ flowchart LR
 |---|---|
 | ไม่พบ action หรือ action ถูก block | ให้ IT ตรวจว่า Teams `Workflows` app เป็น Allow และ DLP policy อนุญาต connector |
 | สร้าง Teams connection ไม่ได้ | ตรวจว่าบัญชีเดียวกันเข้า Teams ได้ แล้ว Sign in ใหม่จาก Connections |
-| Flow bot ส่งไม่ได้ | ยืนยันว่าเป็น commercial tenant; หากยังไม่ผ่าน rehearsal ให้ใช้ instructor demonstration หรือ saved result |
+| ส่ง direct chat ไม่ได้ | ตรวจเส้นทางที่ rehearsal ไว้; หาก policy เปลี่ยนให้ใช้ instructor demonstration หรือ saved result |
 | Recipient ไม่ถูกต้อง | ใช้ Dynamic content `Requester email` และทดสอบด้วยอีเมลของตนเอง |
 | Run สำเร็จแต่หา chat ไม่พบ | ค้นหา `Flow bot` หรือเปิด Chat ล่าสุด แล้วเทียบเวลาและ RequestId |
 | เลือก Team หรือ channel ไม่ได้ | ส่วน channel เป็น optional เท่านั้น; กลับไปใช้ `Chat with Flow bot` |
@@ -146,6 +146,6 @@ flowchart LR
 - [Microsoft Teams connector — Standard classification and limitations](https://learn.microsoft.com/en-us/connectors/teams/)
 - [Send a message in Teams using Power Automate](https://learn.microsoft.com/en-us/power-automate/teams/send-a-message-in-teams)
 
-แบบฝึกหัดหลักถัดไป → [ส่งสรุปงานค้างประจำวัน](../04-daily-pending-summary/README.md)
+แบบฝึกหัดถัดไป → [ทำความเข้าใจและรับมือข้อผิดพลาด](../05-understand-and-recover-from-errors/README.md)
 
 กลับไป → [เส้นทางการฝึก Day 1](../../README.md)

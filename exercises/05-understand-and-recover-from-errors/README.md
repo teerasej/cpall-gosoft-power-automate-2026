@@ -84,4 +84,4 @@
 
 เราได้อ่าน Run history, ระบุต้นเหตุ, ตั้ง recovery path และยืนยัน flow หลังแก้ไข
 
-ขั้นตอนถัดไป → [ออกแบบ Automation สำหรับงานของเรา](../06-automate-my-task/README.md)
+กิจกรรมเสริมหลังชั้นเรียน → [ออกแบบ Automation สำหรับงานของเรา](../06-automate-my-task/README.md)

@@ -116,4 +116,4 @@
 
 เราได้สร้าง Automated cloud flow ที่รับ response, ดึงรายละเอียด, บันทึก Excel และยืนยันผู้ขอแบบ end-to-end
 
-ขั้นตอนถัดไป → [ขอผลตัดสินใจทางอีเมล](../03-ask-for-a-decision/README.md)
+ขั้นตอนถัดไป → [ขออนุมัติและอัปเดตคำขอ](../03-ask-for-a-decision/README.md)

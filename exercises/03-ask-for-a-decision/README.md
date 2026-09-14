@@ -1,20 +1,20 @@
-# แบบฝึกหัดที่ 3: ขอผลตัดสินใจทางอีเมล
+# แบบฝึกหัดที่ 3: ขออนุมัติและอัปเดตคำขอ
 
-เราจะต่อยอด flow เดิมให้ส่งอีเมลพร้อมตัวเลือก `Approve` และ `Reject` แล้วอัปเดตแถวเดิมใน Excel ตามคำตอบ
+เราจะต่อยอด flow เดิมให้สร้าง approval หนึ่งรายการ รอผล `Approve` หรือ `Reject` แล้วอัปเดตแถวเดิมใน Excel จาก `Outcome`
 
-> **License:** ใช้ `Office 365 Outlook` และ `Excel Online (Business)` ซึ่งเป็น Standard connectors แบบฝึกหัดหลักไม่ได้ใช้ dedicated Approvals service
+> **License:** ใช้ `Standard approvals`, `Office 365 Outlook` และ `Excel Online (Business)` ซึ่งเป็น Standard connectors
 
 ## Prerequisites
 
 - Flow `Record Task Request - [Your Name]` จากแบบฝึกหัดที่ 2 ทำงานสำเร็จ
-- กำหนดอีเมลผู้ตัดสินใจสำหรับการฝึก โดยใช้อีเมลของตัวเองหรือบัญชีที่วิทยากรจัดให้
+- กำหนดอีเมลผู้อนุมัติสำหรับการฝึก โดยใช้อีเมลของตัวเองหรือบัญชีที่วิทยากรจัดให้
 
 ## Workflow ที่เราจะสร้าง
 
 ```mermaid
 flowchart LR
-    A["Record request"] --> B["Send email with options"]
-    B --> C{"SelectedOption"}
+    A["Record request"] --> B["Start and wait for an approval"]
+    B --> C{"Outcome"}
     C -->|Approve| D["Update row: Approved"]
     C -->|Reject| E["Update row: Rejected"]
     D --> F["Notify requester"]
@@ -23,39 +23,39 @@ flowchart LR
 
 ---
 
-## Practice 1: ส่งอีเมลที่มีตัวเลือก
+## Practice 1: สร้าง approval หนึ่งรายการ
 
-**Primary target:** รอรับคำตอบจาก `Send email with options` เพื่อให้ flow มีค่า `SelectedOption` สำหรับตัดสินใจ
+**Primary target:** รอรับผลจาก `Start and wait for an approval` เพื่อให้ flow มีค่า `Outcome` สำหรับตัดสินใจ
 
 1. เปิด flow `Record Task Request - [Your Name]`
-2. หลังอีเมลยืนยัน เพิ่ม action `Send email with options` จาก Office 365 Outlook
+2. หลังอีเมลยืนยัน เพิ่ม action `Start and wait for an approval` จาก `Standard approvals`
 3. กำหนดค่า:
 
-   - **To:** อีเมลผู้ตัดสินใจสำหรับการฝึก
-   - **Subject:** `Decision needed: ` + `Task title`
-   - **User Options:** `Approve,Reject`
-   - **Body:** แสดง `Description`, `Category`, `Needed by`, `Requester email` และ `Response Id`
+   - **Approval type:** `Approve/Reject - First to respond`
+   - **Title:** `Decision needed: ` + Dynamic content `Task title`
+   - **Assigned to:** อีเมลผู้อนุมัติสำหรับการฝึก
+   - **Details:** แสดง `Description`, `Category`, `Needed by`, `Requester email` และ `Response Id`
 
 4. เลือก **Save**
-5. ส่ง Form ใหม่ 1 ครั้ง แล้วเปิดอีเมลที่ส่งถึงผู้ตัดสินใจ
+5. ส่ง Form ใหม่ 1 ครั้ง แล้วเปิด approval ที่ส่งถึงผู้อนุมัติ
 
 ### Checkpoint
 
-- อีเมลแสดงตัวเลือก `Approve` และ `Reject` และ flow รอคำตอบอยู่ที่ action นี้
+- เห็น approval ที่มีปุ่ม `Approve` และ `Reject` และ flow รออยู่ที่ action นี้
 
-> **⚠️ Note:** `Send email with options` เป็นการตัดสินใจทางอีเมลแบบเบา เหมาะกับการฝึกพื้นฐาน ไม่ใช่ประวัติการอนุมัติแบบเต็มของ dedicated Approvals service
+> **💡 Comparison:** `Send email with options` เหมาะกับคำตอบทางอีเมลแบบเบา ส่วน `Start and wait for an approval` ให้ output และประวัติสำหรับกระบวนการอนุมัติโดยตรง วันนี้เราใช้แบบหลังเป็นเส้นทางหลัก
 
 ---
 
 ## Practice 2: แยกเส้นทางด้วย Condition
 
-**Primary target:** ตรวจค่า `SelectedOption` เพื่อให้ flow เลือกเส้นทาง Approved หรือ Rejected ได้ถูกต้อง
+**Primary target:** ตรวจค่า `Outcome` เพื่อให้ flow เลือกเส้นทาง Approved หรือ Rejected และอัปเดต `RequestId` ที่ถูกต้อง
 
-1. หลัง `Send email with options` เพิ่ม Built-in action `Condition`
+1. หลัง `Start and wait for an approval` เพิ่ม Built-in action `Condition`
 2. กำหนดเงื่อนไข:
 
    ```text
-   SelectedOption is equal to Approve
+   Outcome is equal to Approve
    ```
 
 3. ในแขนง **If yes** เพิ่ม `Update a row` ของ Excel Online (Business)
@@ -67,9 +67,9 @@ flowchart LR
 
 ### Checkpoint
 
-- Condition มี 2 เส้นทาง และทั้งสองเส้นทางค้นหาแถวด้วย `RequestId` ค่าเดียวกับ Forms response ID
+- Condition มี 2 เส้นทางจาก `Outcome` และทั้งสองเส้นทางค้นหาแถวด้วย `RequestId` ค่าเดียวกับ Forms response ID
 
-> **💡 Tip:** Condition เหมือนพนักงานที่เคาน์เตอร์ อ่านคำตอบแล้วส่งเอกสารไปช่องที่ถูกต้อง
+> **💡 Tip:** Condition เหมือนพนักงานที่เคาน์เตอร์ อ่านผลอนุมัติแล้วส่งเอกสารไปช่องที่ถูกต้อง
 
 ---
 
@@ -89,19 +89,14 @@ flowchart LR
 
 ### Checkpoint
 
-- มีรายการทดสอบหนึ่งรายการเป็น `Approved` และอีกหนึ่งรายการเป็น `Rejected` โดยอัปเดตคนละ RequestId
-
-> **⚠️ Note:** ถ้า action card ไม่แสดงใน Outlook client ให้เปิดอีเมลด้วย Outlook on the web หรือตอบผ่านหน้าที่ connector แสดงตามนโยบายของ tenant
+- มีรายการหนึ่งเป็น `Approved` และอีกหนึ่งรายการเป็น `Rejected` โดยอัปเดตคนละ `RequestId`
 
 ---
 
 ## Summary
 
-เราได้สร้าง workflow ที่รอคำตอบ แยกเส้นทาง อัปเดตแถวเดิม และแจ้งผลผู้ขอครบทั้งสองกรณี
+เราได้สร้าง workflow ที่รอผล approval แยกเส้นทาง อัปเดตแถวเดิม และแจ้งผลผู้ขอครบทั้งสองกรณี
 
-เมื่อต้องการต่อยอดและ Client IT ยืนยัน readiness แล้ว:
+ขั้นตอนถัดไป → [เก็บคำขอที่อนุมัติแล้วใน SharePoint](../07-archive-approved-request-in-sharepoint/README.md)
 
-- [Optional Exercise 7: เก็บคำขอที่อนุมัติแล้วใน SharePoint](../07-archive-approved-request-in-sharepoint/README.md)
-- [Optional Exercise 8: แจ้งผลผู้ขอผ่าน Microsoft Teams](../08-notify-requester-in-teams/README.md)
-
-ขั้นตอนถัดไป → [ส่งสรุปงานค้างประจำวัน](../04-daily-pending-summary/README.md)
+จากนั้น → [แจ้งผลผู้ขอผ่าน Microsoft Teams](../08-notify-requester-in-teams/README.md)

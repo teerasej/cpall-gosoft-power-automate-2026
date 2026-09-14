@@ -1,10 +1,10 @@
-# แบบฝึกหัดเสริมที่ 7: เก็บคำขอที่อนุมัติแล้วใน SharePoint
+# แบบฝึกหัดที่ 7: เก็บคำขอที่อนุมัติแล้วใน SharePoint
 
 เราจะต่อยอดแขนง `If yes` จากแบบฝึกหัดที่ 3 ให้สร้างไฟล์สรุปคำขอใน SharePoint เมื่อผลเป็น `Approved` เท่านั้น
 
 > **License:** ใช้ SharePoint connector ซึ่งเป็น Standard connector ใน Power Automate ไม่ใช้ Premium connector, custom connector, app registration หรือ on-premises data gateway
 
-> **สถานะการตรวจสอบ:** ขั้นตอนนี้ยังไม่ได้ rehearsal ใน training tenant — `ต้องตรวจสอบก่อนเริ่มอบรม`
+> **Readiness:** ใช้ site และ document library ที่วิทยากร rehearsal แล้วก่อนเริ่มกิจกรรม
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@
 
 ```mermaid
 flowchart LR
-    A["SelectedOption"] --> B{"Approve?"}
+    A["Approval Outcome"] --> B{"Approve?"}
     B -->|Yes| C["Update Excel: Approved"]
     C --> D["Create file in SharePoint"]
     B -->|No| E["Update Excel: Rejected"]
@@ -100,12 +100,12 @@ flowchart LR
 **Primary target:** ยืนยันว่า Approved สร้างไฟล์ และ Rejected ไม่สร้างไฟล์
 
 1. ส่ง Form ใหม่หนึ่งครั้งและจด `Response Id`
-2. เลือก `Approve` ในอีเมลตัวเลือก
+2. เลือก `Approve` ใน approval
 3. รอให้ run เป็น `Succeeded`
 4. เปิดโฟลเดอร์ของตนใน SharePoint แล้วเปิด `Request-[Response Id].txt`
 5. เทียบ `RequestId`, `Title`, `Requester`, `NeededBy`, `Status` และ `Decision` กับคำขอที่ส่ง
 6. ส่ง Form ใหม่อีกหนึ่งครั้งและจด `Response Id` ใหม่
-7. เลือก `Reject`
+7. เลือก `Reject` ใน approval
 8. รอให้ run เป็น `Succeeded`
 9. ตรวจว่าไม่มีไฟล์ `Request-[Response Id ใหม่].txt`
 
@@ -137,6 +137,6 @@ flowchart LR
 
 - [SharePoint connector — Standard classification and Create file action](https://learn.microsoft.com/en-us/connectors/sharepointonline/)
 
-แบบฝึกหัดเสริมถัดไป → [แจ้งผลผ่าน Microsoft Teams](../08-notify-requester-in-teams/README.md)
+แบบฝึกหัดถัดไป → [แจ้งผลผ่าน Microsoft Teams](../08-notify-requester-in-teams/README.md)
 
 กลับไป → [เส้นทางการฝึก Day 1](../../README.md)
