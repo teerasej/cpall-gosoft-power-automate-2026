@@ -6,7 +6,7 @@
 
 ## Prerequisites
 
-- อัปโหลด [task-request-tracker.xlsx](../../files/task-request-tracker.xlsx) ไปยัง `OneDrive for Business/PowerAutomateTraining/`
+- อัปโหลด [task-request-tracker.xlsx](/downloads/task-request-tracker.xlsx) ไปยัง `OneDrive for Business/PowerAutomateTraining/`
 - เปิด workbook แล้วตรวจว่ามี worksheet `Requests` และ table ชื่อ `RequestsTable`
 - ปิด workbook ก่อนทดสอบ flow
 
@@ -33,7 +33,7 @@
    | Category | Choice | Operations, Finance, HR, IT Support |
    | Needed by | Date | — |
 
-4. เลือก **Preview** แล้วส่งคำขอทดสอบ 1 รายการจาก [ตัวอย่างคำของาน](../../files/sample-requests.md)
+4. เลือก **Preview** แล้วส่งคำขอทดสอบ 1 รายการจาก [ตัวอย่างคำของาน](../resources/sample-requests.md)
 
 ### Checkpoint
 
@@ -116,4 +116,4 @@
 
 เราได้สร้าง Automated cloud flow ที่รับ response, ดึงรายละเอียด, บันทึก Excel และยืนยันผู้ขอแบบ end-to-end
 
-ขั้นตอนถัดไป → [ขออนุมัติและอัปเดตคำขอ](../03-ask-for-a-decision/README.md)
+ขั้นตอนถัดไป → [ขออนุมัติและอัปเดตคำขอ](./03-ask-for-a-decision.md)

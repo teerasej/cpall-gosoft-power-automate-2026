@@ -72,4 +72,4 @@
 
 เราได้สร้าง trigger, action และ connector แรก พร้อมทดสอบ input และ Dynamic content จากการทำงานจริง
 
-ขั้นตอนถัดไป → [รับและบันทึกคำของาน](../02-collect-and-record-requests/README.md)
+ขั้นตอนถัดไป → [รับและบันทึกคำของาน](./02-collect-and-record-requests.md)

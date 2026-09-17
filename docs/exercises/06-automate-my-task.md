@@ -6,7 +6,7 @@
 
 ## Prerequisites
 
-- เปิด [Automation Canvas](../../files/automation-canvas.md)
+- เปิด [Automation Canvas](../resources/automation-canvas.md)
 - เลือกงานประจำหนึ่งงานที่มีจุดเริ่มและผลลัพธ์ชัดเจน
 
 ---
@@ -71,4 +71,4 @@
 
 เราได้เปลี่ยนงานหนึ่งเรื่องเป็น Automation Canvas ที่พร้อมนำไปตรวจความเป็นไปได้และสร้างต้นแบบ
 
-[กลับไปหน้า Day 1](../../README.md)
+[กลับไปหน้า Day 1](../index.md)

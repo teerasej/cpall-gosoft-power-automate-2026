@@ -97,6 +97,6 @@ flowchart LR
 
 เราได้สร้าง workflow ที่รอผล approval แยกเส้นทาง อัปเดตแถวเดิม และแจ้งผลผู้ขอครบทั้งสองกรณี
 
-ขั้นตอนถัดไป → [เก็บคำขอที่อนุมัติแล้วใน SharePoint](../07-archive-approved-request-in-sharepoint/README.md)
+ขั้นตอนถัดไป → [เก็บคำขอที่อนุมัติแล้วใน SharePoint](./07-archive-approved-request-in-sharepoint.md)
 
-จากนั้น → [แจ้งผลผู้ขอผ่าน Microsoft Teams](../08-notify-requester-in-teams/README.md)
+จากนั้น → [แจ้งผลผู้ขอผ่าน Microsoft Teams](./08-notify-requester-in-teams.md)

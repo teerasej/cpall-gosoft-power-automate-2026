@@ -14,7 +14,9 @@
 
 **Client alignment:** Decisions from the 14 September 2026 meeting are incorporated. This is the learner-session outline, not a client decision deck.
 
-**PPTX status:** Keep this outline in Markdown. Do not create or edit a PPTX in this scope.
+**Teaching analogy:** One convenience store, two kinds of helpers. Day 1 follows the back-office operations runner: a request arrives, moves between services, waits for a decision, and leaves visible evidence at each stop.
+
+**Learner deck:** [CPAll-Power-Automate-Day-1.pptx](./docs/public/downloads/CPAll-Power-Automate-Day-1.pptx)
 
 ## Timing map
 
@@ -44,7 +46,8 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** วันนี้เราจะทำให้คำของานหนึ่งรายการเดินทางจาก Form ไปถึงผลแจ้งเตือนได้เอง
 - **Visual:** Forms → Excel → Approval → SharePoint/Teams
 - **Speaker cue:** เปิดด้วยคำถาม “ถ้ามีคำขอ 20 รายการ เราจะรู้ได้อย่างไรว่ารายการใดไปถึงขั้นไหน?”
-- **Link:** [Day 1 learner journey](./README.md)
+- **Link:** [Day 1 learner journey](./docs/index.md)
+- **Analogy bridge:** Back-office operations runner → Power Automate cloud flow → today we will move one request through six Standard connectors.
 
 ### Slide 2 — What you will build
 
@@ -57,6 +60,7 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** เรื่องเดียวตลอดวันช่วยให้เห็นว่าข้อมูลเดิมเดินทางอย่างไร
 - **Visual:** Request card changing from Pending to Approved or Rejected
 - **Speaker cue:** ใช้ข้อมูลสมมติและ workbook ส่วนตัวเท่านั้น
+- **Analogy bridge:** ใบคำขอหนึ่งใบในร้าน → request record เดียว → ติดตาม `RequestId` เดิมตั้งแต่ Form ถึง Teams
 
 ### Slide 4 — Success at 16:00
 
@@ -73,8 +77,9 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 ### Slide 6 — Trigger, Action and Connector
 
 - **Teach:** Trigger เริ่มงาน, Action ทำงาน, Connector เชื่อมบริการ
-- **Visual:** Doorbell → checklist → delivery service
-- **Speaker cue:** Trigger คือกริ่งหน้าบ้าน ไม่ใช่คนส่งพัสดุ
+- **Visual:** Request arrives → operations runner carries it → work station completes a step
+- **Speaker cue:** Trigger คือเหตุการณ์ที่เรียกผู้ช่วยหลังร้าน, Connector คือทางเข้าใช้บริการ, Action คืองานหนึ่งอย่างที่บริการนั้นทำ
+- **Analogy bridge:** ใบคำขอเข้าถาด → Trigger; ทางที่ผู้ช่วยเข้าถึงจุดงาน → Connector; การส่งอีเมลหรือเพิ่มแถว → Action
 
 ### Slide 7 — Three cloud flow types
 
@@ -87,6 +92,7 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** Outlook, Forms, Excel, Approvals, SharePoint และ Teams เป็น Standard connectors ในเส้นทางนี้
 - **Visual:** Six equal connector cards; OneDrive shown as storage shelf
 - **Speaker cue:** OneDrive เก็บ workbook ที่เตรียมไว้ ไม่ต้องทำ flow ซ้ำเพื่อพิสูจน์ connector อีกครั้ง
+- **Analogy bridge:** จุดบริการหกจุดในหลังร้าน → six Standard connectors → แต่ละ Exercise มี checkpoint ที่ปลายทางจริง
 
 ### Slide 9 — Permission and policy still matter
 
@@ -108,7 +114,7 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** Manual trigger รับข้อมูลแล้ว `Send an email (V2)` ส่งผลทันที
 - **Visual:** Two-node flow
 - **Speaker cue:** เริ่มเล็กเหมือนทดลองกดกริ่งก่อนต่อระบบทั้งบ้าน
-- **Link:** [Exercise 1](./exercises/01-first-task-notification/README.md)
+- **Link:** [Exercise 1](./docs/exercises/01-first-task-notification.md)
 
 ### Slide 12 — Trigger inputs
 
@@ -135,7 +141,7 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** Form ทำให้ข้อมูลเริ่มต้นครบและเป็นรูปแบบเดียวกัน
 - **Visual:** Six short form fields
 - **Speaker cue:** ชี้ว่าฟอร์มเหมือนใบรับเรื่อง ไม่ใช่ฐานข้อมูล
-- **Link:** [Exercise 2](./exercises/02-collect-and-record-requests/README.md)
+- **Link:** [Exercise 2](./docs/exercises/02-collect-and-record-requests.md)
 
 ### Slide 16 — One response, one row
 
@@ -148,7 +154,8 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** แต่ละคนใช้ `task-request-tracker.xlsx` ของตนใน OneDrive และ table ชื่อ `RequestsTable`
 - **Visual:** Personal OneDrive folder and eight-column table
 - **Speaker cue:** ตรวจ worksheet/table แล้วปิด workbook ก่อน run
-- **Link:** [Excel tracker](./files/task-request-tracker.xlsx)
+- **Link:** [Excel tracker](./docs/public/downloads/task-request-tracker.xlsx)
+- **Analogy bridge:** สมุดรับเรื่องหลังร้าน → `RequestsTable` → หนึ่ง Form response ต้องเพิ่มหนึ่งแถวและเก็บ `RequestId` ไว้ตามงาน
 
 ### Slide 18 — Map the eight columns
 
@@ -175,7 +182,8 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** `Start and wait for an approval` ส่งคำขอและรอ `Outcome`
 - **Visual:** Approval card with Approve/Reject
 - **Speaker cue:** ใช้ผู้อนุมัติหนึ่งคนเพื่อให้ผู้เริ่มต้นเห็นผลเร็ว
-- **Link:** [Exercise 3](./exercises/03-ask-for-a-decision/README.md)
+- **Link:** [Exercise 3](./docs/exercises/03-ask-for-a-decision.md)
+- **Analogy bridge:** ผู้ช่วยยื่นใบให้หัวหน้าและรอคำตัดสิน → `Start and wait for an approval` → ตรวจว่า Approve/Reject กลับมาที่ flow
 
 ### Slide 22 — Configure the approval
 
@@ -194,6 +202,7 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** `Outcome is equal to Approve` แยก If yes กับ If no
 - **Visual:** Approval Outcome → Condition → two branches
 - **Speaker cue:** ให้ผู้เรียนพูดกติกาเป็นภาษาคนก่อนสร้าง Condition
+- **Analogy bridge:** ถาดสองสีหลังคำตัดสิน → Condition branches → Approve และ Reject ต้องอัปเดตแถว `RequestId` เดียวกัน
 
 ### Slide 25 — Update the matching row
 
@@ -208,7 +217,8 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** Excel ติดตามสถานะ ส่วน SharePoint document library เก็บไฟล์สรุปของ Approved
 - **Visual:** Logbook beside a filing cabinet
 - **Speaker cue:** ใช้ site/library ที่มีอยู่แล้ว ไม่สร้าง list หรือ site ระหว่างคลาส
-- **Link:** [Exercise 7](./exercises/07-archive-approved-request-in-sharepoint/README.md)
+- **Link:** [Exercise 7](./docs/exercises/07-archive-approved-request-in-sharepoint.md)
+- **Analogy bridge:** ตู้เอกสารสำหรับเรื่องที่อนุมัติแล้ว → SharePoint document library → เฉพาะ Approved สร้าง text file หนึ่งไฟล์
 
 ### Slide 27 — Create one text file
 
@@ -229,7 +239,8 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** `Post message in a chat or channel` ส่งผลไปยัง direct chat โดยไม่ต้องสร้าง Team/channel
 - **Visual:** Two decision branches joining direct chat
 - **Speaker cue:** Workflows app และ connector path ต้องผ่าน rehearsal
-- **Link:** [Exercise 8](./exercises/08-notify-requester-in-teams/README.md)
+- **Link:** [Exercise 8](./docs/exercises/08-notify-requester-in-teams.md)
+- **Analogy bridge:** ผู้ช่วยแจ้งผลกลับจุดรับเรื่อง → Teams direct chat → ทั้ง Approved และ Rejected ต้องมีข้อความผลลัพธ์
 
 ### Slide 30 — Map recipient and message
 
@@ -250,14 +261,15 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** ทดสอบ Form สองรายการ: Approve หนึ่งรายการและ Reject หนึ่งรายการ
 - **Visual:** Acceptance matrix for Excel, SharePoint and Teams
 - **Speaker cue:** Approved: Excel updated, file created, Teams sent. Rejected: Excel updated, no file, Teams sent.
-- **Link:** [Sample requests](./files/sample-requests.md)
+- **Link:** [Sample requests](./docs/resources/sample-requests.md)
 
 ### Slide 33 — Recover from a controlled failure
 
 - **Teach:** Run history ชี้จุดล้มเหลว และ Run After กำหนดสิ่งที่เกิดเมื่อ action fail
 - **Visual:** Try scope → failed expression → recovery notification → repaired rerun
 - **Speaker cue:** ทำ controlled failure หนึ่งครั้ง ซ่อม แล้วพิสูจน์ว่า run ใหม่สำเร็จ
-- **Link:** [Exercise 5](./exercises/05-understand-and-recover-from-errors/README.md)
+- **Link:** [Exercise 5](./docs/exercises/05-understand-and-recover-from-errors.md)
+- **Analogy bridge:** จุดงานหยุดบนกระดานหลังร้าน → Run history and Run After → อ่านจุดล้มเหลว ซ่อม แล้วพิสูจน์ด้วย successful run ใหม่
 
 ### Slide 34 — Govern the whole workflow
 
@@ -276,11 +288,12 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** เลือก Trigger, Connector และ checkpoint ให้เหมาะกับงานจริงหนึ่งเรื่อง
 - **Visual:** Six connector cards returning to the complete journey
 - **Speaker cue:** ทบทวน Outlook, Forms, Excel, Approvals, SharePoint, Teams และ error recovery; จบ 16:00
+- **Analogy bridge:** ผู้ช่วยหลังร้านทำตามขั้นตอนที่กำหนด → Day 1 Power Automate; พรุ่งนี้ผู้ช่วยหน้าเคาน์เตอร์จะสนทนาและส่งงานที่ยืนยันแล้วมาให้ flow
 
 ## Optional / take-home references
 
-- [Exercise 4 — Scheduled Pending summary](./exercises/04-daily-pending-summary/README.md)
-- [Exercise 6 — Automation Canvas](./exercises/06-automate-my-task/README.md)
-- [Automation Canvas file](./files/automation-canvas.md)
+- [Exercise 4 — Scheduled Pending summary](./docs/exercises/04-daily-pending-summary.md)
+- [Exercise 6 — Automation Canvas](./docs/exercises/06-automate-my-task.md)
+- [Automation Canvas file](./docs/resources/automation-canvas.md)
 
 These references are not required completion criteria for the live Day 1 journey.

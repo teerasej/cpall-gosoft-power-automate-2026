@@ -8,7 +8,7 @@
 
 ## Prerequisites
 
-- Flow `Record Task Request - [Your Name]` จาก [แบบฝึกหัดที่ 3](../03-ask-for-a-decision/README.md) ทำงานครบทั้ง Approved และ Rejected
+- Flow `Record Task Request - [Your Name]` จาก [แบบฝึกหัดที่ 3](./03-ask-for-a-decision.md) ทำงานครบทั้ง Approved และ Rejected
 - วิทยากรแจ้ง `Site Address` ของ SharePoint training site
 - บัญชีผู้เรียนเปิด site และแก้ไขไฟล์ใน default `Documents` library ได้
 - ใช้ข้อมูลสมมติเท่านั้น
@@ -137,6 +137,6 @@ flowchart LR
 
 - [SharePoint connector — Standard classification and Create file action](https://learn.microsoft.com/en-us/connectors/sharepointonline/)
 
-แบบฝึกหัดถัดไป → [แจ้งผลผ่าน Microsoft Teams](../08-notify-requester-in-teams/README.md)
+แบบฝึกหัดถัดไป → [แจ้งผลผ่าน Microsoft Teams](./08-notify-requester-in-teams.md)
 
-กลับไป → [เส้นทางการฝึก Day 1](../../README.md)
+กลับไป → [เส้นทางการฝึก Day 1](../index.md)

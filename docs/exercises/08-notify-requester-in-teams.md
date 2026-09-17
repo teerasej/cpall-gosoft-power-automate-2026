@@ -8,7 +8,7 @@
 
 ## Prerequisites
 
-- Flow `Record Task Request - [Your Name]` จาก [แบบฝึกหัดที่ 3](../03-ask-for-a-decision/README.md) ทำงานครบทั้ง Approved และ Rejected
+- Flow `Record Task Request - [Your Name]` จาก [แบบฝึกหัดที่ 3](./03-ask-for-a-decision.md) ทำงานครบทั้ง Approved และ Rejected
 - ผู้เรียนเข้า Microsoft Teams ด้วยบัญชีเดียวกับที่ใช้สร้าง flow ได้
 - ใช้อีเมลของตนเองในช่อง `RequesterEmail` ระหว่างทดสอบ
 - Client IT ยืนยันว่า Teams `Workflows` app ใช้งานได้
@@ -146,6 +146,6 @@ flowchart LR
 - [Microsoft Teams connector — Standard classification and limitations](https://learn.microsoft.com/en-us/connectors/teams/)
 - [Send a message in Teams using Power Automate](https://learn.microsoft.com/en-us/power-automate/teams/send-a-message-in-teams)
 
-แบบฝึกหัดถัดไป → [ทำความเข้าใจและรับมือข้อผิดพลาด](../05-understand-and-recover-from-errors/README.md)
+แบบฝึกหัดถัดไป → [ทำความเข้าใจและรับมือข้อผิดพลาด](./05-understand-and-recover-from-errors.md)
 
-กลับไป → [เส้นทางการฝึก Day 1](../../README.md)
+กลับไป → [เส้นทางการฝึก Day 1](../index.md)
