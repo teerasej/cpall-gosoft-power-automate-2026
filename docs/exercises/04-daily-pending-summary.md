@@ -25,10 +25,10 @@
    ```
 
 3. ตั้ง Repeat every `1 Day` และเลือกเวลาฝึกตามที่วิทยากรกำหนด
-4. เพิ่ม `List rows present in a table` แล้วเลือก workbook กับ `RequestsTable`
+4. เพิ่ม `List rows present in a table` แล้วเลือก workbook กับ `RequestsTable` เปิด **Advanced parameters** > **Show all** แล้วตั้ง **DateTime Format** เป็น **ISO 8601** เพื่อให้วันที่ไม่กลายเป็นเลขลำดับของ Excel ในอีเมล
 5. เพิ่ม `Filter array`
-6. ใน **From** เลือกค่า `value` จาก `List rows present in a table`
-7. ตั้งเงื่อนไข `Status` is equal to `Pending`
+6. ใน **From** พิมพ์ `/` → **Insert dynamic content** เลือก `body/value` (**List of Items**; บางหน้าจอแสดง `value`) จาก `List rows present in a table`
+7. ในช่อง **Choose a value** ด้านซ้าย เปิด Dynamic content แล้วเลือก **See more** ใต้ `List rows present in a table` เพื่อเลือก `Status`; ด้านขวาพิมพ์ `Pending` โดยใช้ตัวเปรียบเทียบ `is equal to` ตรวจว่าด้านซ้ายเป็น token ไม่ใช่คำว่า Status ที่พิมพ์เอง
 8. เพิ่ม `Initialize variable` ก่อน action `Condition`
 9. ตั้งชื่อ `PendingSummary`, Type `String`, Value เว้นว่าง
 10. เพิ่ม `Condition` แล้วใส่ expression:
@@ -37,7 +37,7 @@
     length(body('Filter_array'))
     ```
 
-    เลือก `is greater than` และใส่ `0`
+    เพิ่มผ่าน **Insert expression** > **Add** ให้ช่องซ้ายมี expression token เพียงตัวเดียว ไม่มีข้อความหรือบรรทัดว่างต่อท้าย จากนั้นเลือก `is greater than` และใส่ `0` หากมีข้อความปนอยู่ ระบบอาจเปรียบเทียบ String กับ Integer แล้วเกิดข้อผิดพลาด
 
 11. เลือก **Save**
 
@@ -53,22 +53,30 @@
 
 **Primary target:** วนอ่านรายการ Pending และประกอบข้อความสรุปหนึ่งฉบับสำหรับผู้รับ
 
-1. ในแขนง **If yes** เพิ่ม `Apply to each`
+1. ในแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) เพิ่ม `Apply to each`
 2. ใน **Select an output** เลือก Body ของ `Filter array`
 3. ภายใน loop เพิ่ม `Append to string variable`
 4. เลือกตัวแปร `PendingSummary`
 5. สร้างข้อความหนึ่งบรรทัดต่อรายการ:
 
    ```text
-   • [RequestId] — [Title] — Needed by: [NeededBy]
+   <br>• [RequestId] — [Title] — Needed by: [NeededBy]
    ```
 
-   แทนค่าในวงเล็บด้วย Dynamic content ของรายการปัจจุบัน และขึ้นบรรทัดใหม่ท้ายข้อความ
+   แทนค่าในวงเล็บด้วย expression ของรายการปัจจุบันตามตาราง ไม่พิมพ์วงเล็บเหลี่ยมลงไปจริง และเก็บ `<br>` ไว้ต้นข้อความเพื่อขึ้นบรรทัดใหม่ในอีเมล HTML การกด Enter อย่างเดียวอาจทำให้รายการติดกันในอีเมลที่ได้รับ
 
-6. หลัง `Apply to each` เพิ่ม `Send an email (V2)`
+   | ค่าที่แสดง | Expression ที่เพิ่มผ่าน Insert expression > Add |
+   | --- | --- |
+   | RequestId | `item()?['RequestId']` |
+   | Title | `item()?['Title']` |
+   | NeededBy | `item()?['NeededBy']` |
+
+   ใช้รายการปัจจุบันของ loop ที่รับ Body จาก `Filter array` ไม่เลือกทั้งรายการจาก Excel ซ้ำอีกครั้ง วันที่จะแสดงในรูปแบบ ISO เช่น `2026-09-18T00:00:00.000Z`
+
+6. หลัง `Apply to each` แต่ยังอยู่ในแขนง True เพิ่ม `Send an email (V2)` **นอก loop** เพื่อส่งอีเมลเพียงฉบับเดียว
 7. ส่งหาอีเมลของตัวเอง หัวข้อ `Daily pending task summary`
 8. ใน Body ใส่จำนวนรายการด้วย expression `length(body('Filter_array'))` และตัวแปร `PendingSummary`
-9. ในแขนง **If no** เพิ่ม `Send an email (V2)` หัวข้อเดียวกัน และ Body `No pending tasks today.`
+9. ในแขนง **False** (หรือ **If no** ในหน้าจอเดิม) เพิ่ม `Send an email (V2)` หัวข้อเดียวกัน และ Body `No pending tasks today.`
 10. เลือก **Save**
 
 ### Checkpoint

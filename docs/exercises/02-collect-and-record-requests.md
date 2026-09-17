@@ -17,14 +17,14 @@
 
 **Primary target:** สร้าง Microsoft Form ที่เก็บข้อมูลตาม schema ของ tracker เพื่อให้ flow นำคำตอบไปจับคู่กับ Excel ได้
 
-1. เปิด `Microsoft Forms` แล้วเลือก **New Form**
+1. เปิด `Microsoft Forms` แล้วเลือก **New Form** หากพบแผง **Draft with Copilot** ให้เลือก **Close** เพื่อสร้างคำถามด้วยตัวเอง
 2. ตั้งชื่อ Form:
 
    ```text
    Task Request - [Your Name]
    ```
 
-3. เพิ่มคำถามตามตารางนี้ และตั้งทุกข้อเป็น **Required**
+3. เลือก **Quick start with** เพื่อเลือกชนิดคำถามแรก หลังจากนั้นใช้ **Add new question** เพิ่มคำถามตามตารางนี้ และตรวจให้ทุกข้อเปิด **Required** สำหรับ Description ให้เปิด **Long answer** ส่วน Category ใช้ **Add option** จนครบ 4 ตัวเลือก และไม่เปิด **Multiple answers**
 
    | Question | Type | Options |
    |---|---|---|
@@ -61,11 +61,11 @@
 8. เลือกตำแหน่งตามนี้:
 
    - **Location:** `OneDrive for Business`
-   - **Document Library:** `OneDrive`
-   - **File:** `PowerAutomateTraining/task-request-tracker.xlsx`
+   - **Document Library:** เลือกคลังเอกสารส่วนตัวที่มี workbook ชื่ออาจต่างตามภาษา เช่น `เอกสาร` ในบัญชีที่ทดสอบ ให้ยืนยันด้วยการเปิด **File** แล้วพบโฟลเดอร์ของเรา
+   - **File:** เลือกไอคอนโฟลเดอร์ (**Open folder**) แล้วใช้ลูกศรเข้า `PowerAutomateTraining` และเลือก `task-request-tracker.xlsx` ไม่พิมพ์ path โดยเดา
    - **Table:** `RequestsTable`
 
-9. จับคู่ค่าลงแต่ละคอลัมน์ โดยเลือก `Response Id` จาก trigger และเลือกคำตอบของ Form จาก `Get response details` ผ่าน Dynamic content; พิมพ์เฉพาะ `Pending` เป็นข้อความคงที่:
+9. หลังเลือก Table แล้วรอให้ schema โหลด จากนั้นเลือก **Advanced parameters** > **Show all** เพื่อแสดงคอลัมน์ ตรวจว่า token ปรากฏในช่องก่อนเปลี่ยนไปช่องถัดไป แล้วจับคู่ค่าลงแต่ละคอลัมน์ โดยเลือก `Response Id` จาก trigger และเลือกคำตอบของ Form จาก `Get response details` ผ่าน Dynamic content; พิมพ์เฉพาะ `Pending` เป็นข้อความคงที่:
 
    | Excel column | Value |
    |---|---|

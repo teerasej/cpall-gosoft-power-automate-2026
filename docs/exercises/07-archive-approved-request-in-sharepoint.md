@@ -1,6 +1,6 @@
 # แบบฝึกหัดที่ 7: เก็บคำขอที่อนุมัติแล้วใน SharePoint
 
-เราจะต่อยอดแขนง `If yes` จากแบบฝึกหัดที่ 3 ให้สร้างไฟล์สรุปคำขอใน SharePoint เมื่อผลเป็น `Approved` เท่านั้น
+เราจะต่อยอดแขนง `True` (หรือ `If yes` ในหน้าจอเดิม) จากแบบฝึกหัดที่ 3 ให้สร้างไฟล์สรุปคำขอใน SharePoint เมื่อผลเป็น `Approved` เท่านั้น
 
 > **License:** ใช้ SharePoint connector ซึ่งเป็น Standard connector ใน Power Automate ไม่ใช้ Premium connector, custom connector, app registration หรือ on-premises data gateway
 
@@ -29,13 +29,28 @@ flowchart LR
 
 ---
 
+## Setup: สร้าง training site ใหม่ก่อนเริ่มกิจกรรม
+
+**ผู้ทำ:** วิทยากรหรือผู้ที่ได้รับสิทธิ์สร้าง SharePoint site ให้เตรียมส่วนนี้ก่อนเวลาเรียนตามตาราง หากผู้เรียนไม่มีสิทธิ์สร้าง site ให้ใช้ site ที่วิทยากรเตรียมไว้ แล้วเริ่ม Practice 1
+
+1. เปิด Microsoft 365 **App launcher > SharePoint**
+2. ที่หน้า SharePoint เลือก **Build** (หน้าภาษาไทยแสดง **สร้าง**) แล้วเลือก **Site**; บาง tenant ยังใช้ปุ่ม **Create site**
+3. เลือก **Team site > Standard team > Use template**
+4. ใส่ **Site name** เช่น `Power Automate Training - [Class]` และคำอธิบายว่าใช้ข้อมูลสมมติสำหรับฝึก ตรวจ **Group email address** และ **Site address** ว่าใช้ได้
+5. ตั้ง **Privacy settings** เป็น **Private** และเลือกภาษาเริ่มต้นของ site ก่อนสร้าง ในการทดสอบนี้เลือก **English** เพื่อให้ชื่อ library และเมนูตรงกับขั้นตอนด้านล่าง
+6. เลือก **Create site** รอจน site พร้อม แล้วเลือก **Go to site** โดยยังไม่เพิ่มบุคคลที่ไม่เกี่ยวข้อง
+7. เปิด **Documents** ซึ่งเป็น document library ที่สร้างพร้อม site ไม่ต้องสร้าง library ซ้ำ
+8. วิทยากรจัดสิทธิ์ให้เฉพาะกลุ่มผู้เรียนที่กำหนดและทดสอบด้วยบัญชีผู้เรียนก่อนวันอบรม ส่งลิงก์ site ผ่านช่องทางของชั้นเรียน ไม่ใส่ URL ของ tenant จริงในเอกสารสาธารณะ
+
+**Checkpoint:** เปิด site ใหม่ได้ เห็น **Private group** และ **Documents**; การสร้างสำเร็จด้วยบัญชีวิทยากรยังไม่ยืนยันสิทธิ์ของผู้เรียน
+
 ## Practice 1: เตรียมถาดเอกสารของเรา
 
 **Primary target:** สร้างโฟลเดอร์ส่วนตัวใน library กลาง เพื่อไม่ให้ชื่อไฟล์ของผู้เรียนชนกัน
 
 1. เปิด SharePoint training site จากลิงก์ที่วิทยากรให้
 2. เปิด default document library ชื่อ `Documents` หรือชื่อที่วิทยากรยืนยัน
-3. เลือก **New > Folder**
+3. เลือก **Create or upload > Folder** (หน้าจอเดิมอาจแสดง **New > Folder**)
 4. ตั้งชื่อโฟลเดอร์เป็น:
 
    ```text
@@ -44,8 +59,8 @@ flowchart LR
 
    ตัวอย่าง: `PA-07-Narin`
 
-5. ดาวน์โหลด [permission-check.txt](/downloads/permission-check.txt) ลงเครื่อง เปิดโฟลเดอร์ของตนใน SharePoint แล้วเลือก **Upload > Files** เพื่ออัปโหลดไฟล์นี้ จากนั้นตรวจว่าเปิดอ่านได้
-6. ลบไฟล์ทดสอบ แต่เก็บโฟลเดอร์ไว้
+5. ดาวน์โหลด [permission-check.txt](/downloads/permission-check.txt) ลงเครื่อง เปิดโฟลเดอร์ของตนใน SharePoint แล้วเลือก **Create or upload > Files upload** (หน้าจอเดิมอาจแสดง **Upload > Files**) อัปโหลดไฟล์นี้ รอข้อความยืนยัน แล้วเปิดอ่านให้เห็น `Training permission check.` และ `Synthetic practice file.`
+6. ปิด preview เลือกไฟล์ทดสอบ แล้วเลือก **Delete** ยืนยันการส่งไป **Recycle Bin** โดยเก็บโฟลเดอร์ไว้ ไม่ต้องล้าง Recycle Bin
 
 ### Expected output
 
@@ -62,13 +77,13 @@ flowchart LR
 **Primary target:** เพิ่ม `Create file` ในแขนง Approved และ map ข้อมูลคำขอเป็นไฟล์สรุปที่อ่านได้
 
 1. เปิด flow `Record Task Request - [Your Name]`
-2. ในแขนง **If yes** หา action `Update a row` ที่ตั้ง `Status` เป็น `Approved`
+2. ในแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) หา action `Update a row` ที่ตั้ง `Status` เป็น `Approved`
 3. เพิ่ม action ใหม่ถัดจาก action นั้น และก่อน `Send an email (V2)` ที่แจ้งผล Approved โดยเก็บอีเมลเดิมไว้
 4. ค้นหา connector `SharePoint` แล้วเลือก action `Create file`
 5. กำหนดค่า:
 
-   - **Site Address:** site ที่วิทยากรแจ้ง
-   - **Folder Path:** ใช้ folder picker เลือก library และโฟลเดอร์ของตน เช่น `PA-07-Narin`; อย่าเดา path จากชื่อที่แสดงว่า `Documents` เพราะชื่อแสดงกับ path จริงอาจต่างกัน
+   - **Site Address:** site ที่วิทยากรแจ้ง หาก site ที่เพิ่งสร้างยังไม่อยู่ในรายการ ให้เลือก **Enter custom value** แล้ววาง URL หน้า site ที่เปิดได้จริง โดยไม่รวม path ของ library หรือไฟล์
+   - **Folder Path:** เลือกไอคอน folder (**Open folder**) แล้วเลือก library และโฟลเดอร์ของตน เช่น `PA-07-Narin`; library ที่หน้า SharePoint แสดงว่า `Documents` อาจปรากฏใน picker ว่า `Shared Documents` ให้เลือกจาก picker แทนการเดา path
    - **File Name:** พิมพ์ `Request-` ตามด้วย Dynamic content `Response Id` แล้วพิมพ์ `.txt`
    - **File Content:** ใช้ข้อความด้านล่างและแทรก Dynamic content ในตำแหน่งที่กำหนด
 
@@ -81,7 +96,7 @@ flowchart LR
    Decision: Approve
    ```
 
-6. ตรวจว่า `Create file` อยู่ในแขนง **If yes** เท่านั้น
+6. ตรวจว่า `Create file` อยู่ในแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) เท่านั้น
 7. เลือก **Save**
 
 ### Expected output
@@ -122,12 +137,12 @@ flowchart LR
 
 | อาการ | ตรวจสอบและแก้ไข |
 |---|---|
-| ไม่เห็น site ใน `Site Address` | เปิด site ใน browser ด้วยบัญชีเดียวกันก่อน แล้วตรวจสิทธิ์กับวิทยากร |
+| ไม่เห็น site ใน `Site Address` | เปิด site ใน browser ด้วยบัญชีเดียวกันก่อน แล้วใช้ **Enter custom value** วาง URL ของ site; หากเปิด site ไม่ได้ ให้ตรวจสิทธิ์กับวิทยากร |
 | เลือก folder ไม่ได้ | ยืนยันชื่อ library และเปิดโฟลเดอร์ด้วย browser; ใช้ path ที่วิทยากรให้เมื่อ picker ไม่แสดง |
 | `Access denied` หรือ `403` | หยุดทดสอบและให้ IT ตรวจ Edit permission; อย่าเปลี่ยน connection ไปใช้บัญชีผู้อื่น |
 | ไฟล์ชื่อซ้ำ | ตรวจว่ากำลังส่ง Form ใหม่และเลือกโฟลเดอร์ของตนเอง; ลบเฉพาะไฟล์ทดสอบของตนก่อนลองใหม่ |
 | Run สำเร็จแต่ยังไม่เห็นไฟล์ | Refresh library รอสักครู่ แล้วเทียบ `Response Id` กับชื่อไฟล์ |
-| Rejected สร้างไฟล์ด้วย | ย้าย `Create file` กลับเข้าแขนง **If yes** ใต้ action ที่อัปเดต Approved |
+| Rejected สร้างไฟล์ด้วย | ย้าย `Create file` กลับเข้าแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) ใต้ action ที่อัปเดต Approved |
 
 ## Summary
 

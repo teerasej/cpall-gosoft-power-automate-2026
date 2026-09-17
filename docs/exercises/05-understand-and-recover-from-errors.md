@@ -15,22 +15,22 @@
 
 **Primary target:** ทำให้ action หนึ่งล้มเหลวแบบตั้งใจ เพื่อให้มี run ที่ใช้ฝึกวิเคราะห์ได้
 
-1. สร้าง **Instant cloud flow** ชื่อ:
+1. เลือก **Create** → **Instant cloud flow** แล้วใส่ชื่อ:
 
    ```text
    Error Handling Practice - [Your Name]
    ```
 
-2. ใช้ trigger `Manually trigger a flow`
-3. เพิ่ม Built-in action `Scope` และเปลี่ยนชื่อเป็น `Try`
-4. ภายใน `Try` เพิ่ม action `Compose`
-5. เปิดแท็บ **Expression** แล้วใส่:
+2. เลือก trigger `Manually trigger a flow` แล้วเลือก **Create**
+3. เลือก **+** ใต้ trigger แล้วเพิ่ม Built-in action `Scope`; คลิกชื่อ action ด้านบนแผงรายละเอียด เปลี่ยนเป็น `Try` แล้วกด **Tab**
+4. เลือก **+ ภายในกรอบ Try** แล้วเพิ่ม `Compose` จาก `Data Operation` ระวังอย่าเพิ่มไว้นอก Scope
+5. คลิกช่อง **Inputs** พิมพ์ `/` → **Insert expression** (หน้าจอเดิมอาจใช้แท็บ **Expression**) แล้วใส่ใน editor:
 
    ```text
    int('not-a-number')
    ```
 
-6. เลือก **Save** และ **Test** > **Manually**
+6. เลือก **Add** เพื่อแทรก expression และตรวจว่า Inputs แสดง token `int(...)` ไม่ใช่ข้อความธรรมดา จากนั้นเลือก **Save** → **Test** → **Manually** → **Test** → **Run flow** → **Done**
 7. เปิด run ที่แสดง `Failed` แล้วขยาย `Try` และ `Compose`
 
 ### Checkpoint
@@ -47,8 +47,8 @@
 2. ภายใน `Catch` เพิ่ม `Send an email (V2)`
 3. ส่งหาอีเมลของตัวเอง หัวข้อ `Practice flow failed`
 4. ใน Body ใส่ชื่อ flow และข้อความ `Open Run history and inspect the failed action.`
-5. ที่เมนูของ `Catch` เลือก **Configure run after**
-6. ตั้งให้ `Catch` รอผลของ `Try` แล้วเลือกเฉพาะ `has failed` และ `has timed out`; ยกเลิก `is successful` และไม่เลือก `is skipped` ก่อนบันทึก เพื่อไม่ให้ส่งอีเมลแจ้งข้อผิดพลาดเมื่อ Try สำเร็จ
+5. คลิก `Catch` → แท็บ **Settings** → **Run after** แล้วขยาย `Try` (หน้าจอเดิมอาจใช้เมนู **Configure run after**)
+6. เลือก **Has failed** และ **Has timed out** ก่อน แล้วจึงยกเลิก **Is successful** โดยไม่เลือก **Is skipped**; ตรวจว่าเหลือเครื่องหมายถูกเพียงสองสถานะแรก เพื่อไม่ให้ส่งอีเมลแจ้งข้อผิดพลาดเมื่อ Try สำเร็จ
 7. เลือก **Save** และทดสอบอีกครั้ง
 8. เปิด Run history แล้วตรวจว่า `Try` ล้มเหลว แต่ `Catch` ทำงานและส่งอีเมล
 

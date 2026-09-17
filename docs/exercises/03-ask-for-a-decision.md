@@ -33,17 +33,18 @@ flowchart LR
 
    - **Approval type:** `Approve/Reject - First to respond`
    - **Title:** `Decision needed: ` + Dynamic content `Task title`
-   - **Assigned to:** อีเมลผู้อนุมัติสำหรับการฝึก
+   - **Assigned to:** พิมพ์อีเมลผู้อนุมัติสำหรับการฝึก แล้วกด **Tab** ตรวจว่าอีเมลกลายเป็นรายการผู้รับในช่อง
    - **Details:** แสดง `Description`, `Category`, `Needed by`, `Requester email` และ `Response Id`
 
 4. เลือก **Save**
-5. ส่ง Form ใหม่ 1 ครั้ง แล้วเปิด approval ที่ส่งถึงผู้อนุมัติ
+5. ส่ง Form ใหม่ 1 ครั้ง แล้วเปิด **Run history** ของ flow ตรวจว่า action `Start and wait for an approval` แสดง **Waiting**
+6. เปิด Outlook ของผู้อนุมัติ แล้วเปิดอีเมลหัวข้อ `Decision needed: ...` ตรวจข้อมูลคำขอและ `Request ID`
 
 ### Checkpoint
 
 - เห็น approval ที่มีปุ่ม `Approve` และ `Reject` และ flow รออยู่ที่ action นี้
 
-ก่อนเริ่ม Practice 2 ให้ตอบ `Approve` ของรายการทดสอบนี้และรอ run จบ แถวนี้ยังเป็น `Pending` ได้ เพราะยังไม่ได้เพิ่ม `Update a row` อย่าใช้รายการนี้ตรวจผลของ Practice 2–3; หลังแก้ไขและบันทึก flow ให้ส่ง Form ใหม่เสมอ
+ก่อนเริ่ม Practice 2 ให้เลือก **Approve** ในอีเมล ใส่ **Comments** ได้ตามต้องการ แล้วเลือก **Submit** ตรวจว่าแสดง **Approved** และรอ run จบ แถวนี้ยังเป็น `Pending` ได้ เพราะยังไม่ได้เพิ่ม `Update a row` อย่าใช้รายการนี้ตรวจผลของ Practice 2–3; หลังแก้ไขและบันทึก flow ให้ส่ง Form ใหม่เสมอ
 
 > **💡 Comparison:** `Send email with options` เหมาะกับคำตอบทางอีเมลแบบเบา ส่วน `Start and wait for an approval` ให้ output และประวัติสำหรับกระบวนการอนุมัติโดยตรง วันนี้เราใช้แบบหลังเป็นเส้นทางหลัก
 
@@ -60,11 +61,11 @@ flowchart LR
    Outcome is equal to Approve
    ```
 
-3. ในแขนง **If yes** เพิ่ม `Update a row` ของ Excel Online (Business)
+3. ในแขนง **True** (บางหน้าจอใช้ **If yes**) เพิ่ม `Update a row` ของ Excel Online (Business)
 4. เลือก workbook และ `RequestsTable` เดิม
 5. กำหนด **Key Column** เป็น `RequestId` และ **Key Value** เป็น Dynamic content `Response Id` จาก Forms trigger ไม่ใช่ Approval ID
-6. ใส่ `Status` เป็น `Approved` และ `Decision` เป็น `Approve`
-7. ในแขนง **If no** เพิ่ม `Update a row` แบบเดียวกัน แล้วใส่ `Status` เป็น `Rejected` และ `Decision` เป็น `Reject`
+6. ที่ **Advanced parameters** เลือก **Show all** แล้วใส่ `Status` เป็น `Approved` และ `Decision` เป็น `Approve` ปล่อยคอลัมน์อื่นว่าง เพราะเราต้องการอัปเดตเฉพาะสองคอลัมน์นี้
+7. ในแขนง **False** (บางหน้าจอใช้ **If no**) เพิ่ม `Update a row` แบบเดียวกัน แล้วใส่ `Status` เป็น `Rejected` และ `Decision` เป็น `Reject`
 8. เลือก **Save**
 
 ### Checkpoint
@@ -81,8 +82,8 @@ flowchart LR
 
 1. ต่อจาก `Update a row` ในแต่ละแขนง เพิ่ม `Send an email (V2)`
 2. เลือก Dynamic content `Requester email` จาก `Get response details` เป็นผู้รับ และใช้หัวข้อ `Decision for: ` ตามด้วย Dynamic content `Task title`; ใส่ `Response Id` ใน Body เพื่อเทียบกับ Excel ได้
-3. ใน **If yes** ระบุ `Decision: Approved`
-4. ใน **If no** ระบุ `Decision: Rejected`
+3. ใน **True** (บางหน้าจอใช้ **If yes**) ระบุ `Decision: Approved`
+4. ใน **False** (บางหน้าจอใช้ **If no**) ระบุ `Decision: Rejected`
 5. เลือก **Save**
 6. ส่ง Form ครั้งที่ 1 แล้วเลือก `Approve`
 7. รอ run สำเร็จและตรวจ Excel กับอีเมล

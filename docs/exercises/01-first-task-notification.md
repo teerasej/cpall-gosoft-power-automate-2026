@@ -24,8 +24,8 @@
    ```
 
 4. เลือก trigger **Manually trigger a flow** แล้วเลือก **Create**
-5. เพิ่ม Text input ชื่อ `TaskTitle`
-6. เพิ่ม Text input ชื่อ `RecipientEmail`
+5. เลือกการ์ด **Manually trigger a flow** > **Parameters** > **Add an input** > **Text** แล้วเปลี่ยนชื่อช่องด้านซ้ายจาก `Text` เป็น `TaskTitle`
+6. เลือก **Add an input** > **Text** อีกครั้ง แล้วเปลี่ยนชื่อเป็น `RecipientEmail`
 7. ตรวจว่ามี input ครบทั้งสองค่า แล้วทำ Practice 2 ต่อใน designer เดิม โดยยังไม่ต้องเลือก **Save** เพราะ flow ต้องมี trigger และ action อย่างน้อยหนึ่งรายการก่อนบันทึก
 
 ### Checkpoint
@@ -38,11 +38,11 @@
 
 **Primary target:** ส่งค่าจาก trigger เข้าอีเมล เพื่อให้ผู้รับเห็นชื่องานที่กรอกตอน Run
 
-1. ใต้ trigger เลือก **Add an action**
-2. ค้นหา `Send an email (V2)` จาก `Office 365 Outlook`
+1. เลือกปุ่ม **+** ใต้ trigger เพื่อเปิด **Add an action**
+2. ค้นหา `Send an email (V2)` เลือกแท็บ **Standard** แล้วเลือก action ใต้ `Office 365 Outlook` ระวังชื่อ action ที่เหมือนกันใต้ `Outlook.com`
 3. กำหนดค่า:
 
-   - **To:** เลือก Dynamic content `RecipientEmail`
+   - **To:** เลือกปุ่มรูปเฟือง **Settings** ข้างชื่อช่อง > **Use dynamic content** แล้วคลิกในช่อง **To** พิมพ์ `/` > **Insert dynamic content** ค้นหา `RecipientEmail` และเลือกค่าจาก **Manually trigger a flow**
    - **Subject:** พิมพ์ `New task: ` แล้วต่อด้วย Dynamic content `TaskTitle`
    - **Body:**
 
@@ -52,9 +52,9 @@
      Created from Power Automate training.
      ```
 
-     แทน `[TaskTitle]` ด้วย Dynamic content `TaskTitle`
+     แทน `[TaskTitle]` ด้วย Dynamic content `TaskTitle` โดยคลิกตำแหน่งที่ต้องการ พิมพ์ `/` > **Insert dynamic content** แล้วค้นหา `TaskTitle` ใช้วิธีเดียวกันใน **Subject** อย่าพิมพ์ชื่อ input แทนการเลือก token
 
-4. เลือก **Save** แล้วเลือก **Test** > **Manually**
+4. เลือก **Save** รอข้อความ **Your flow is ready to go. We recommend you test it.** แล้วเลือก **Test** > **Manually** > **Test** หากมีหน้าตรวจ connection ให้รอเครื่องหมายถูกที่ `Office 365 Outlook` แล้วเลือก **Continue**
 5. ใส่ชื่องาน `Prepare weekly team update` และอีเมลของตัวเอง
 6. เลือก **Run flow** แล้วตรวจ Inbox
 

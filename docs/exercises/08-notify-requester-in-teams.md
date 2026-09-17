@@ -9,7 +9,7 @@
 ## Prerequisites
 
 - Flow `Record Task Request - [Your Name]` จาก [แบบฝึกหัดที่ 7](./07-archive-approved-request-in-sharepoint.md) ทำงานครบทั้ง Approved และ Rejected และ Approved สร้างไฟล์ใน SharePoint ได้
-- ผู้เรียนเข้า Microsoft Teams ด้วยบัญชีเดียวกับที่ใช้สร้าง flow ได้
+- ผู้เรียนเข้า Microsoft Teams ด้วยบัญชีเดียวกับที่ใช้สร้าง flow ได้ โดยเปิดรูปโปรไฟล์ใน Teams ตรวจอีเมลและองค์กรก่อนทดสอบ แม้เปิดจาก App launcher ก็อาจยังใช้บัญชีที่เคยเข้าไว้
 - ใช้อีเมลของตนเองในช่อง `RequesterEmail` ระหว่างทดสอบ
 - Client IT ยืนยันว่า Teams `Workflows` app ใช้งานได้
 - เส้นทาง direct chat ต้องทดสอบด้วย participant-equivalent account ก่อนวันอบรม
@@ -23,8 +23,11 @@ flowchart LR
     A["Decision"] --> B{"Approve?"}
     B -->|Yes| C["Update: Approved"]
     B -->|No| D["Update: Rejected"]
-    C --> E["Teams direct message: Approved"]
+    C --> S["Create file: SharePoint"]
+    S --> E["Teams direct message: Approved"]
     D --> F["Teams direct message: Rejected"]
+    E --> G["Email: Approved"]
+    F --> H["Email: Rejected"]
 ```
 
 ---
@@ -34,7 +37,7 @@ flowchart LR
 **Primary target:** ส่งผล Approved ไปยัง direct chat ของผู้ขอด้วย Dynamic content จากคำขอเดิม
 
 1. เปิด flow `Record Task Request - [Your Name]`
-2. ในแขนง **If yes** เพิ่ม action หลัง `Create file` จากแบบฝึกหัดที่ 7
+2. ในแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) เพิ่ม action หลัง `Create file` จากแบบฝึกหัดที่ 7
 3. ค้นหา connector `Microsoft Teams`
 4. เลือก action `Post message in a chat or channel`
 5. หากระบบขอ connection ให้ Sign in ด้วยบัญชี Microsoft 365 สำหรับการฝึก
@@ -42,7 +45,7 @@ flowchart LR
 
    - **Post as:** `Flow bot`
    - **Post in:** `Chat with Flow bot`
-   - **Recipient:** Dynamic content `Requester email`
+   - **Recipient:** เลือก **Settings** ข้างช่อง → **Use dynamic content** จากนั้นพิมพ์ `/` → **Insert dynamic content** แล้วเลือก `Requester email` จาก `Get response details` ตรวจว่าแสดงเป็น token ก่อนทำต่อ
    - **Message:** ใช้ข้อความด้านล่าง
 
    ```text
@@ -68,7 +71,7 @@ flowchart LR
 
 **Primary target:** สร้างข้อความอีกหนึ่งแบบเพื่อให้ผู้รับเห็นผลและ next step ที่ถูกต้อง
 
-1. ในแขนง **If no** เพิ่ม `Post message in a chat or channel` หลัง `Update a row`
+1. ในแขนง **False** (หรือ **If no** ในหน้าจอเดิม) เพิ่ม `Post message in a chat or channel` หลัง `Update a row`
 2. กำหนดค่า `Post as`, `Post in` และ `Recipient` เหมือน Practice 1
 3. ใช้ข้อความ:
 
