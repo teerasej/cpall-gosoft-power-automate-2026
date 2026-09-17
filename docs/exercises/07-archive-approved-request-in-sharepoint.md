@@ -44,7 +44,7 @@ flowchart LR
 
    ตัวอย่าง: `PA-07-Narin`
 
-5. เปิดโฟลเดอร์และสร้างไฟล์ข้อความทดสอบ 1 ไฟล์
+5. ดาวน์โหลด [permission-check.txt](/downloads/permission-check.txt) ลงเครื่อง เปิดโฟลเดอร์ของตนใน SharePoint แล้วเลือก **Upload > Files** เพื่ออัปโหลดไฟล์นี้ จากนั้นตรวจว่าเปิดอ่านได้
 6. ลบไฟล์ทดสอบ แต่เก็บโฟลเดอร์ไว้
 
 ### Expected output
@@ -63,12 +63,12 @@ flowchart LR
 
 1. เปิด flow `Record Task Request - [Your Name]`
 2. ในแขนง **If yes** หา action `Update a row` ที่ตั้ง `Status` เป็น `Approved`
-3. เพิ่ม action ใหม่ถัดจาก action นั้น
+3. เพิ่ม action ใหม่ถัดจาก action นั้น และก่อน `Send an email (V2)` ที่แจ้งผล Approved โดยเก็บอีเมลเดิมไว้
 4. ค้นหา connector `SharePoint` แล้วเลือก action `Create file`
 5. กำหนดค่า:
 
    - **Site Address:** site ที่วิทยากรแจ้ง
-   - **Folder Path:** `Documents/PA-[เลขที่ผู้เรียน]-[ชื่อภาษาอังกฤษ]` หรือ path ที่เลือกได้จาก folder picker
+   - **Folder Path:** ใช้ folder picker เลือก library และโฟลเดอร์ของตน เช่น `PA-07-Narin`; อย่าเดา path จากชื่อที่แสดงว่า `Documents` เพราะชื่อแสดงกับ path จริงอาจต่างกัน
    - **File Name:** พิมพ์ `Request-` ตามด้วย Dynamic content `Response Id` แล้วพิมพ์ `.txt`
    - **File Content:** ใช้ข้อความด้านล่างและแทรก Dynamic content ในตำแหน่งที่กำหนด
 

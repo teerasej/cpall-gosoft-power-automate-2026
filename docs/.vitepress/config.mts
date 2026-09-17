@@ -25,7 +25,7 @@ export default withMermaid(
             { text: 'ดาวน์โหลด Excel tracker', link: '/downloads/task-request-tracker.xlsx' },
             { text: 'ดาวน์โหลดสไลด์ผู้เรียน', link: '/downloads/CPAll-Power-Automate-Day-1.pptx' },
             { text: 'ตัวอย่างคำของาน', link: '/resources/sample-requests' },
-            { text: 'Automation Canvas', link: '/resources/automation-canvas' }
+            { text: 'Automation Canvas · Optional', link: '/resources/automation-canvas' }
           ]
         }
       ],
@@ -41,16 +41,16 @@ export default withMermaid(
             { text: '1 · ส่งการแจ้งเตือนงาน', link: '/exercises/01-first-task-notification' },
             { text: '2 · รับและบันทึกคำของาน', link: '/exercises/02-collect-and-record-requests' },
             { text: '3 · ขออนุมัติและอัปเดต', link: '/exercises/03-ask-for-a-decision' },
-            { text: '4 · เก็บใน SharePoint', link: '/exercises/07-archive-approved-request-in-sharepoint' },
-            { text: '5 · แจ้งผลผ่าน Teams', link: '/exercises/08-notify-requester-in-teams' },
-            { text: '6 · รับมือข้อผิดพลาด', link: '/exercises/05-understand-and-recover-from-errors' }
+            { text: '7 · เก็บใน SharePoint', link: '/exercises/07-archive-approved-request-in-sharepoint' },
+            { text: '8 · แจ้งผลผ่าน Teams', link: '/exercises/08-notify-requester-in-teams' },
+            { text: '5 · รับมือข้อผิดพลาด', link: '/exercises/05-understand-and-recover-from-errors' }
           ]
         },
         {
           text: 'แบบฝึกหัดเสริม / Take-home',
           items: [
             { text: 'สรุปงานค้างประจำวัน', link: '/exercises/04-daily-pending-summary' },
-            { text: 'ออกแบบ Automation', link: '/exercises/06-automate-my-task' }
+            { text: 'Automation Canvas · Optional', link: '/exercises/06-automate-my-task' }
           ]
         },
         {
@@ -58,7 +58,7 @@ export default withMermaid(
           items: [
             { text: 'ดาวน์โหลดไฟล์', link: '/resources/downloads' },
             { text: 'ตัวอย่างคำของาน', link: '/resources/sample-requests' },
-            { text: 'Automation Canvas', link: '/resources/automation-canvas' }
+            { text: 'Automation Canvas · Optional', link: '/resources/automation-canvas' }
           ]
         }
       ],

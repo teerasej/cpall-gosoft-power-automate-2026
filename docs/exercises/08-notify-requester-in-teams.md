@@ -1,6 +1,6 @@
 # แบบฝึกหัดที่ 8: แจ้งผลผู้ขอผ่าน Microsoft Teams
 
-เราจะต่อยอด flow จากแบบฝึกหัดที่ 3 ให้ส่งข้อความตรงถึงผู้ขอผ่าน `Microsoft Teams` หลังจากทราบผล Approve หรือ Reject โดยไม่ต้องสร้าง Team หรือ channel สำหรับห้องเรียน
+เราจะต่อยอด flow จากแบบฝึกหัดที่ 7 ให้ส่งข้อความตรงถึงผู้ขอผ่าน `Microsoft Teams` หลังจากทราบผล Approve หรือ Reject โดยไม่ต้องสร้าง Team หรือ channel สำหรับห้องเรียน
 
 > **License:** ใช้ Microsoft Teams connector ซึ่งเป็น Standard connector ใน Power Automate ไม่ใช้ Premium connector
 
@@ -8,7 +8,7 @@
 
 ## Prerequisites
 
-- Flow `Record Task Request - [Your Name]` จาก [แบบฝึกหัดที่ 3](./03-ask-for-a-decision.md) ทำงานครบทั้ง Approved และ Rejected
+- Flow `Record Task Request - [Your Name]` จาก [แบบฝึกหัดที่ 7](./07-archive-approved-request-in-sharepoint.md) ทำงานครบทั้ง Approved และ Rejected และ Approved สร้างไฟล์ใน SharePoint ได้
 - ผู้เรียนเข้า Microsoft Teams ด้วยบัญชีเดียวกับที่ใช้สร้าง flow ได้
 - ใช้อีเมลของตนเองในช่อง `RequesterEmail` ระหว่างทดสอบ
 - Client IT ยืนยันว่า Teams `Workflows` app ใช้งานได้
@@ -52,7 +52,7 @@ flowchart LR
    Next step: งานได้รับการอนุมัติแล้ว โปรดดำเนินการตามขั้นตอนที่ทีมกำหนด
    ```
 
-7. เลือก **Save**
+7. แทน `[Response Id]` ด้วย Dynamic content จาก Forms trigger และ `[Task title]` ด้วย Dynamic content จาก `Get response details` อย่าปล่อยวงเล็บเป็นข้อความคงที่ แล้วเลือก **Save**
 
 ### Expected output
 
@@ -79,7 +79,7 @@ flowchart LR
    Next step: โปรดตรวจรายละเอียดกับผู้ตัดสินใจก่อนส่งคำขอใหม่
    ```
 
-4. เลือก **Save**
+4. แทน `[Response Id]` และ `[Task title]` ด้วย Dynamic content เช่นเดียวกับ Practice 1 แล้วเลือก **Save**
 
 ### Expected output
 
@@ -112,6 +112,13 @@ flowchart LR
 - ข้อความทั้งสองรายการตรงกับ Response Id ของ Form และแสดงผลคนละเส้นทางถูกต้อง
 
 ---
+
+## ตรวจลำดับ action ก่อนทดสอบ
+
+- Approved: `Update a row` → `Create file` → Teams message → อีเมลแจ้งผลเดิม
+- Rejected: `Update a row` → Teams message → อีเมลแจ้งผลเดิม
+
+เราเพิ่ม Teams เข้าไปโดยเก็บอีเมลแจ้งผลจากแบบฝึกหัดที่ 3 ไว้ ผู้ขอจึงได้รับทั้งอีเมลและ Teams เมื่อเส้นทางทำงานสำเร็จ หาก action ก่อนหน้าล้มเหลว ให้ตรวจ Run history เพราะ action ถัดไปอาจถูกข้าม
 
 ## Optional variation: ส่งเข้าช่องของทีม
 

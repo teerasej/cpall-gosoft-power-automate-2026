@@ -46,13 +46,15 @@ features:
 
 ## เส้นทางการฝึกหลัก
 
+ทำตามลำดับ **1 → 2 → 3 → 7 → 8 → 5** หมายเลขหน้าคงเดิมเพื่อให้อ้างอิงตรงกับคู่มือ; แบบฝึกหัด 4 และ 6 อยู่ในส่วนเสริมด้านล่าง
+
 <div class="learning-path">
   <a href="./exercises/01-first-task-notification"><strong>1 · Outlook</strong>ส่งการแจ้งเตือนงานครั้งแรก</a>
   <a href="./exercises/02-collect-and-record-requests"><strong>2 · Forms + Excel</strong>รับและบันทึกคำของาน</a>
   <a href="./exercises/03-ask-for-a-decision"><strong>3 · Approvals</strong>ขออนุมัติและอัปเดตคำขอ</a>
-  <a href="./exercises/07-archive-approved-request-in-sharepoint"><strong>4 · SharePoint</strong>เก็บคำขอที่อนุมัติแล้ว</a>
-  <a href="./exercises/08-notify-requester-in-teams"><strong>5 · Teams</strong>แจ้งผลกลับไปยังผู้ขอ</a>
-  <a href="./exercises/05-understand-and-recover-from-errors"><strong>6 · Run history</strong>เข้าใจและรับมือข้อผิดพลาด</a>
+  <a href="./exercises/07-archive-approved-request-in-sharepoint"><strong>7 · SharePoint</strong>เก็บคำขอที่อนุมัติแล้ว</a>
+  <a href="./exercises/08-notify-requester-in-teams"><strong>8 · Teams</strong>แจ้งผลกลับไปยังผู้ขอ</a>
+  <a href="./exercises/05-understand-and-recover-from-errors"><strong>5 · Run history</strong>เข้าใจและรับมือข้อผิดพลาด</a>
 </div>
 
 ## แบบฝึกหัดเสริม / Take-home
@@ -103,6 +105,12 @@ flowchart LR
 ```
 
 เมื่อจบวันนี้ ผู้เรียนจะมี workflow รุ่นแรกที่ทดสอบครบสองผลลัพธ์ รู้ว่าผลใดเกิดใน Excel, SharePoint และ Teams และใช้ Run history ตรวจสอบเมื่อ flow ไม่เป็นไปตามคาดได้
+
+## ขอบเขต License และกิจกรรมเสริม
+
+เส้นทางหลักใช้ Standard connectors และ Built-in actions แต่ยังต้องมีสิทธิ์บริการ Microsoft 365 ที่เกี่ยวข้องและผ่าน policy ขององค์กร คำว่า Standard ไม่ได้หมายความว่าทุกบริการใช้งานได้ฟรีโดยไม่ต้องมี license
+
+แบบฝึกหัด 4 และ 6 เป็น **Optional / Take-home** ไม่เพิ่มเวลาเรียนหลักและไม่เป็นเงื่อนไขการผ่าน Day 1 ส่วน AI Builder เป็น **instructor-only premium demonstration** แยกจาก flow ของผู้เรียน; ผู้เรียนไม่ต้องเพิ่ม AI Builder action หรือเปิด trial ตามวิทยากร หากสิทธิ์วิทยากรไม่พร้อมให้ใช้ saved result
 
 ## Microsoft Learn references
 

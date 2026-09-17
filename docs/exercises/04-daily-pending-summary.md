@@ -1,5 +1,7 @@
 # แบบฝึกหัดเสริม: ส่งสรุปงานค้างประจำวัน
 
+> **Optional / Take-home:** กิจกรรมเสริมหลังชั้นเรียน ไม่อยู่ในเวลาเรียนหลักและไม่เป็นเงื่อนไขการผ่านกิจกรรม Day 1
+
 เราจะสร้าง Scheduled cloud flow ที่เปิดสมุดบันทึก Excel ตามเวลา คัดเฉพาะรายการ `Pending` แล้วส่งสรุปเข้าอีเมล
 
 > **License:** ใช้ `Excel Online (Business)` และ `Office 365 Outlook` ซึ่งเป็น Standard connectors รวมถึง Built-in actions `Filter array`, `Condition`, `Variable` และ `Apply to each`

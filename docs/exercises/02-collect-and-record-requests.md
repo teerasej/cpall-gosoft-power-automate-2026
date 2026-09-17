@@ -8,7 +8,8 @@
 
 - อัปโหลด [task-request-tracker.xlsx](/downloads/task-request-tracker.xlsx) ไปยัง `OneDrive for Business/PowerAutomateTraining/`
 - เปิด workbook แล้วตรวจว่ามี worksheet `Requests` และ table ชื่อ `RequestsTable`
-- ปิด workbook ก่อนทดสอบ flow
+- ใช้ Form หนึ่งชุดกับ workbook ส่วนตัวหนึ่งไฟล์ เพื่อให้ `Response Id` ไม่ชนกับข้อมูลจาก Form อื่น
+- ปิด workbook ก่อนทดสอบ flow และส่งคำขอทีละรายการ รอ run จบก่อนส่งรายการต่อไป
 
 ---
 
@@ -52,7 +53,7 @@
    Record Task Request - [Your Name]
    ```
 
-3. เลือก trigger `When a new response is submitted` ของ Microsoft Forms
+3. เลือก trigger `When a new response is submitted` ของ Microsoft Forms แล้วเลือก **Create**
 4. ใน **Form Id** เลือก Form ที่สร้างใน Practice 1
 5. เพิ่ม action `Get response details` แล้วเลือก Form เดิม
 6. ใน **Response Id** เลือก Dynamic content `Response Id` จาก trigger
@@ -64,7 +65,7 @@
    - **File:** `PowerAutomateTraining/task-request-tracker.xlsx`
    - **Table:** `RequestsTable`
 
-9. จับคู่ค่าลงแต่ละคอลัมน์:
+9. จับคู่ค่าลงแต่ละคอลัมน์ โดยเลือก `Response Id` จาก trigger และเลือกคำตอบของ Form จาก `Get response details` ผ่าน Dynamic content; พิมพ์เฉพาะ `Pending` เป็นข้อความคงที่:
 
    | Excel column | Value |
    |---|---|
@@ -78,7 +79,7 @@
    | Decision | เว้นว่าง |
 
 10. เลือก **Save**
-11. ส่ง Form ใหม่ 1 ครั้ง แล้วรอให้ flow ทำงานเสร็จ
+11. ส่ง Form ใหม่ 1 ครั้งหลังบันทึก flow แล้วรอให้ flow ทำงานเสร็จ คำตอบที่ส่งก่อนสร้าง flow ใน Practice 1 ไม่ใช่รายการทดสอบนี้
 12. เปิด workbook หลัง run สำเร็จ และตรวจแถวใหม่
 
 ### Checkpoint

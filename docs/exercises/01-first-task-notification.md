@@ -26,7 +26,7 @@
 4. เลือก trigger **Manually trigger a flow** แล้วเลือก **Create**
 5. เพิ่ม Text input ชื่อ `TaskTitle`
 6. เพิ่ม Text input ชื่อ `RecipientEmail`
-7. เลือก **Save**
+7. ตรวจว่ามี input ครบทั้งสองค่า แล้วทำ Practice 2 ต่อใน designer เดิม โดยยังไม่ต้องเลือก **Save** เพราะ flow ต้องมี trigger และ action อย่างน้อยหนึ่งรายการก่อนบันทึก
 
 ### Checkpoint
 

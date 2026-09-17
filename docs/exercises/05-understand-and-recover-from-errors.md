@@ -48,7 +48,7 @@
 3. ส่งหาอีเมลของตัวเอง หัวข้อ `Practice flow failed`
 4. ใน Body ใส่ชื่อ flow และข้อความ `Open Run history and inspect the failed action.`
 5. ที่เมนูของ `Catch` เลือก **Configure run after**
-6. เลือก `has failed` และ `has timed out` ของ `Try` แล้วบันทึก
+6. ตั้งให้ `Catch` รอผลของ `Try` แล้วเลือกเฉพาะ `has failed` และ `has timed out`; ยกเลิก `is successful` และไม่เลือก `is skipped` ก่อนบันทึก เพื่อไม่ให้ส่งอีเมลแจ้งข้อผิดพลาดเมื่อ Try สำเร็จ
 7. เลือก **Save** และทดสอบอีกครั้ง
 8. เปิด Run history แล้วตรวจว่า `Try` ล้มเหลว แต่ `Catch` ทำงานและส่งอีเมล
 

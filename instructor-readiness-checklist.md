@@ -2,6 +2,10 @@
 
 ใช้รายการนี้ก่อนวันอบรมและก่อนเริ่มแต่ละช่วงปฏิบัติ
 
+ลำดับหลักคือ 1 → 2 → 3 → 7 → 8 → 5; แบบฝึกหัด 4 และ 6 เป็น Optional / Take-home ไม่อยู่ในเวลาเรียนหลักและไม่เป็นเงื่อนไขผ่าน Day 1
+
+การตรวจ connection หรือเอกสารไม่เท่ากับการผ่าน live run ให้บันทึก Passed / Failed / Blocked พร้อมหลักฐานผลปลายทางแต่ละกิจกรรม และแยกผลบัญชีวิทยากรออกจาก participant-equivalent account
+
 ## Tenant และบัญชี
 
 - [ ] ผู้เรียนเข้า `https://make.powerautomate.com` และสร้าง Instant กับ Automated cloud flow ใน environment ที่องค์กรจัดให้ได้
@@ -29,8 +33,9 @@
 - [ ] Exercise 7: Approved สร้างไฟล์ใน SharePoint และ Rejected ไม่สร้างไฟล์
 - [ ] Exercise 8: direct Teams chat แสดง `RequestId`, `Title`, decision และ next step ถูกต้องทั้งสองแขนง
 - [ ] Exercise 5: controlled failure เรียก recovery path ผ่าน `Configure run after`
-- [ ] หลังซ่อมค่าแล้ว flow เดิม run สำเร็จ
-- [ ] AI Builder demonstration เปิดได้ด้วยบัญชีวิทยากร หรือมี saved-result fallback
+- [ ] หลังซ่อมค่าแล้ว flow เดิม run สำเร็จ, Catch เป็น Skipped และไม่มีอีเมลแจ้ง failure
+- [ ] ทดสอบด้วย Form response ใหม่หลัง Save แต่ละครั้ง และจบ approval test ก่อนแก้ flow รอบต่อไป
+- [ ] AI Builder เป็น instructor-only premium demonstration แยกจาก learner flows; ตรวจสิทธิ์/ความจุของวิทยากร หรือใช้ saved-result fallback โดยไม่ให้ผู้เรียนเปิด trial
 - [ ] ปิด Scheduled flow ที่ใช้เตรียม optional/take-home Exercise 4 หลังทดสอบ
 
 ## จุดหยุดตรวจตามเวลา

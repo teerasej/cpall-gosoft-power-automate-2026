@@ -43,6 +43,8 @@ flowchart LR
 
 - เห็น approval ที่มีปุ่ม `Approve` และ `Reject` และ flow รออยู่ที่ action นี้
 
+ก่อนเริ่ม Practice 2 ให้ตอบ `Approve` ของรายการทดสอบนี้และรอ run จบ แถวนี้ยังเป็น `Pending` ได้ เพราะยังไม่ได้เพิ่ม `Update a row` อย่าใช้รายการนี้ตรวจผลของ Practice 2–3; หลังแก้ไขและบันทึก flow ให้ส่ง Form ใหม่เสมอ
+
 > **💡 Comparison:** `Send email with options` เหมาะกับคำตอบทางอีเมลแบบเบา ส่วน `Start and wait for an approval` ให้ output และประวัติสำหรับกระบวนการอนุมัติโดยตรง วันนี้เราใช้แบบหลังเป็นเส้นทางหลัก
 
 ---
@@ -52,7 +54,7 @@ flowchart LR
 **Primary target:** ตรวจค่า `Outcome` เพื่อให้ flow เลือกเส้นทาง Approved หรือ Rejected และอัปเดต `RequestId` ที่ถูกต้อง
 
 1. หลัง `Start and wait for an approval` เพิ่ม Built-in action `Condition`
-2. กำหนดเงื่อนไข:
+2. เลือก Dynamic content `Outcome` จาก `Start and wait for an approval` ในช่องซ้าย เลือก `is equal to` แล้วพิมพ์ `Approve` ในช่องขวา โดยใช้ตัวพิมพ์ให้ตรง:
 
    ```text
    Outcome is equal to Approve
@@ -60,7 +62,7 @@ flowchart LR
 
 3. ในแขนง **If yes** เพิ่ม `Update a row` ของ Excel Online (Business)
 4. เลือก workbook และ `RequestsTable` เดิม
-5. กำหนด **Key Column** เป็น `RequestId` และ **Key Value** เป็น Dynamic content `Response Id`
+5. กำหนด **Key Column** เป็น `RequestId` และ **Key Value** เป็น Dynamic content `Response Id` จาก Forms trigger ไม่ใช่ Approval ID
 6. ใส่ `Status` เป็น `Approved` และ `Decision` เป็น `Approve`
 7. ในแขนง **If no** เพิ่ม `Update a row` แบบเดียวกัน แล้วใส่ `Status` เป็น `Rejected` และ `Decision` เป็น `Reject`
 8. เลือก **Save**
@@ -78,7 +80,7 @@ flowchart LR
 **Primary target:** ยืนยันผลปลายทางทั้ง Approved และ Rejected เพื่อพิสูจน์ว่า flow อัปเดตแถวถูกต้อง
 
 1. ต่อจาก `Update a row` ในแต่ละแขนง เพิ่ม `Send an email (V2)`
-2. ส่งหา `Requester email` และใช้หัวข้อ `Decision for: ` + `Task title`
+2. เลือก Dynamic content `Requester email` จาก `Get response details` เป็นผู้รับ และใช้หัวข้อ `Decision for: ` ตามด้วย Dynamic content `Task title`; ใส่ `Response Id` ใน Body เพื่อเทียบกับ Excel ได้
 3. ใน **If yes** ระบุ `Decision: Approved`
 4. ใน **If no** ระบุ `Decision: Rejected`
 5. เลือก **Save**
