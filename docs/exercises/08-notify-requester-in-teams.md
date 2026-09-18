@@ -100,11 +100,13 @@ flowchart LR
 
 1. เปิด Microsoft Teams ด้วยบัญชีผู้ขอ
 2. ส่ง Form ใหม่แล้วเลือก `Approve`
-3. รอ run จบและเปิดข้อความจาก Flow bot
+3. รอ run จบ แล้วเปิด **Chat** ใน Microsoft Teams มองหาแชต **Workflows** ซึ่งเป็นชื่อผู้ส่งที่พบในการทดสอบ แม้ใน action จะเลือก `Flow bot`
 4. ตรวจ `RequestId`, `Title`, ผล และ next step
 5. ส่ง Form ใหม่อีกครั้งแล้วเลือก `Reject`
 6. ตรวจข้อความ Teams ครั้งที่สอง
-7. เปิด Run history และเทียบ output ของ Teams action กับข้อความที่ได้รับ
+7. เปิด Run history แล้วขยาย **Condition** และแขนงที่ทำงาน คลิก `Post message in a chat or channel` ตรวจ **Inputs** ว่าผู้รับและข้อความตรงกับคำขอ และ **Outputs** มี `id` กับ `messageLink` เทียบกับข้อความที่ได้รับจริง
+8. ตรวจอีเมลแจ้งผลและแถว Excel ของทั้งสองคำขอด้วย โดย Approved ต้องมีไฟล์ SharePoint และ Rejected ต้องไม่มีไฟล์ของคำขอนั้น
+9. หลังฝึกครบ เลือก **Turn off** ที่หน้ารายละเอียด flow และเก็บข้อมูลทดสอบไว้ตามที่วิทยากรกำหนด
 
 ### Expected output
 
@@ -144,7 +146,7 @@ flowchart LR
 | สร้าง Teams connection ไม่ได้ | ตรวจว่าบัญชีเดียวกันเข้า Teams ได้ แล้ว Sign in ใหม่จาก Connections |
 | ส่ง direct chat ไม่ได้ | ตรวจเส้นทางที่ rehearsal ไว้; หาก policy เปลี่ยนให้ใช้ instructor demonstration หรือ saved result |
 | Recipient ไม่ถูกต้อง | ใช้ Dynamic content `Requester email` และทดสอบด้วยอีเมลของตนเอง |
-| Run สำเร็จแต่หา chat ไม่พบ | ค้นหา `Flow bot` หรือเปิด Chat ล่าสุด แล้วเทียบเวลาและ RequestId |
+| Run สำเร็จแต่หา chat ไม่พบ | เปิด **Chat** แล้วหา **Workflows** (บางหน้าจออาจใช้ชื่อ `Flow bot`) ตรวจบัญชีและองค์กรจากรูปโปรไฟล์ แล้วเทียบเวลาและ RequestId |
 | เลือก Team หรือ channel ไม่ได้ | ส่วน channel เป็น optional เท่านั้น; กลับไปใช้ `Chat with Flow bot` |
 
 ## Summary

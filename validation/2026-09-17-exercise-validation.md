@@ -1,11 +1,11 @@
 # Exercise validation — 17–18 September 2026
 
-## Status: review ready — Teams delivery validation blocked
+## Status: complete for the agreed validation-account scope — review ready
 
 Review branch: `codex/validate-power-automate-exercises`.
 Baseline: `bc3f523` (VitePress publication). The live Edge tab inventory showed the public learner site and the GitHub publication run for this commit. The working tree was clean before this review.
 
-This report certifies only the specific observations below for the validation account. It does **not** certify participant readiness or classroom pacing. Corrections combine live UI observations, static instruction review, and Microsoft references. Remaining activities are not yet validated.
+This report certifies only the specific observations below for the validation account. It does **not** certify participant readiness or classroom pacing. Corrections combine live UI observations, static instruction review, and Microsoft references. All core activities and the optional daily-summary boundary tests have completed live validation. Canvas received only the agreed static review.
 
 ## Observed through Computer
 
@@ -31,6 +31,8 @@ This report certifies only the specific observations below for the validation ac
 
 - Exercise 4, optional: created a separate scheduled flow with the same synthetic workbook. The first Condition failed because a newline converted the expression result to a String; replaced it with a single expression token and verified the numeric comparison. A successful five-row email then exposed Excel serial dates and collapsed lines. Set List rows present in a table > Advanced parameters > DateTime Format to ISO 8601 and prefixed each appended row with `<br>`. Replayed five, one, and zero Pending rows: run history showed Test succeeded (two, one, and one seconds respectively), and opened each received email. Counts and request IDs matched; the zero-row email said No pending tasks today. Restored all five original Pending statuses, visually verified the workbook, closed it, and turned the schedule off.
 
+- Exercise 8: after the user signed into Teams, verified the intended account and organization in its profile control. Enabled the retained request flow and submitted two fresh synthetic requests. Approve succeeded in 1 minute 25 seconds; Reject succeeded in 1 minute 27 seconds. Opened the Workflows chat and verified both messages against their request IDs, titles, outcomes, and Thai next steps. The rejected Teams action showed matching recipient/message Inputs and successful Outputs containing a message id and messageLink. Actual Excel rows showed Approved/Approve and Rejected/Reject. The Approved archive contained all six expected fields; the refreshed folder contained no archive for the rejected request. Both decision emails arrived. Turned the flow off and confirmed Status Off.
+
 ## Activity results
 
 | Activity | Status | Observed evidence / remaining limitation |
@@ -39,7 +41,7 @@ This report certifies only the specific observations below for the validation ac
 | 2 — Forms and Excel | Passed — live run | Post-save responses created correctly mapped rows; receipt run succeeded in four seconds; received email matched RequestId, title, date, and Pending status |
 | 3 — Approvals | Passed — live runs | Separate Approve/Reject runs succeeded; actual Excel rows and received decision emails matched each request ID |
 | 7 — SharePoint | Passed — live runs | Created private training site/library; permission check passed; Approve created a text file with six matching fields; Reject succeeded and created no corresponding file |
-| 8 — Teams | Blocked — recipient UI sign-in | Both Standard Teams actions saved with dynamic recipients; Teams web opened a different cached account. Awaiting intended-account sign-in before delivery tests |
+| 8 — Teams | Passed — both live outcomes | Approved and Rejected messages received in Workflows chat with matching request details; Excel, archive behavior, and decision emails verified; flow Status Off confirmed |
 | 5 — Error recovery | Passed — three live tests | Initial conversion failed; failure-only Catch sent the verified email; repaired Compose returned 25, Catch/email were Skipped, and no additional error email appeared. Flow Status Off confirmed |
 | 4 — Daily summary, optional | Passed — corrected live runs | Five, one, and zero Pending cases succeeded; actual emails verified; dates and line breaks corrected; statuses restored and schedule off |
 | 6 — Canvas, optional | Passed — static review only | Links and instructions reviewed; no runtime or learner-performance claim |
@@ -51,20 +53,20 @@ This report certifies only the specific observations below for the validation ac
 | Defer Exercise 1 Save until an action exists; clarify input tokens and email body | Live creation and exact corrected email replay | Passed |
 | Make Forms trigger creation and Dynamic content sources explicit | Live Form creation, mapped workbook rows, and receipt email | Passed |
 | Finish the initial approval test before editing; use new responses afterward | Live waiting state, baseline approval, and fresh Approve/Reject runs | Passed |
-| Require Exercise 7 before Teams; identify all placeholders as Dynamic content | Direct contradiction in the original prerequisites/steps | Yes |
+| Require Exercise 7 before Teams; identify all placeholders as Dynamic content | Both full branch runs and actual Teams messages | Passed |
 | Specify Settings > Run after and failure-only Catch conditions | Live failed, recovered, and repaired runs | Passed |
 | Add private training-site setup, supplied permission file, custom site URL, and folder picker guidance | Live site creation, upload/read/recoverable delete, and both decision runs | Passed |
-| Specify final branch order including retained email notifications | SharePoint and decision emails verified; Teams actions saved | Teams replay blocked |
+| Specify final branch order including retained email notifications; locate the Workflows chat | Both full branch runs, Teams delivery, Excel rows, archive behavior, and decision emails | Passed |
 | Use filtered current-item expressions, numeric count token, ISO dates, and HTML line breaks | Failed Condition, received-email defects, and corrected 0/1/5-row replays | Passed |
 | Keep Canvas and daily summary explicitly optional; align sidebar exercise IDs | User instruction and static navigation review | Site preview |
 | Label AI Builder as instructor-only premium exception | User decision and Microsoft licensing guidance | Demo readiness remains separate |
 
-Exercises 1–5 and 7 supplied live UI and received-output evidence. Teams recipient mapping required Settings > Use dynamic content. The main validation flow was saved and turned off while recipient-account sign-in was pending. No Teams delivery or participant-account readiness claim is made. No private screenshots are included.
+Exercises 1–5, 7, and 8 supplied live UI and received-output evidence. Teams recipient mapping required Settings > Use dynamic content, and received messages appeared in the Workflows chat. These results apply to the validation account only. No private screenshots are included.
 
-## Remaining Teams validation and artifact state
+## Artifact state and participant readiness
 
 - Teams web opened a different cached account. Its sign-out dialog warned that offline data, including message drafts, would be removed; sign-out was canceled. The user was asked to sign Teams into the intended validation account. No messages were sent to the other account.
-- Once that sign-in is ready, turn on the retained main validation flow, submit two new synthetic requests, test Approve and Reject, verify the actual direct Teams messages plus workbook/SharePoint/email outputs, then turn the flow off again.
+- The user subsequently completed sign-in. Both direct-message paths were validated successfully, resolving the earlier blocker.
 - The manual notification flow, main request flow, error-handling flow, and scheduled summary flow are retained and turned off. Forms, workbook, private training site, approved text file, emails, and run history are retained for review. Workbook statuses changed for boundary testing were restored.
 - Optional channel posting was not attempted; it requires an identified training Team/channel. Canvas remains Optional / Take-home and was reviewed statically only.
 - Before class, repeat readiness checks using a normal participant account: Standard classification alone does not prove mailbox, Forms, workbook, SharePoint site creation/write, approval, Teams Workflows, or tenant-policy access. If site creation is restricted, an instructor or site owner must prepare the training site.
@@ -92,4 +94,4 @@ Exercises 1–5 and 7 supplied live UI and received-output evidence. Teams recip
 - The workbook, slide download, and new permission-check file match their built copies byte for byte.
 - `git diff --check` passed.
 
-These static checks do not establish live results for the remaining activities. No commit was merged or pushed, and the public site was not changed.
+Static checks and the live results above are separate evidence; neither establishes participant-account readiness. No commit was merged or pushed, and the public site was not changed.
