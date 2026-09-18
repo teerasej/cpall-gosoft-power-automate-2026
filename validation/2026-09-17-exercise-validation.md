@@ -35,7 +35,7 @@ This report certifies only the specific observations below for the validation ac
 
 ## Activity results
 
-| Activity | Status | Observed evidence / remaining limitation |
+| Activity | Status | Evidence / boundary |
 |---|---|---|
 | 1 — Outlook notification | Passed — corrected replay | Test succeeded; received email matches all three instruction lines and input title; flow retained and turned off |
 | 2 — Forms and Excel | Passed — live run | Post-save responses created correctly mapped rows; receipt run succeeded in four seconds; received email matched RequestId, title, date, and Pending status |
@@ -46,9 +46,9 @@ This report certifies only the specific observations below for the validation ac
 | 4 — Daily summary, optional | Passed — corrected live runs | Five, one, and zero Pending cases succeeded; actual emails verified; dates and line breaks corrected; statuses restored and schedule off |
 | 6 — Canvas, optional | Passed — static review only | Links and instructions reviewed; no runtime or learner-performance claim |
 
-## Corrections prepared
+## Corrections applied
 
-| Change | Evidence basis | Replay needed |
+| Change | Evidence basis | Validation result |
 |---|---|---|
 | Defer Exercise 1 Save until an action exists; clarify input tokens and email body | Live creation and exact corrected email replay | Passed |
 | Make Forms trigger creation and Dynamic content sources explicit | Live Form creation, mapped workbook rows, and receipt email | Passed |
@@ -58,18 +58,21 @@ This report certifies only the specific observations below for the validation ac
 | Add private training-site setup, supplied permission file, custom site URL, and folder picker guidance | Live site creation, upload/read/recoverable delete, and both decision runs | Passed |
 | Specify final branch order including retained email notifications; locate the Workflows chat | Both full branch runs, Teams delivery, Excel rows, archive behavior, and decision emails | Passed |
 | Use filtered current-item expressions, numeric count token, ISO dates, and HTML line breaks | Failed Condition, received-email defects, and corrected 0/1/5-row replays | Passed |
-| Keep Canvas and daily summary explicitly optional; align sidebar exercise IDs | User instruction and static navigation review | Site preview |
-| Label AI Builder as instructor-only premium exception | User decision and Microsoft licensing guidance | Demo readiness remains separate |
+| Keep Canvas and daily summary explicitly optional; align sidebar exercise IDs | User instruction and static navigation review | Passed — site preview |
+| Label AI Builder as instructor-only premium exception | User decision and Microsoft licensing guidance | Instructor readiness only — not a learner-flow test |
 
 Exercises 1–5, 7, and 8 supplied live UI and received-output evidence. Teams recipient mapping required Settings > Use dynamic content, and received messages appeared in the Workflows chat. These results apply to the validation account only. No private screenshots are included.
 
-## Artifact state and participant readiness
+## Retained validation artifacts
 
-- Teams web opened a different cached account. Its sign-out dialog warned that offline data, including message drafts, would be removed; sign-out was canceled. The user was asked to sign Teams into the intended validation account. No messages were sent to the other account.
-- The user subsequently completed sign-in. Both direct-message paths were validated successfully, resolving the earlier blocker.
+- Teams initially opened a different cached account. Sign-out was canceled when the dialog warned that offline drafts would be removed, and no message was sent from that account. After the intended validation account was signed in, both direct-message paths passed and the blocker was resolved.
 - The manual notification flow, main request flow, error-handling flow, and scheduled summary flow are retained and turned off. Forms, workbook, private training site, approved text file, emails, and run history are retained for review. Workbook statuses changed for boundary testing were restored.
 - Optional channel posting was not attempted; it requires an identified training Team/channel. Canvas remains Optional / Take-home and was reviewed statically only.
+
+## Participant and classroom readiness
+
 - Before class, repeat readiness checks using a normal participant account: Standard classification alone does not prove mailbox, Forms, workbook, SharePoint site creation/write, approval, Teams Workflows, or tenant-policy access. If site creation is restricted, an instructor or site owner must prepare the training site.
+- Record participant-account and classroom results separately from this validation-account report. A saved result or instructor demonstration is a fallback, not evidence that a participant completed the hands-on activity.
 - No merge, push, or publication is authorized by this review.
 
 ## Microsoft references
@@ -89,9 +92,10 @@ Exercises 1–5, 7, and 8 supplied live UI and received-output evidence. Teams r
 
 - Production build passed; only the existing large-bundle advisory remains.
 - All 30 relative Markdown document/download links resolve on disk.
-- Browser preview loaded all eight exercise pages and the home page without a 404. Heading hierarchy and optional sidebar grouping were inspected; Exercise 1 received a screenshot layout check.
+- A fresh browser preview loaded all eight exercise pages and the home page without a 404. Heading hierarchy, optional sidebar grouping, and the final branched workflow diagram were inspected visually.
 - Home and sidebar numbering now agree with exercise IDs. Exercise 6 remains in Optional / Take-home.
 - The workbook, slide download, and new permission-check file match their built copies byte for byte.
+- The manual notification, main request, error-handling, and scheduled-summary validation flows were rechecked in Power Automate and all showed Status Off.
 - `git diff --check` passed.
 
 Static checks and the live results above are separate evidence; neither establishes participant-account readiness. No commit was merged or pushed, and the public site was not changed.

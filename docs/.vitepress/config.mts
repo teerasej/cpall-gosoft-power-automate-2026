@@ -49,7 +49,7 @@ export default withMermaid(
         {
           text: 'แบบฝึกหัดเสริม / Take-home',
           items: [
-            { text: 'สรุปงานค้างประจำวัน', link: '/exercises/04-daily-pending-summary' },
+            { text: 'สรุปงานค้างประจำวัน · Optional', link: '/exercises/04-daily-pending-summary' },
             { text: 'Automation Canvas · Optional', link: '/exercises/06-automate-my-task' }
           ]
         },

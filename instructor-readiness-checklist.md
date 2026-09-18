@@ -9,11 +9,12 @@
 ## Tenant และบัญชี
 
 - [ ] ผู้เรียนเข้า `https://make.powerautomate.com` และสร้าง Instant กับ Automated cloud flow ใน environment ที่องค์กรจัดให้ได้
-- [ ] `Office 365 Outlook`, `Microsoft Forms`, `Excel Online (Business)`, `Standard approvals`, `SharePoint`, `Microsoft Teams` และ `OneDrive for Business` ใช้งานร่วมกันได้ตาม DLP policy
+- [ ] learner flow ใช้เฉพาะ Standard connectors ได้แก่ `Office 365 Outlook`, `Microsoft Forms`, `Excel Online (Business)`, `Standard approvals`, `SharePoint`, `Microsoft Teams` และ `OneDrive for Business` และใช้งานร่วมกันได้ตาม DLP policy
 - [ ] mailbox, OneDrive, Forms และ Approvals ของผู้เรียนพร้อมใช้งาน
 - [ ] ระบุอีเมลผู้อนุมัติสำหรับการฝึก และแจ้งผู้รับก่อนทดสอบ
-- [ ] ระบุ SharePoint training site และ document library ที่ผู้เรียนมีสิทธิ์เขียน
-- [ ] Teams `Workflows` app ถูกตั้งเป็น Allow และ direct-chat path ผ่าน rehearsal
+- [ ] ยืนยันว่าผู้เรียนสร้าง SharePoint site ได้ หรือเตรียม private training site กับ document library ที่ผู้เรียนมีสิทธิ์เขียนไว้ก่อนเริ่ม Exercise 7
+- [ ] Teams `Workflows` app ถูกตั้งเป็น Allow และ direct-chat path ผ่าน rehearsal ด้วย participant-equivalent account
+- [ ] เปิดรูปโปรไฟล์ใน Teams แล้วตรวจว่าบัญชีและองค์กรตรงกับบัญชีที่ใช้สร้าง flow ก่อนทดสอบ Exercise 8
 
 ## ไฟล์และข้อมูลฝึก
 
@@ -31,8 +32,8 @@
 - [ ] Exercise 3: `Start and wait for an approval` แสดง Approve/Reject และคืน `Outcome`
 - [ ] Approve และ Reject อัปเดตคนละแถวด้วย `RequestId` ที่ถูกต้อง
 - [ ] Exercise 7: Approved สร้างไฟล์ใน SharePoint และ Rejected ไม่สร้างไฟล์
-- [ ] Exercise 8: direct Teams chat แสดง `RequestId`, `Title`, decision และ next step ถูกต้องทั้งสองแขนง
-- [ ] Exercise 5: controlled failure เรียก recovery path ผ่าน `Configure run after`
+- [ ] Exercise 8: แชต `Workflows` แสดง `RequestId`, `Title`, decision และ next step ถูกต้องทั้งสองแขนง และ Run history มี `id` กับ `messageLink`
+- [ ] Exercise 5: controlled failure เรียก recovery path ผ่าน **Settings > Run after** โดยเลือกเฉพาะ **Has failed** และ **Has timed out**
 - [ ] หลังซ่อมค่าแล้ว flow เดิม run สำเร็จ, Catch เป็น Skipped และไม่มีอีเมลแจ้ง failure
 - [ ] ทดสอบด้วย Form response ใหม่หลัง Save แต่ละครั้ง และจบ approval test ก่อนแก้ flow รอบต่อไป
 - [ ] AI Builder เป็น instructor-only premium demonstration แยกจาก learner flows; ตรวจสิทธิ์/ความจุของวิทยากร หรือใช้ saved-result fallback โดยไม่ให้ผู้เรียนเปิด trial
@@ -60,7 +61,7 @@
 | OneDrive หรือ Excel connector ใช้งานไม่ได้ | ให้ผู้เรียน map fields จากตัวอย่างหน้าจอ แล้วใช้ saved run แสดงผล |
 | Approval ไม่มาถึง | ตรวจ Assigned to, connection และ Run history; ใช้ saved result เพื่ออธิบาย `Outcome` ระหว่างรอ |
 | SharePoint site, library หรือ permission ไม่พร้อม | ใช้ prepared instructor flow/saved result และบันทึกเป็น readiness failure; ไม่อ้างว่าผู้เรียนผ่าน hands-on |
-| Teams `Workflows` app หรือ direct chat ไม่พร้อม | ใช้ instructor demonstration/saved result และบันทึกเป็น readiness failure |
+| Teams `Workflows` app, บัญชี/องค์กร หรือ direct chat ไม่พร้อม | ตรวจบัญชีจากรูปโปรไฟล์ก่อน; หากยังไม่พร้อมให้ใช้ instructor demonstration/saved result และบันทึกเป็น readiness failure |
 | DLP block connector | หยุดการเชื่อมต่อ บันทึก policy/error และเปลี่ยนเป็น instructor demonstration |
 | UI label ต่างจากเอกสาร | ใช้ชื่อ action/connector เป็นหลักและแก้คู่มือจากหน้า UI ที่ rehearsal แล้ว |
 

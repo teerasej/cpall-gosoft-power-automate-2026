@@ -1,6 +1,6 @@
 # Automation Canvas
 
-> **Optional / Take-home:** ใช้ประกอบ[แบบฝึกหัดเสริมที่ 6](../exercises/06-automate-my-task.md) ไม่เป็นเงื่อนไขการผ่านกิจกรรม Day 1
+> **Optional / Take-home:** ใช้ประกอบ [แบบฝึกหัดเสริมที่ 6](../exercises/06-automate-my-task.md) ไม่เป็นเงื่อนไขการผ่านกิจกรรม Day 1
 
 ใช้ Canvas นี้เพื่อออกแบบ flow รุ่นแรกให้ชัดก่อนลงมือสร้าง
 

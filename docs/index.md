@@ -100,8 +100,10 @@ flowchart LR
     D -->|Approve| E["Update row: Approved"]
     D -->|Reject| F["Update row: Rejected"]
     E --> G["Create file in SharePoint"]
-    G --> H["Post result in Teams direct chat"]
-    F --> H
+    G --> H["Post Approved in Teams"]
+    F --> I["Post Rejected in Teams"]
+    H --> J["Send Approved email"]
+    I --> K["Send Rejected email"]
 ```
 
 เมื่อจบวันนี้ ผู้เรียนจะมี workflow รุ่นแรกที่ทดสอบครบสองผลลัพธ์ รู้ว่าผลใดเกิดใน Excel, SharePoint และ Teams และใช้ Run history ตรวจสอบเมื่อ flow ไม่เป็นไปตามคาดได้
