@@ -22,7 +22,10 @@ export default withMermaid(
         {
           text: 'ไฟล์ประกอบ',
           items: [
-            { text: 'ดาวน์โหลด Excel tracker', link: '/downloads/task-request-tracker.xlsx' },
+            {
+              text: 'ดาวน์โหลด Excel tracker',
+              link: 'https://raw.githubusercontent.com/teerasej/cpall-gosoft-power-automate-2026/main/docs/public/downloads/task-request-tracker.xlsx'
+            },
             { text: 'ดาวน์โหลดสไลด์ผู้เรียน', link: '/downloads/CPAll-Power-Automate-Day-1.pptx' },
             { text: 'ตัวอย่างคำของาน', link: '/resources/sample-requests' },
             { text: 'Automation Canvas · Optional', link: '/resources/automation-canvas' }

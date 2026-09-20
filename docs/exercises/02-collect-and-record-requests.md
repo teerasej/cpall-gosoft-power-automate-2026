@@ -18,7 +18,7 @@ flowchart TD
 
 ## Prerequisites
 
-- อัปโหลด [task-request-tracker.xlsx](/downloads/task-request-tracker.xlsx?v=20260920-1) ไปยัง `OneDrive for Business/PowerAutomateTraining/`
+- อัปโหลด [task-request-tracker.xlsx](https://raw.githubusercontent.com/teerasej/cpall-gosoft-power-automate-2026/main/docs/public/downloads/task-request-tracker.xlsx) ไปยัง `OneDrive for Business/PowerAutomateTraining/`
 - คลิกเปิด workbook แล้วตรวจ worksheet และ table ตามขั้นตอนนี้:
    1. ดูแท็บ worksheet ด้านล่างของหน้าต่าง Excel แล้วเลือก `Requests` หากไม่เห็น ให้เลือก **All Sheets** เพื่อตรวจสอบอีกครั้ง หากยังไม่พบ ให้หยุดและตรวจว่าเปิดไฟล์ถูกต้อง
    2. คลิกเซลล์ใดก็ได้ภายในข้อมูลของ `Requests` แล้วดูแท็บ **Table Design** (หรือ **Table**) บน Ribbon ในส่วน **Properties** ตรวจว่า **Table Name** เป็น `RequestsTable` ตรงตามนี้ทุกตัวอักษร หากไม่เห็นแท็บดังกล่าว แสดงว่ายังไม่ได้คลิกภายใน table หรือเปิดไฟล์ไม่ถูกต้อง

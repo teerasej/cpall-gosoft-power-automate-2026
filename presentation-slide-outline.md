@@ -156,7 +156,7 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Teach:** แต่ละคนใช้ `task-request-tracker.xlsx` ของตนใน OneDrive และ table ชื่อ `RequestsTable`
 - **Visual:** Personal OneDrive folder and eight-column table
 - **Speaker cue:** ตรวจ worksheet/table แล้วปิด workbook ก่อน run
-- **Link:** [Excel tracker](./docs/public/downloads/task-request-tracker.xlsx)
+- **Link:** [Excel tracker](https://raw.githubusercontent.com/teerasej/cpall-gosoft-power-automate-2026/main/docs/public/downloads/task-request-tracker.xlsx)
 - **Analogy bridge:** สมุดรับเรื่องหลังร้าน → `RequestsTable` → หนึ่ง Form response ต้องเพิ่มหนึ่งแถวและเก็บ `RequestId` ไว้ตามงาน
 
 ### Slide 18 — Map the eight columns

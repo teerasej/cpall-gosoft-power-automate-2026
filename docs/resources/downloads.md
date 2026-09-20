@@ -4,7 +4,7 @@
 
 ## ไฟล์สำหรับผู้เรียน
 
-- [Excel tracker — task-request-tracker.xlsx](/downloads/task-request-tracker.xlsx?v=20260920-1) — อัปโหลดไปยัง `OneDrive for Business/PowerAutomateTraining/` ก่อนเริ่ม Exercise 2
+- [Excel tracker — task-request-tracker.xlsx](https://raw.githubusercontent.com/teerasej/cpall-gosoft-power-automate-2026/main/docs/public/downloads/task-request-tracker.xlsx) — อัปโหลดไปยัง `OneDrive for Business/PowerAutomateTraining/` ก่อนเริ่ม Exercise 2
 - [สไลด์ผู้เรียน — CPAll-Power-Automate-Day-1.pptx](/downloads/CPAll-Power-Automate-Day-1.pptx) — ใช้ทบทวนแนวคิดและเส้นทางการฝึกตลอดทั้งวัน
 
 ## ทรัพยากรออนไลน์
