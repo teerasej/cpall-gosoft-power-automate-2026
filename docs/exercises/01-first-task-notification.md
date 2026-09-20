@@ -71,7 +71,10 @@
 
 4. เลือก **Save**
 5. กดปุ่ม **Publish** รอข้อความ **Your flow is ready to go. We recommend you test it.**
-6. เลือก **Test** > **Manually** > **Test** หากมีหน้าตรวจ connection ให้รอเครื่องหมายถูกที่ `Office 365 Outlook` แล้วเลือก **Continue**
+6. เลือก **Test** > **Manually** > **Test** หากมีหน้าตรวจ connection ระบบจะพยายามใช้บัญชี Microsoft 365 ที่ผู้เรียนกำลัง Sign in เป็น connection ของ `Office 365 Outlook` ให้ตรวจว่าเป็นบัญชีที่ต้องการใช้ในการฝึก หากต้องการเปลี่ยนบัญชี ให้เลือก **...** ข้าง `Office 365 Outlook` แล้วเลือก connection อื่นที่มีอยู่ หรือเลือก **+ Add new connection** เพื่อสร้าง connection ใหม่ เมื่อ connection ที่ถูกต้องแสดงเครื่องหมายถูกสีเขียวแล้ว ให้เลือก **Continue**
+
+   ![เมนูเลือกหรือเพิ่ม Office 365 Outlook connection](/images/exercise-01-outlook-connection-options.png)
+
 7. กรอกค่าทดสอบ:
 
     - **TaskTitle**
