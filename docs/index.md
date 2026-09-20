@@ -19,7 +19,7 @@ hero:
       link: https://raw.githubusercontent.com/teerasej/cpall-gosoft-power-automate-2026/main/docs/public/downloads/task-request-tracker.xlsx
 
 features:
-  - title: เริ่มจากผลลัพธ์เล็ก ๆ
+  - title: เริ่มจากตัวอย่างเล็ก ๆ
     details: สร้าง Instant cloud flow และเห็นอีเมลฉบับแรกก่อนต่อยอดเป็น workflow ที่สมบูรณ์
   - title: เรื่องเดียวตลอดวัน
     details: ติดตามคำของานเดียวกันผ่าน Forms, Excel, Approvals และ Teams พร้อมเลือกต่อยอดไป SharePoint ได้
@@ -46,7 +46,7 @@ features:
 
 ## เส้นทางการฝึกหลัก
 
-ทำตามลำดับ **1 → 2 → 3 → 8 → 5** ช่วง 13:30 วิทยากรจะเลือกกิจกรรมทบทวน Approval หรือกิจกรรม SharePoint เพิ่มอีกหนึ่งเส้นทาง ทั้งสองทางกลับมาเริ่มแบบฝึกหัดที่ 8 เหมือนกัน
+ทำตามลำดับ ช่วง 13:30 วิทยากรจะเลือกกิจกรรมทบทวน Approval หรือกิจกรรม SharePoint เพิ่มอีกหนึ่งเส้นทาง ทั้งสองทางกลับมาเริ่มแบบฝึกหัดที่ 8 เหมือนกัน
 
 <div class="learning-path">
   <a href="./exercises/01-first-task-notification"><strong>1 · Outlook</strong>ส่งการแจ้งเตือนงานครั้งแรก</a>
@@ -56,7 +56,7 @@ features:
   <a href="./exercises/05-understand-and-recover-from-errors"><strong>5 · Run history</strong>เข้าใจและรับมือข้อผิดพลาด</a>
 </div>
 
-## กิจกรรมที่วิทยากรเลือกเวลา 13:30
+## กิจกรรมที่วิทยากรเลือก
 
 เปิดเพียงหนึ่งกิจกรรมตามที่วิทยากรประกาศ:
 
@@ -85,8 +85,7 @@ features:
 | 15:15–15:35 | Live error recovery ด้วย Run history และ Run After |
 | 15:35–15:50 | Instructor demonstration และ discussion: AI Builder |
 | 15:50–16:00 | Review และ Q&A |
-
-รวม 330 นาทีสำหรับ instruction/activity, พัก 30 นาที และ lunch 60 นาที
+ที
 
 ## ไฟล์ประกอบ
 
