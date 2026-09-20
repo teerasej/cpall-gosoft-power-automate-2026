@@ -16,7 +16,7 @@ hero:
       link: /exercises/01-first-task-notification
     - theme: alt
       text: ดาวน์โหลด Excel tracker
-      link: /downloads/task-request-tracker.xlsx
+      link: /downloads/task-request-tracker.xlsx?v=20260920-1
 
 features:
   - title: เริ่มจากผลลัพธ์เล็ก ๆ
@@ -36,7 +36,7 @@ features:
 ## สิ่งที่ต้องเตรียม
 
 - เข้าใช้งาน [Power Automate](https://make.powerautomate.com), `Microsoft Forms`, `Outlook`, `OneDrive for Business` และ `Microsoft Teams` ได้
-- ดาวน์โหลด [task-request-tracker.xlsx](/downloads/task-request-tracker.xlsx) และอัปโหลดไว้ในโฟลเดอร์ `PowerAutomateTraining` ของ OneDrive
+- ดาวน์โหลด [task-request-tracker.xlsx](/downloads/task-request-tracker.xlsx?v=20260920-1) และอัปโหลดไว้ในโฟลเดอร์ `PowerAutomateTraining` ของ OneDrive
 - ใช้อีเมลของตัวเองเป็นผู้ขอและผู้อนุมัติระหว่างการฝึก หรือใช้อีเมลฝึกที่วิทยากรกำหนด
 - เปิดไฟล์ Excel เพื่อตรวจว่า table ชื่อ `RequestsTable` แล้วปิดไฟล์ก่อนทดสอบ flow
 - ตรวจว่า Teams `Workflows` app ใช้งานได้ และใช้ direct chat ตามเส้นทางที่วิทยากร rehearsal แล้ว
@@ -93,7 +93,7 @@ features:
 
 - [สไลด์ผู้เรียน Power Automate Day 1](/downloads/CPAll-Power-Automate-Day-1.pptx)
 - [ตัวอย่างคำของาน](./resources/sample-requests.md)
-- [Excel tracker](/downloads/task-request-tracker.xlsx)
+- [Excel tracker](/downloads/task-request-tracker.xlsx?v=20260920-1)
 - [Automation Canvas — optional/take-home](./resources/automation-canvas.md)
 
 ## ภาพรวม Workflow

@@ -6,7 +6,7 @@
 
 ## Prerequisites
 
-- อัปโหลด [task-request-tracker.xlsx](/downloads/task-request-tracker.xlsx) ไปยัง `OneDrive for Business/PowerAutomateTraining/`
+- อัปโหลด [task-request-tracker.xlsx](/downloads/task-request-tracker.xlsx?v=20260920-1) ไปยัง `OneDrive for Business/PowerAutomateTraining/`
 - เปิด workbook แล้วตรวจว่ามี worksheet `Requests` และ table ชื่อ `RequestsTable`
 - ใช้ Form หนึ่งชุดกับ workbook ส่วนตัวหนึ่งไฟล์ เพื่อให้ `Response Id` ไม่ชนกับข้อมูลจาก Form อื่น
 - ปิด workbook ก่อนทดสอบ flow และส่งคำขอทีละรายการ รอ run จบก่อนส่งรายการต่อไป
