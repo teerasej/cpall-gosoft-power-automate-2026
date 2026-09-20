@@ -4,10 +4,24 @@
 
 > **License:** ใช้ `Microsoft Forms`, `Excel Online (Business)` และ `Office 365 Outlook` ซึ่งเป็น Standard connectors ต้องตรวจสอบสิทธิ์ก่อนเริ่มอบรม
 
+## Workflow ที่เราจะสร้าง
+
+```mermaid
+---
+title: "แบบฝึกหัดที่ 2: รับและบันทึกคำของาน"
+---
+flowchart TD
+   A["Trigger: When a new response is submitted"] --> B["Get response details"]
+   B --> C["Add a row into a table"]
+   C --> D["Send an email (V2)"]
+```
+
 ## Prerequisites
 
 - อัปโหลด [task-request-tracker.xlsx](/downloads/task-request-tracker.xlsx?v=20260920-1) ไปยัง `OneDrive for Business/PowerAutomateTraining/`
-- เปิด workbook แล้วตรวจว่ามี worksheet `Requests` และ table ชื่อ `RequestsTable`
+- คลิกเปิด workbook แล้วตรวจ worksheet และ table ตามขั้นตอนนี้:
+   1. ดูแท็บ worksheet ด้านล่างของหน้าต่าง Excel แล้วเลือก `Requests` หากไม่เห็น ให้เลือก **All Sheets** เพื่อตรวจสอบอีกครั้ง หากยังไม่พบ ให้หยุดและตรวจว่าเปิดไฟล์ถูกต้อง
+   2. คลิกเซลล์ใดก็ได้ภายในข้อมูลของ `Requests` แล้วดูแท็บ **Table Design** (หรือ **Table**) บน Ribbon ในส่วน **Properties** ตรวจว่า **Table Name** เป็น `RequestsTable` ตรงตามนี้ทุกตัวอักษร หากไม่เห็นแท็บดังกล่าว แสดงว่ายังไม่ได้คลิกภายใน table หรือเปิดไฟล์ไม่ถูกต้อง
 - ใช้ Form หนึ่งชุดกับ workbook ส่วนตัวหนึ่งไฟล์ เพื่อให้ `Response Id` ไม่ชนกับข้อมูลจาก Form อื่น
 - ปิด workbook ก่อนทดสอบ flow และส่งคำขอทีละรายการ รอ run จบก่อนส่งรายการต่อไป
 
@@ -24,17 +38,20 @@
    Task Request - [Your Name]
    ```
 
-3. เลือก **Quick start with** เพื่อเลือกชนิดคำถามแรก หลังจากนั้นใช้ **Add new question** เพิ่มคำถามตามตารางนี้ และตรวจให้ทุกข้อเปิด **Required** สำหรับ Description ให้เปิด **Long answer** ส่วน Category ใช้ **Add option** จนครบ 4 ตัวเลือก และไม่เปิด **Multiple answers**
+3. เลือก **Quick start with** เพื่อเลือกชนิดคำถามแรก หลังจากนั้นใช้ **Add new question** เพิ่มคำถามตามตารางนี้
+   1. ตรวจให้ทุกข้อเปิด **Required**
+   2. สำหรับ Description ให้เปิด **Long answer**
+   3. ส่วน Category ใช้ **Add option** และเพิ่มตัวเลือกจนครบ 4 ตัวเลือก และไม่เปิด **Multiple answers**
 
-   | Question | Type | Options |
-   |---|---|---|
-   | Task title | Text | Short answer |
-   | Description | Text | Long answer |
-   | Requester email | Text | Short answer |
-   | Category | Choice | Operations, Finance, HR, IT Support |
-   | Needed by | Date | — |
+   | No. | Type | Question | Options |
+   |---|---|---|---|
+   | 1 | Text | Task title | Short answer |
+   | 2 | Text | Description | Long answer |
+   | 3 | Text | Requester email | Short answer |
+   | 4 | Choice | Category | Operations, Finance, HR, IT Support |
+   | 5 | Date | Needed by | — |
 
-4. เลือก **Preview** แล้วส่งคำขอทดสอบ 1 รายการจาก [ตัวอย่างคำของาน](../resources/sample-requests.md)
+4. เลือก **Preview** แล้วทดสอบส่งข้อมูล 1 รายการจาก [ตัวอย่าง task request](../resources/sample-requests.md)
 
 ### Checkpoint
 
@@ -53,19 +70,27 @@
    Record Task Request - [Your Name]
    ```
 
-3. เลือก trigger `When a new response is submitted` ของ Microsoft Forms แล้วเลือก **Create**
-4. ใน **Form Id** เลือก Form ที่สร้างใน Practice 1
-5. เพิ่ม action `Get response details` แล้วเลือก Form เดิม
-6. ใน **Response Id** เลือก Dynamic content `Response Id` จาก trigger
-7. เพิ่ม action `Add a row into a table` ของ Excel Online (Business)
-8. เลือกตำแหน่งตามนี้:
+3. เลือก trigger `When a new response is submitted` ของ Microsoft Forms
+4. แล้วเลือก **Create**
+5. ใน **Form Id** เลือก Form ที่สร้างใน Practice 1 หากไม่พบ Form ในเมนู ให้ตรวจ connection ที่แสดงใต้ช่อง **Form Id** แล้วทำตามขั้นตอนนี้:
+   1. เลือก **Change connection reference**
+   2. เลือก connection ที่มีอยู่ หรือเลือก **+ Add new connection**
+   3. หากเลือก **+ Add new connection** ให้ Sign in ด้วยบัญชี Microsoft 365 ของผู้เรียน แล้วรอจนระบบสร้าง connection สำเร็จ
+   4. กลับมาที่ trigger แล้วเปิดเมนู **Form Id** อีกครั้ง จากนั้นเลือก Form ที่สร้างไว้ใน Practice 1
+
+   ![ตรวจและเปลี่ยน Microsoft Forms connection เมื่อไม่พบ Form Id](/images/exercise-02-change-forms-connection.png)
+
+6. เพิ่ม action `Get response details` แล้วเลือก Form เดิม
+7. ใน **Response Id** เลือก Dynamic content `Response Id` จาก trigger
+8. เพิ่ม action `Add a row into a table` ของ Excel Online (Business)
+9. เลือกตำแหน่งตามนี้:
 
    - **Location:** `OneDrive for Business`
    - **Document Library:** เลือกคลังเอกสารส่วนตัวที่มี workbook ชื่ออาจต่างตามภาษา เช่น `เอกสาร` ในบัญชีที่ทดสอบ ให้ยืนยันด้วยการเปิด **File** แล้วพบโฟลเดอร์ของเรา
    - **File:** เลือกไอคอนโฟลเดอร์ (**Open folder**) แล้วใช้ลูกศรเข้า `PowerAutomateTraining` และเลือก `task-request-tracker.xlsx` ไม่พิมพ์ path โดยเดา
    - **Table:** `RequestsTable`
 
-9. หลังเลือก Table แล้วรอให้ schema โหลด จากนั้นเลือก **Advanced parameters** > **Show all** เพื่อแสดงคอลัมน์ ตรวจว่า token ปรากฏในช่องก่อนเปลี่ยนไปช่องถัดไป แล้วจับคู่ค่าลงแต่ละคอลัมน์ โดยเลือก `Response Id` จาก trigger และเลือกคำตอบของ Form จาก `Get response details` ผ่าน Dynamic content; พิมพ์เฉพาะ `Pending` เป็นข้อความคงที่:
+10. หลังเลือก Table แล้วรอให้ schema โหลด จากนั้นเลือก **Advanced parameters** > **Show all** เพื่อแสดงคอลัมน์ ตรวจว่า token ปรากฏในช่องก่อนเปลี่ยนไปช่องถัดไป แล้วจับคู่ค่าลงแต่ละคอลัมน์ โดยเลือก `Response Id` จาก trigger และเลือกคำตอบของ Form จาก `Get response details` ผ่าน Dynamic content; พิมพ์เฉพาะ `Pending` เป็นข้อความคงที่:
 
    | Excel column | Value |
    |---|---|
@@ -78,9 +103,9 @@
    | Status | `Pending` |
    | Decision | เว้นว่าง |
 
-10. เลือก **Save**
-11. ส่ง Form ใหม่ 1 ครั้งหลังบันทึก flow แล้วรอให้ flow ทำงานเสร็จ คำตอบที่ส่งก่อนสร้าง flow ใน Practice 1 ไม่ใช่รายการทดสอบนี้
-12. เปิด workbook หลัง run สำเร็จ และตรวจแถวใหม่
+11. เลือก **Save**
+12. ส่ง Form ใหม่ 1 ครั้งหลังบันทึก flow แล้วรอให้ flow ทำงานเสร็จ คำตอบที่ส่งก่อนสร้าง flow ใน Practice 1 ไม่ใช่รายการทดสอบนี้
+13. เปิด workbook หลัง run สำเร็จ และตรวจแถวใหม่
 
 ### Checkpoint
 

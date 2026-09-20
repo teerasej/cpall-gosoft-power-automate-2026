@@ -10,7 +10,14 @@
 - ทราบอีเมลของตัวเอง
 
 ---
+## Workflow ที่เราจะสร้าง
 
+
+```mermaid
+flowchart TD
+   trigger["Manually trigger a flow"] --> email["Send an email (V2)"]
+```
+---
 ## Practice 1: สร้าง Instant cloud flow
 
 **Primary target:** สร้าง manual trigger ที่รับรายละเอียดงาน เพื่อให้ flow พร้อมรับ input เมื่อผู้ใช้กด Run
