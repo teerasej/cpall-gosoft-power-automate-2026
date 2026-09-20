@@ -1,10 +1,9 @@
 # แบบฝึกหัดที่ 8: แจ้งผลผู้ขอผ่าน Microsoft Teams
 
-เราจะต่อยอด flow จากแบบฝึกหัดที่ 3 ให้ส่งข้อความตรงถึงผู้ขอผ่าน `Microsoft Teams` หลังจากทราบผล Approve หรือ Reject โดยไม่ต้องสร้าง Team หรือ channel สำหรับห้องเรียน กิจกรรมนี้ทำได้ไม่ว่าจะทำหรือข้าม SharePoint
+เราจะต่อยอด flow จากแบบฝึกหัดที่ 3 ให้ส่งข้อความตรงถึงผู้ขอผ่าน `Microsoft Teams` หลังจากทราบผล Approve หรือ Reject โดยไม่ต้องสร้าง Team หรือ channel สำหรับห้องเรียน กิจกรรมนี้ทำได้ไม่ว่าจะทำหรือข้ามเนื้อหาส่วนของ SharePoint มาหรือไม่
 
 > **License:** ใช้ Microsoft Teams connector ซึ่งเป็น Standard connector ใน Power Automate ไม่ใช้ Premium connector
 
-> **Readiness:** ใช้บัญชีและเส้นทาง direct chat ที่วิทยากร rehearsal แล้ว และต้องยืนยันว่า Teams `Workflows` app ถูกตั้งเป็น Allow
 
 ## Prerequisites
 
@@ -38,7 +37,7 @@ flowchart LR
 **Primary target:** ส่งผล Approved ไปยัง direct chat ของผู้ขอด้วย Dynamic content จากคำขอเดิม
 
 1. เปิด flow `Record Task Request - [Your Name]`
-2. ในแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) เพิ่ม action หลัง `Update a row`; หากทำแบบฝึกหัดเสริม SharePoint แล้ว ให้วาง Teams action หลัง `Create file`
+2. ในเส้นทาง **True** (หรือ **If yes** ในหน้าจอเดิม) เพิ่ม action หลัง `Update a row`; หากทำแบบฝึกหัดเสริม SharePoint แล้ว ให้วาง Teams action หลัง `Create file`
 3. ค้นหา connector `Microsoft Teams`
 4. เลือก action `Post message in a chat or channel`
 5. หากระบบขอ connection ให้ Sign in ด้วยบัญชี Microsoft 365 สำหรับการฝึก
@@ -46,7 +45,9 @@ flowchart LR
 
    - **Post as:** `Flow bot`
    - **Post in:** `Chat with Flow bot`
-   - **Recipient:** เลือก **Settings** ข้างช่อง → **Use dynamic content** จากนั้นพิมพ์ `/` → **Insert dynamic content** แล้วเลือก `Requester email` จาก `Get response details` ตรวจว่าแสดงเป็น token ก่อนทำต่อ
+   - **Recipient:** เลือก **Settings** ข้างช่อง → **Use dynamic content**
+   - จากนั้นพิมพ์ `/` → **Insert dynamic content**
+   - แล้วเลือก `Requester email` จาก `Get response details` ตรวจว่าแสดงเป็น token แสดงในแบบฟอร์มก่อนทำต่อ
    - **Message:** ใช้ข้อความด้านล่าง
 
    ```text
@@ -60,7 +61,7 @@ flowchart LR
 
 ### Expected output
 
-- แขนง Approved มี action ที่ส่ง direct Teams message ไปยัง `Requester email`
+- เส้นทาง Approved มี action ที่ส่ง direct Teams message ไปยัง `Requester email`
 
 ### Checkpoint
 
@@ -72,7 +73,7 @@ flowchart LR
 
 **Primary target:** สร้างข้อความอีกหนึ่งแบบเพื่อให้ผู้รับเห็นผลและ next step ที่ถูกต้อง
 
-1. ในแขนง **False** (หรือ **If no** ในหน้าจอเดิม) เพิ่ม `Post message in a chat or channel` หลัง `Update a row`
+1. ในเส้นทาง **False** (หรือ **If no** ในหน้าจอเดิม) เพิ่ม `Post message in a chat or channel` หลัง `Update a row`
 2. กำหนดค่า `Post as`, `Post in` และ `Recipient` เหมือน Practice 1
 3. ใช้ข้อความ:
 
@@ -87,7 +88,7 @@ flowchart LR
 
 ### Expected output
 
-- แต่ละแขนงมีข้อความของตนเอง และส่งถึงผู้ขอคนเดียวกับข้อมูลใน Form
+- แต่ละเส้นทางมีข้อความของตนเอง และส่งถึงผู้ขอคนเดียวกับข้อมูลใน Form
 
 ### Checkpoint
 
@@ -105,7 +106,7 @@ flowchart LR
 4. ตรวจ `RequestId`, `Title`, ผล และ next step
 5. ส่ง Form ใหม่อีกครั้งแล้วเลือก `Reject`
 6. ตรวจข้อความ Teams ครั้งที่สอง
-7. เปิด Run history แล้วขยาย **Condition** และแขนงที่ทำงาน คลิก `Post message in a chat or channel` ตรวจ **Inputs** ว่าผู้รับและข้อความตรงกับคำขอ และ **Outputs** มี `id` กับ `messageLink` เทียบกับข้อความที่ได้รับจริง
+7. เปิด Run history แล้วขยาย **Condition** และเส้นทางที่ทำงาน คลิก `Post message in a chat or channel` ตรวจ **Inputs** ว่าผู้รับและข้อความตรงกับคำขอ และ **Outputs** มี `id` กับ `messageLink` เทียบกับข้อความที่ได้รับจริง
 8. ตรวจอีเมลแจ้งผลและแถว Excel ของทั้งสองคำขอด้วย หากทำแบบฝึกหัดเสริม SharePoint ให้ตรวจเพิ่มว่า Approved มีไฟล์และ Rejected ไม่มีไฟล์ของคำขอนั้น
 9. หลังฝึกครบ เลือก **Turn off** ที่หน้ารายละเอียด flow และเก็บข้อมูลทดสอบไว้ตามที่วิทยากรกำหนด
 

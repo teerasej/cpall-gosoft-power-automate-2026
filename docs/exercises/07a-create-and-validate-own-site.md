@@ -9,7 +9,7 @@ next:
 
 # Route A: สร้างและตรวจ SharePoint site ของตนเอง
 
-> **ใช้หน้านี้เมื่อ:** วิทยากรยืนยันว่าบัญชีผู้เรียนได้รับอนุญาตให้สร้าง SharePoint site หากไม่เห็นคำสั่งสร้าง site ให้หยุดและแจ้งวิทยากร ไม่ต้องเปิด Route B เว้นแต่วิทยากรมอบ site ให้
+> **ใช้หน้านี้เมื่อ:** วิทยากรยืนยันว่าบัญชีผู้เรียนได้รับอนุญาตให้สร้าง SharePoint site หากไม่เห็นคำสั่งสร้าง site ให้หยุดและแจ้งวิทยากร
 
 เราจะสร้าง private Team site สำหรับข้อมูลฝึกเท่านั้น แล้วพิสูจน์ว่า document library พร้อมให้ Power Automate เขียนไฟล์ได้
 
@@ -32,7 +32,7 @@ next:
 6. เลือก **Privacy settings: Private - only members can access this site**
 7. เลือกภาษาเริ่มต้นตามที่วิทยากรกำหนดก่อนสร้าง เพราะภาษาหลักเปลี่ยนภายหลังไม่ได้ ใน workshop นี้ให้เลือก `English` เมื่อองค์กรอนุญาต
 8. เลือก **Create site** รอจน provisioning เสร็จ แล้วเลือก **Go to site** โดยไม่เพิ่มบุคคลที่ไม่เกี่ยวข้อง
-9. คัดลอก URL เฉพาะหน้า site เช่น `https://contoso.sharepoint.com/sites/PA-Training-07-Narin` ลงใน Readiness record
+9. คัดลอก URL เฉพาะหน้า site เช่น `https://contoso.sharepoint.com/sites/PA-Training-07-Johny` ลงใน Readiness record
 
 ### Checkpoint
 
@@ -54,16 +54,20 @@ next:
    ```text
    PA-[เลขที่ผู้เรียน 2 หลัก]-[ชื่อภาษาอังกฤษ]
    ```
+   เช่น:
+   ```text
+   PA-1234-Johny
+   ```
 
 4. ดาวน์โหลด [permission-check.txt](/downloads/permission-check.txt)
 5. เปิดโฟลเดอร์ของตน แล้วเลือก **Create or upload > Files upload** หรือ **Upload > Files** เพื่ออัปโหลดไฟล์
 6. เปิดไฟล์และตรวจว่าเห็นข้อความ `Training permission check.` กับ `Synthetic practice file.`
 7. ปิด preview เลือกไฟล์ แล้วเลือก **Delete** เพื่อส่งไป **Recycle Bin** เก็บโฟลเดอร์ไว้และไม่ต้องล้าง Recycle Bin
-8. กรอก Readiness record:
+8. บันทึก Readiness record เพื่อใช้ในการทำงานต่อไป:
 
    ```text
    Site Address: [URL ของ site]
-   Document library: [ชื่อ library ที่เห็น]
+   Document library: เช่น `Documents` หรือ [ชื่อ library ที่เห็น]
    Learner folder: [ชื่อโฟลเดอร์]
    Permission check: Upload / Open / Delete passed
    ```

@@ -22,16 +22,19 @@
    ```
 
 2. เลือก trigger `Manually trigger a flow` แล้วเลือก **Create**
-3. เลือก **+** ใต้ trigger แล้วเพิ่ม Built-in action `Scope`; คลิกชื่อ action ด้านบนแผงรายละเอียด เปลี่ยนเป็น `Try` แล้วกด **Tab**
-4. เลือก **+ ภายในกรอบ Try** แล้วเพิ่ม `Compose` จาก `Data Operation` ระวังอย่าเพิ่มไว้นอก Scope
-5. คลิกช่อง **Inputs** พิมพ์ `/` → **Insert expression** (หน้าจอเดิมอาจใช้แท็บ **Expression**) แล้วใส่ใน editor:
+3. เลือก **+** ใต้ trigger แล้วเพิ่ม Built-in action `Scope`
+4. คลิกชื่อ action ด้านบนแผงรายละเอียด เปลี่ยนชื่อเป็น `Try` แล้วกด **Tab**
+5. เลือก **+ ภายในกรอบ Try** แล้วเพิ่ม `Compose` action จาก `Data Operation` **ให้แน่ใจว่า action ที่เพิ่มอยู่ภายใน Scope**
+6. คลิกช่อง **Inputs** พิมพ์ `/` → **Insert expression** (หน้าจอเดิมอาจใช้แท็บ **Expression**) แล้วใส่ใน editor:
 
    ```text
    int('not-a-number')
    ```
 
-6. เลือก **Add** เพื่อแทรก expression และตรวจว่า Inputs แสดง token `int(...)` ไม่ใช่ข้อความธรรมดา จากนั้นเลือก **Save** → **Test** → **Manually** → **Test** → **Run flow** → **Done**
-7. เปิด run ที่แสดง `Failed` แล้วขยาย `Try` และ `Compose`
+7. เลือก **Add** เพื่อแทรก expression
+8. ตรวจว่า Inputs แสดง token `int(...)` ไม่ใช่ข้อความธรรมดา
+9. จากนั้นเลือก **Save** → **Test** → **Manually** → **Test** → **Run flow** → **Done**
+10. เปิด run ที่แสดง `Failed` แล้วขยาย `Try` และ `Compose`
 
 ### Checkpoint
 
@@ -43,14 +46,23 @@
 
 **Primary target:** กำหนด Catch scope ให้ทำงานเมื่อ Try ล้มเหลว เพื่อส่งการแจ้งเตือนที่เข้าใจได้
 
-1. หลัง `Try` เพิ่ม `Scope` แล้วเปลี่ยนชื่อเป็น `Catch`
-2. ภายใน `Catch` เพิ่ม `Send an email (V2)`
-3. ส่งหาอีเมลของตัวเอง หัวข้อ `Practice flow failed`
-4. ใน Body ใส่ชื่อ flow และข้อความ `Open Run history and inspect the failed action.`
-5. คลิก `Catch` → แท็บ **Settings** → **Run after** แล้วขยาย `Try` (หน้าจอเดิมอาจใช้เมนู **Configure run after**)
-6. เลือก **Has failed** และ **Has timed out** ก่อน แล้วจึงยกเลิก **Is successful** โดยไม่เลือก **Is skipped**; ตรวจว่าเหลือเครื่องหมายถูกเพียงสองสถานะแรก เพื่อไม่ให้ส่งอีเมลแจ้งข้อผิดพลาดเมื่อ Try สำเร็จ
-7. เลือก **Save** และทดสอบอีกครั้ง
-8. เปิด Run history แล้วตรวจว่า `Try` ล้มเหลว แต่ `Catch` ทำงานและส่งอีเมล
+1. เลือก **Edit** ที่มุมบนขวา แล้วกลับไปที่ flow designer
+2. ด้านล่างของ `Try` คลิก **+**
+3. แล้วเพิ่ม `Scope` ตัวที่ 2
+4. แล้วเปลี่ยนชื่อของ Scope ตัวที่สองเป็น `Catch`
+5. ภายใน `Catch` เพิ่ม `Send an email (V2)`
+6. ส่งหาอีเมลของตัวเอง หัวข้อ
+   ```text
+   Practice flow failed
+   ```
+7. ใน Body ใส่ชื่อ flow และข้อความ
+   ```text
+   Open Run history and inspect the failed action.
+   ```
+8. คลิก `Catch` → แท็บ **Settings** → **Run after** แล้วขยาย `Try` (หน้าจอเดิมอาจใช้เมนู **Configure run after**)
+9.  เลือก **Has failed** และ **Has timed out** ก่อน แล้วจึงกดยกเลิก **Is successful** โดยไม่เลือก **Is skipped**; ตรวจว่าเหลือเครื่องหมายถูกเพียงสองสถานะแรก เพื่อไม่ให้ส่งอีเมลแจ้งข้อผิดพลาดเมื่อ Try ทำงานสำเร็จ
+10. เลือก **Save** และทดสอบอีกครั้ง
+11. เปิด Run history แล้วตรวจว่า `Try` ล้มเหลว แต่ `Catch` ทำงานและส่งอีเมล
 
 ### Checkpoint
 
@@ -60,7 +72,7 @@
 
 ---
 
-## Practice 3: ซ่อมและยืนยัน Successful run
+## Practice 3: ซ่อม flow และยืนยันการ run flow ว่าไม่เกิดปัญหาแล้ว
 
 **Primary target:** แก้ต้นเหตุและรันซ้ำ เพื่อยืนยันว่า flow กลับมาทำงานสำเร็จโดยไม่เรียก Catch
 

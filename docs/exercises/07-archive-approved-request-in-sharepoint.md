@@ -9,9 +9,9 @@ next:
 
 # แบบฝึกหัดเสริมที่ 7: เก็บคำขอที่อนุมัติแล้วใน SharePoint
 
-> **Optional / Instructor-selected:** ทำกิจกรรมนี้เมื่อวิทยากรประกาศใช้เส้นทาง SharePoint เท่านั้น หากวิทยากรเลือกเส้นทางทบทวน Approval ให้เปิด [ทบทวนและพิสูจน์เส้นทาง Approve/Reject](./07-core-approval-reinforcement.md) แทน
+> **Optional / Instructor-selected:** ทำกิจกรรมนี้เมื่อวิทยากรประกาศใช้เส้นทาง SharePoint เท่านั้น หากวิทยากรเลือกเส้นทางทบทวน Approval ให้เปิด [ทบทวนและพิสูจน์การทำงานของ Approve/Reject](./07-core-approval-reinforcement.md) แทน
 
-เราจะต่อยอดแขนง `True` (หรือ `If yes` ในหน้าจอเดิม) จากแบบฝึกหัดที่ 3 ให้สร้างไฟล์สรุปคำขอใน SharePoint เมื่อผลเป็น `Approved` เท่านั้น กิจกรรมนี้เป็นส่วนเสริมและไม่เป็นเงื่อนไขการผ่าน Day 1
+เราจะต่อยอดเส้นทาง `True` (หรือ `If yes` ในหน้าจอเดิม) จากแบบฝึกหัดที่ 3 ให้สร้างไฟล์สรุปคำขอใน SharePoint เมื่อผลเป็น `Approved` เท่านั้น กิจกรรมนี้เป็นส่วนเสริมและไม่เป็นเงื่อนไขการผ่าน Day 1
 
 > **License:** ใช้ SharePoint connector ซึ่งเป็น Standard connector ใน Power Automate ไม่ใช้ Premium connector, custom connector, app registration หรือ on-premises data gateway บัญชี สิทธิ์ connection, Conditional Access และ DLP policy ยังต้องผ่านการตรวจขององค์กร
 
@@ -24,7 +24,7 @@ next:
 1. [Route A — สร้างและตรวจ SharePoint site ของตนเอง](./07a-create-and-validate-own-site.md)
 2. [Route B — ตรวจและใช้ SharePoint site ที่ IT เตรียมให้](./07b-validate-it-provided-site.md)
 
-วิทยากรสามารถส่งลิงก์ของ Route A หรือ Route B ให้ผู้เรียนโดยตรง เพื่อข้ามหน้าตัดสินใจนี้ได้
+วิทยากรสามารถส่งลิงก์ของ Route A หรือ Route B ให้ผู้เรียนโดยตรง
 
 ทั้งสองเส้นทางต้องได้ Readiness record เดียวกันก่อนทำส่วนถัดไป:
 
@@ -54,7 +54,7 @@ flowchart LR
 
 ## Practice 1: สร้างไฟล์เมื่ออนุมัติ
 
-**Primary target:** เพิ่ม `Create file` ในแขนง Approved และ map ข้อมูลคำขอเป็นไฟล์สรุปที่อ่านได้
+**Primary target:** เพิ่ม `Create file` ในเส้นทาง Approved และ map ข้อมูลคำขอเป็นไฟล์สรุปที่อ่านได้
 
 ### Prerequisites
 
@@ -63,7 +63,7 @@ flowchart LR
 - ใช้ข้อมูลสมมติเท่านั้น
 
 1. เปิด flow `Record Task Request - [Your Name]`
-2. ในแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) หา action `Update a row` ที่ตั้ง `Status` เป็น `Approved`
+2. ในเส้นทาง **True** (หรือ **If yes** ในหน้าจอเดิม) หา action `Update a row` ที่ตั้ง `Status` เป็น `Approved`
 3. เพิ่ม action ใหม่ถัดจาก action นั้น และก่อน `Send an email (V2)` ที่แจ้งผล Approved โดยเก็บอีเมลเดิมไว้
 4. ค้นหา connector `SharePoint` แล้วเลือก action `Create file`
 5. กำหนดค่า:
@@ -82,7 +82,7 @@ flowchart LR
    Decision: Approve
    ```
 
-6. ตรวจว่า `Create file` อยู่ในแขนง **True** (หรือ **If yes**) เท่านั้น
+6. ตรวจว่า `Create file` อยู่ในเส้นทาง **True** (หรือ **If yes**) เท่านั้น
 7. เลือก **Save**
 
 ### Expected output
@@ -92,7 +92,7 @@ flowchart LR
 ### Checkpoint
 
 - `Site Address`, `Folder Path`, `File Name` และ `File Content` ไม่มีช่องบังคับที่ว่าง
-- แขนง Rejected ไม่มี action `Create file`
+- เส้นทาง Rejected ไม่มี action `Create file`
 
 ---
 
@@ -128,11 +128,11 @@ flowchart LR
 | `Access denied` หรือ `403` | หยุดทดสอบและให้ IT ตรวจ Edit permission; อย่าเปลี่ยน connection ไปใช้บัญชีผู้อื่น |
 | ไฟล์ชื่อซ้ำ | ส่ง Form ใหม่และตรวจว่ากำลังใช้โฟลเดอร์ของตน ลบเฉพาะไฟล์ทดสอบของตนก่อนลองใหม่ |
 | Run สำเร็จแต่ยังไม่เห็นไฟล์ | Refresh library รอสักครู่ แล้วเทียบ `Response Id` กับชื่อไฟล์ |
-| Rejected สร้างไฟล์ด้วย | ย้าย `Create file` กลับเข้าแขนง **True** (หรือ **If yes**) ใต้ action ที่อัปเดต Approved |
+| Rejected สร้างไฟล์ด้วย | ย้าย `Create file` กลับเข้าเส้นทาง **True** (หรือ **If yes**) ใต้ action ที่อัปเดต Approved |
 
 ## Summary
 
-เราได้เพิ่มตู้เอกสารกลางเป็นทางเลือกให้แขนง Approved โดยไม่เปลี่ยนผลของเส้นทางหลัก ผู้เรียนที่ข้ามกิจกรรมนี้ยังทำ Teams และแบบฝึกหัดหลักถัดไปได้ตามปกติ
+เราได้เพิ่มตู้เอกสารกลางเป็นทางเลือกให้เส้นทาง Approved โดยไม่เปลี่ยนผลของเส้นทางหลัก ผู้เรียนที่ข้ามกิจกรรมนี้ยังทำ Teams และแบบฝึกหัดหลักถัดไปได้ตามปกติ
 
 ## Microsoft Learn references
 

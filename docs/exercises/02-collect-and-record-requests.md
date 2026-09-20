@@ -104,7 +104,7 @@ flowchart TD
    | Decision | เว้นว่าง |
 
 11. เลือก **Save**
-12. ส่ง Form ใหม่ 1 ครั้งหลังบันทึก flow แล้วรอให้ flow ทำงานเสร็จ คำตอบที่ส่งก่อนสร้าง flow ใน Practice 1 ไม่ใช่รายการทดสอบนี้
+12. ส่ง Form ใหม่ 1 ครั้งโดยใช้ [ตัวอย่าง task request](../resources/sample-requests.md) หลังบันทึก flow แล้วรอให้ flow ทำงานเสร็จ
 13. เปิด workbook หลัง run สำเร็จ และตรวจแถวใหม่
 
 ### Checkpoint
@@ -124,8 +124,20 @@ flowchart TD
 3. กำหนดค่า:
 
    - **To:** `Requester email`
-   - **Subject:** `Request received: ` + `Task title`
-   - **Body:** แสดง `Response Id`, `Task title`, `Needed by` และข้อความ `Status: Pending`
+   - **Subject:** วางข้อความนี้ แล้วเลือก Dynamic content `Task title` ต่อท้าย:
+
+     ```text
+     Request received: [Task title]
+     ```
+
+   - **Body:** วางข้อความนี้ แล้วแทนที่ค่าที่อยู่ในวงเล็บเหลี่ยมด้วย Dynamic content ที่มีชื่อเดียวกัน:
+
+     ```text
+     Response Id: [Response Id]
+     Task title: [Task title]
+     Needed by: [Needed by]
+     Status: Pending
+     ```
 
 4. เลือก **Save** แล้วส่ง Form ใหม่อีก 1 ครั้ง
 5. ตรวจ Excel ก่อน แล้วจึงตรวจอีเมลยืนยัน

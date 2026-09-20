@@ -1,10 +1,8 @@
 # CPAll GoSoft — Power Automate Day 1
 
+[https://teerasej.github.io/cpall-gosoft-power-automate-2026/](https://teerasej.github.io/cpall-gosoft-power-automate-2026/)
+
 Thai-first learner exercises for a beginner Power Automate workshop using Standard connectors.
-
-## Learner site
-
-[Open the published Power Automate exercises](https://teerasej.github.io/cpall-gosoft-power-automate-2026/)
 
 Learner-facing Markdown is maintained in [`docs/`](./docs/). Each published page also has an **แก้ไขหน้านี้บน GitHub** link so small corrections can be proposed directly from the site.
 

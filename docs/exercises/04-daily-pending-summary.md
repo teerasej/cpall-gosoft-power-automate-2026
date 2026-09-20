@@ -53,7 +53,7 @@
 
 **Primary target:** วนอ่านรายการ Pending และประกอบข้อความสรุปหนึ่งฉบับสำหรับผู้รับ
 
-1. ในแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) เพิ่ม `Apply to each`
+1. ในเส้นทาง **True** (หรือ **If yes** ในหน้าจอเดิม) เพิ่ม `Apply to each`
 2. ใน **Select an output** เลือก Body ของ `Filter array`
 3. ภายใน loop เพิ่ม `Append to string variable`
 4. เลือกตัวแปร `PendingSummary`
@@ -73,15 +73,15 @@
 
    ใช้รายการปัจจุบันของ loop ที่รับ Body จาก `Filter array` ไม่เลือกทั้งรายการจาก Excel ซ้ำอีกครั้ง วันที่จะแสดงในรูปแบบ ISO เช่น `2026-09-18T00:00:00.000Z`
 
-6. หลัง `Apply to each` แต่ยังอยู่ในแขนง True เพิ่ม `Send an email (V2)` **นอก loop** เพื่อส่งอีเมลเพียงฉบับเดียว
+6. หลัง `Apply to each` แต่ยังอยู่ในเส้นทาง True เพิ่ม `Send an email (V2)` **นอก loop** เพื่อส่งอีเมลเพียงฉบับเดียว
 7. ส่งหาอีเมลของตัวเอง หัวข้อ `Daily pending task summary`
 8. ใน Body ใส่จำนวนรายการด้วย expression `length(body('Filter_array'))` และตัวแปร `PendingSummary`
-9. ในแขนง **False** (หรือ **If no** ในหน้าจอเดิม) เพิ่ม `Send an email (V2)` หัวข้อเดียวกัน และ Body `No pending tasks today.`
+9. ในเส้นทาง **False** (หรือ **If no** ในหน้าจอเดิม) เพิ่ม `Send an email (V2)` หัวข้อเดียวกัน และ Body `No pending tasks today.`
 10. เลือก **Save**
 
 ### Checkpoint
 
-- แขนง If yes ส่งรายชื่อ Pending และแขนง If no ส่งข้อความว่าไม่มีงานค้าง
+- เส้นทาง If yes ส่งรายชื่อ Pending และเส้นทาง If no ส่งข้อความว่าไม่มีงานค้าง
 
 ---
 

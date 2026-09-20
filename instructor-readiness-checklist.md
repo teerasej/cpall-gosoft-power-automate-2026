@@ -37,7 +37,7 @@
 - [ ] Approve และ Reject อัปเดตคนละแถวด้วย `RequestId` ที่ถูกต้อง
 - [ ] Core reinforcement: Approval, Excel และอีเมลตรงกันทั้ง Approved กับ Rejected โดยใช้คนละ `Response Id`
 - [ ] SharePoint extension (ถ้าเลือก): Approved สร้างไฟล์ และ Rejected ไม่สร้างไฟล์
-- [ ] Exercise 8: แชต `Workflows` แสดง `RequestId`, `Title`, decision และ next step ถูกต้องทั้งสองแขนง และ Run history มี `id` กับ `messageLink`
+- [ ] Exercise 8: แชต `Workflows` แสดง `RequestId`, `Title`, decision และ next step ถูกต้องทั้งสองเส้นทาง และ Run history มี `id` กับ `messageLink`
 - [ ] Exercise 5: controlled failure เรียก recovery path ผ่าน **Settings > Run after** โดยเลือกเฉพาะ **Has failed** และ **Has timed out**
 - [ ] หลังซ่อมค่าแล้ว flow เดิม run สำเร็จ, Catch เป็น Skipped และไม่มีอีเมลแจ้ง failure
 - [ ] ทดสอบด้วย Form response ใหม่หลัง Save แต่ละครั้ง และจบ approval test ก่อนแก้ flow รอบต่อไป
