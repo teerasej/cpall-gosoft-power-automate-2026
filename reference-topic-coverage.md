@@ -19,7 +19,6 @@
 | Testing and monitoring | Build | Observable checkpoint in every exercise; integrated two-path test at 14:45 |
 | Error handling and Run After | Build live | Exercise 5 |
 | Data operations | Optional/take-home | Exercise 4; HTML table remains optional |
-| Workplace transfer canvas | Optional/take-home | Exercise 6 and `automation-canvas.md` |
 | Governance and DLP | Embedded teaching | Slides 9–10 and connector readiness checkpoints |
 | AI Builder | Instructor demonstration/discussion | Slide 35; no hands-on preparation |
 | Multi-stage/custom approvals | Explain only | Beyond beginner core |
@@ -28,4 +27,4 @@
 
 ## Scope decision
 
-The learner build uses no Premium connectors. Teams remains a required touchpoint with one rehearsed direct-chat route. SharePoint is an instructor-selected extension with two isolated readiness routes and does not affect core completion. OneDrive stores the prepared workbook; it is not a separate connector exercise. The scheduled Pending summary and Automation Canvas remain optional/take-home references. Production deployment, shared service accounts, custom connectors and Premium connectors remain outside the learner build.
+The learner build uses no Premium connectors. Teams remains a required touchpoint with one rehearsed direct-chat route. SharePoint is an instructor-selected extension with two isolated readiness routes and does not affect core completion. OneDrive stores the prepared workbook; it is not a separate connector exercise. The scheduled Pending summary remains an optional/take-home reference. Production deployment, shared service accounts, custom connectors and Premium connectors remain outside the learner build.

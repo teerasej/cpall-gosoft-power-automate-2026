@@ -66,7 +66,6 @@ features:
 ## แบบฝึกหัดเสริม / Take-home
 
 - [ส่งสรุปงานค้างประจำวัน](./exercises/04-daily-pending-summary.md) — Scheduled flow สำหรับศึกษาต่อ
-- [ออกแบบ Automation สำหรับงานของเรา](./exercises/06-automate-my-task.md) — ใช้ [Automation Canvas](./resources/automation-canvas.md) หลังชั้นเรียน
 
 ## ตารางเวลา
 
@@ -94,7 +93,6 @@ features:
 - [สไลด์ผู้เรียน Power Automate Day 1](/downloads/CPAll-Power-Automate-Day-1.pptx)
 - [ตัวอย่างคำของาน](./resources/sample-requests.md)
 - [Excel tracker](https://raw.githubusercontent.com/teerasej/cpall-gosoft-power-automate-2026/main/docs/public/downloads/task-request-tracker.xlsx)
-- [Automation Canvas — optional/take-home](./resources/automation-canvas.md)
 
 ## ภาพรวม Workflow
 

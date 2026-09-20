@@ -93,7 +93,7 @@ Exercises 1–5, 7, and 8 supplied live UI and received-output evidence. Teams r
 - Production build passed; only the existing large-bundle advisory remains.
 - All 30 relative Markdown document/download links resolve on disk.
 - A fresh browser preview loaded all eight exercise pages and the home page without a 404. Heading hierarchy, optional sidebar grouping, and the final branched workflow diagram were inspected visually.
-- Home and sidebar numbering now agree with exercise IDs. Exercise 6 remains in Optional / Take-home.
+- Home and sidebar numbering now agree with exercise IDs.
 - The workbook, slide download, and new permission-check file match their built copies byte for byte.
 - The manual notification, main request, error-handling, and scheduled-summary validation flows were rechecked in Power Automate and all showed Status Off.
 - `git diff --check` passed.

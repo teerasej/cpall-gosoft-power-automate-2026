@@ -10,4 +10,3 @@
 ## ทรัพยากรออนไลน์
 
 - [ตัวอย่างคำของาน](./sample-requests.md)
-- [Automation Canvas](./automation-canvas.md)

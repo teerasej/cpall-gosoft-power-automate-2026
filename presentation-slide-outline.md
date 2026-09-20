@@ -298,7 +298,5 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - [Exercise 7 — SharePoint extension route selector](./docs/exercises/07-archive-approved-request-in-sharepoint.md)
 - [Instructor-selected Approval reinforcement](./docs/exercises/07-core-approval-reinforcement.md)
 - [Exercise 4 — Scheduled Pending summary](./docs/exercises/04-daily-pending-summary.md)
-- [Exercise 6 — Automation Canvas](./docs/exercises/06-automate-my-task.md)
-- [Automation Canvas file](./docs/resources/automation-canvas.md)
 
 SharePoint and the take-home references are not required completion criteria for the live Day 1 journey. Approval reinforcement is used only when selected by the instructor.

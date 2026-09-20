@@ -27,7 +27,6 @@ The site is deployed from `main` by [the GitHub Pages workflow](./.github/workfl
 - [Learner home](./docs/index.md)
 - [Exercises](./docs/exercises/)
 - [Sample requests](./docs/resources/sample-requests.md)
-- [Automation Canvas](./docs/resources/automation-canvas.md)
 - [Excel tracker](https://raw.githubusercontent.com/teerasej/cpall-gosoft-power-automate-2026/main/docs/public/downloads/task-request-tracker.xlsx)
 - [Learner slide deck](./docs/public/downloads/CPAll-Power-Automate-Day-1.pptx)
 

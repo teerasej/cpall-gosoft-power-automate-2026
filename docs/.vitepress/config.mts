@@ -27,8 +27,7 @@ export default withMermaid(
               link: 'https://raw.githubusercontent.com/teerasej/cpall-gosoft-power-automate-2026/main/docs/public/downloads/task-request-tracker.xlsx'
             },
             { text: 'ดาวน์โหลดสไลด์ผู้เรียน', link: '/downloads/CPAll-Power-Automate-Day-1.pptx' },
-            { text: 'ตัวอย่างคำของาน', link: '/resources/sample-requests' },
-            { text: 'Automation Canvas · Optional', link: '/resources/automation-canvas' }
+            { text: 'ตัวอย่างคำของาน', link: '/resources/sample-requests' }
           ]
         }
       ],
@@ -53,16 +52,14 @@ export default withMermaid(
           items: [
             { text: 'ทบทวน Approval · Instructor-selected', link: '/exercises/07-core-approval-reinforcement' },
             { text: '7 · SharePoint · Optional', link: '/exercises/07-archive-approved-request-in-sharepoint' },
-            { text: 'สรุปงานค้างประจำวัน · Optional', link: '/exercises/04-daily-pending-summary' },
-            { text: 'Automation Canvas · Optional', link: '/exercises/06-automate-my-task' }
+            { text: 'สรุปงานค้างประจำวัน · Optional', link: '/exercises/04-daily-pending-summary' }
           ]
         },
         {
           text: 'ไฟล์ประกอบ',
           items: [
             { text: 'ดาวน์โหลดไฟล์', link: '/resources/downloads' },
-            { text: 'ตัวอย่างคำของาน', link: '/resources/sample-requests' },
-            { text: 'Automation Canvas · Optional', link: '/resources/automation-canvas' }
+            { text: 'ตัวอย่างคำของาน', link: '/resources/sample-requests' }
           ]
         }
       ],
