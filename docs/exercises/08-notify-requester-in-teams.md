@@ -1,6 +1,6 @@
 # แบบฝึกหัดที่ 8: แจ้งผลผู้ขอผ่าน Microsoft Teams
 
-เราจะต่อยอด flow จากแบบฝึกหัดที่ 7 ให้ส่งข้อความตรงถึงผู้ขอผ่าน `Microsoft Teams` หลังจากทราบผล Approve หรือ Reject โดยไม่ต้องสร้าง Team หรือ channel สำหรับห้องเรียน
+เราจะต่อยอด flow จากแบบฝึกหัดที่ 3 ให้ส่งข้อความตรงถึงผู้ขอผ่าน `Microsoft Teams` หลังจากทราบผล Approve หรือ Reject โดยไม่ต้องสร้าง Team หรือ channel สำหรับห้องเรียน กิจกรรมนี้ทำได้ไม่ว่าจะทำหรือข้าม SharePoint
 
 > **License:** ใช้ Microsoft Teams connector ซึ่งเป็น Standard connector ใน Power Automate ไม่ใช้ Premium connector
 
@@ -8,7 +8,7 @@
 
 ## Prerequisites
 
-- Flow `Record Task Request - [Your Name]` จาก [แบบฝึกหัดที่ 7](./07-archive-approved-request-in-sharepoint.md) ทำงานครบทั้ง Approved และ Rejected และ Approved สร้างไฟล์ใน SharePoint ได้
+- Flow `Record Task Request - [Your Name]` จาก [แบบฝึกหัดที่ 3](./03-ask-for-a-decision.md) ทำงานครบทั้ง Approved และ Rejected
 - ผู้เรียนเข้า Microsoft Teams ด้วยบัญชีเดียวกับที่ใช้สร้าง flow ได้ โดยเปิดรูปโปรไฟล์ใน Teams ตรวจอีเมลและองค์กรก่อนทดสอบ แม้เปิดจาก App launcher ก็อาจยังใช้บัญชีที่เคยเข้าไว้
 - ใช้อีเมลของตนเองในช่อง `RequesterEmail` ระหว่างทดสอบ
 - Client IT ยืนยันว่า Teams `Workflows` app ใช้งานได้
@@ -23,8 +23,9 @@ flowchart LR
     A["Decision"] --> B{"Approve?"}
     B -->|Yes| C["Update: Approved"]
     B -->|No| D["Update: Rejected"]
-    C --> S["Create file: SharePoint"]
-    S --> E["Teams direct message: Approved"]
+    C --> E["Teams direct message: Approved"]
+    C -. Optional SharePoint .-> S["Create file"]
+    S -.-> E
     D --> F["Teams direct message: Rejected"]
     E --> G["Email: Approved"]
     F --> H["Email: Rejected"]
@@ -37,7 +38,7 @@ flowchart LR
 **Primary target:** ส่งผล Approved ไปยัง direct chat ของผู้ขอด้วย Dynamic content จากคำขอเดิม
 
 1. เปิด flow `Record Task Request - [Your Name]`
-2. ในแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) เพิ่ม action หลัง `Create file` จากแบบฝึกหัดที่ 7
+2. ในแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) เพิ่ม action หลัง `Update a row`; หากทำแบบฝึกหัดเสริม SharePoint แล้ว ให้วาง Teams action หลัง `Create file`
 3. ค้นหา connector `Microsoft Teams`
 4. เลือก action `Post message in a chat or channel`
 5. หากระบบขอ connection ให้ Sign in ด้วยบัญชี Microsoft 365 สำหรับการฝึก
@@ -105,7 +106,7 @@ flowchart LR
 5. ส่ง Form ใหม่อีกครั้งแล้วเลือก `Reject`
 6. ตรวจข้อความ Teams ครั้งที่สอง
 7. เปิด Run history แล้วขยาย **Condition** และแขนงที่ทำงาน คลิก `Post message in a chat or channel` ตรวจ **Inputs** ว่าผู้รับและข้อความตรงกับคำขอ และ **Outputs** มี `id` กับ `messageLink` เทียบกับข้อความที่ได้รับจริง
-8. ตรวจอีเมลแจ้งผลและแถว Excel ของทั้งสองคำขอด้วย โดย Approved ต้องมีไฟล์ SharePoint และ Rejected ต้องไม่มีไฟล์ของคำขอนั้น
+8. ตรวจอีเมลแจ้งผลและแถว Excel ของทั้งสองคำขอด้วย หากทำแบบฝึกหัดเสริม SharePoint ให้ตรวจเพิ่มว่า Approved มีไฟล์และ Rejected ไม่มีไฟล์ของคำขอนั้น
 9. หลังฝึกครบ เลือก **Turn off** ที่หน้ารายละเอียด flow และเก็บข้อมูลทดสอบไว้ตามที่วิทยากรกำหนด
 
 ### Expected output
@@ -120,7 +121,8 @@ flowchart LR
 
 ## ตรวจลำดับ action ก่อนทดสอบ
 
-- Approved: `Update a row` → `Create file` → Teams message → อีเมลแจ้งผลเดิม
+- Approved เส้นทางหลัก: `Update a row` → Teams message → อีเมลแจ้งผลเดิม
+- Approved เมื่อทำ SharePoint เพิ่ม: `Update a row` → `Create file` → Teams message → อีเมลแจ้งผลเดิม
 - Rejected: `Update a row` → Teams message → อีเมลแจ้งผลเดิม
 
 เราเพิ่ม Teams เข้าไปโดยเก็บอีเมลแจ้งผลจากแบบฝึกหัดที่ 3 ไว้ ผู้ขอจึงได้รับทั้งอีเมลและ Teams เมื่อเส้นทางทำงานสำเร็จ หาก action ก่อนหน้าล้มเหลว ให้ตรวจ Run history เพราะ action ถัดไปอาจถูกข้าม

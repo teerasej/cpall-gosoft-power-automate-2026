@@ -6,7 +6,9 @@
 
 **Theme:** เปลี่ยนคำของานให้เป็น workflow ที่ติดตามได้
 
-**Required Standard connectors:** Office 365 Outlook, Microsoft Forms, Excel Online (Business), Standard approvals, SharePoint, Microsoft Teams
+**Core Standard connectors:** Office 365 Outlook, Microsoft Forms, Excel Online (Business), Standard approvals, Microsoft Teams
+
+**Optional Standard connector:** SharePoint
 
 **Prepared storage:** OneDrive for Business
 
@@ -29,7 +31,7 @@
 | 11:30–12:00 | Add `Start and wait for an approval` | Slides 21–23 + Exercise 3 Practice 1 |
 | 12:00–13:00 | Lunch | — |
 | 13:00–13:30 | Complete Condition and update the matching row | Slides 24–25 + Exercise 3 Practices 2–3 |
-| 13:30–14:00 | SharePoint: create one text file for Approved | Slides 26–28 + Exercise 7 |
+| 13:30–14:00 | Instructor-selected: Approval reinforcement or optional SharePoint extension | Slides 26–28 + selected route |
 | 14:00–14:30 | Teams: post one result to direct chat | Slides 29–31 + Exercise 8 |
 | 14:30–14:45 | Break | — |
 | 14:45–15:15 | Integrated Approved and Rejected tests | Slide 32 + guided test |
@@ -44,15 +46,15 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 ### Slide 1 — Power Automate Day 1
 
 - **Teach:** วันนี้เราจะทำให้คำของานหนึ่งรายการเดินทางจาก Form ไปถึงผลแจ้งเตือนได้เอง
-- **Visual:** Forms → Excel → Approval → SharePoint/Teams
+- **Visual:** Forms → Excel → Approval → Teams; SharePoint shown as an optional branch
 - **Speaker cue:** เปิดด้วยคำถาม “ถ้ามีคำขอ 20 รายการ เราจะรู้ได้อย่างไรว่ารายการใดไปถึงขั้นไหน?”
 - **Link:** [Day 1 learner journey](./docs/index.md)
-- **Analogy bridge:** Back-office operations runner → Power Automate cloud flow → today we will move one request through six Standard connectors.
+- **Analogy bridge:** Back-office operations runner → Power Automate cloud flow → today one request moves through the core services, with SharePoint available as an extra filing cabinet.
 
 ### Slide 2 — What you will build
 
-- **Teach:** ผู้เรียนจะสัมผัส connector ทีละตัวและเห็นผลจริงก่อนต่อเป็น workflow เดียว
-- **Visual:** Six connector touchpoints with one checkpoint each
+- **Teach:** ผู้เรียนจะเห็นผลจริงของ core connector ทีละตัว และเลือกต่อยอด SharePoint ได้เมื่อห้องพร้อม
+- **Visual:** Core connector touchpoints with one optional SharePoint branch
 - **Speaker cue:** ย้ำว่าทุกขั้นมีผลที่ตรวจได้ ไม่ต้องจำทุกเมนูพร้อมกัน
 
 ### Slide 3 — One task-request story
@@ -64,7 +66,7 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 
 ### Slide 4 — Success at 16:00
 
-- **Teach:** สร้าง ทดสอบ ตรวจผลปลายทาง และอ่าน Run history ได้
+- **Teach:** สร้าง ทดสอบ ตรวจผลปลายทาง และอ่าน Run history ได้ โดยไม่ต้องผ่าน SharePoint
 - **Visual:** Build, Check, Decide, Recover
 - **Speaker cue:** ให้ผู้เรียนเลือกหนึ่งทักษะที่อยากนำไปใช้หลังคลาส
 
@@ -89,10 +91,10 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 
 ### Slide 8 — Connector map for today
 
-- **Teach:** Outlook, Forms, Excel, Approvals, SharePoint และ Teams เป็น Standard connectors ในเส้นทางนี้
-- **Visual:** Six equal connector cards; OneDrive shown as storage shelf
+- **Teach:** Outlook, Forms, Excel, Approvals และ Teams เป็น core Standard connectors; SharePoint เป็น Standard connector ใน extension
+- **Visual:** Five core connector touchpoints; SharePoint shown separately as optional; OneDrive shown as storage shelf
 - **Speaker cue:** OneDrive เก็บ workbook ที่เตรียมไว้ ไม่ต้องทำ flow ซ้ำเพื่อพิสูจน์ connector อีกครั้ง
-- **Analogy bridge:** จุดบริการหกจุดในหลังร้าน → six Standard connectors → แต่ละ Exercise มี checkpoint ที่ปลายทางจริง
+- **Analogy bridge:** จุดบริการหลักในหลังร้าน → core Standard connectors → SharePoint เป็นตู้เอกสารเสริมเมื่อพื้นที่พร้อม
 
 ### Slide 9 — Permission and policy still matter
 
@@ -105,7 +107,7 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 
 - **Teach:** ใช้ข้อมูลสมมติ ตรวจผลจริง และไม่ส่งข้อมูลลับออกนอกระบบที่กำหนด
 - **Visual:** Synthetic request card and human verification tick
-- **Speaker cue:** เครื่องหมาย Succeeded ไม่แทนการตรวจ Inbox, Excel, SharePoint หรือ Teams
+- **Speaker cue:** เครื่องหมาย Succeeded ไม่แทนการตรวจ Inbox, Excel หรือ Teams; ผู้ที่เลือก SharePoint ต้องตรวจไฟล์เพิ่ม
 
 ## Slides 11–14: Outlook first flow
 
@@ -210,27 +212,28 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 - **Visual:** Approve/Reject branches pointing back to one exact row
 - **Speaker cue:** ตรวจทั้ง Status และ Decision และทดสอบคนละ RequestId
 
-## Slides 26–28: SharePoint approved archive
+## Slides 26–28: Instructor-selected route
 
-### Slide 26 — SharePoint as the filing cabinet
+### Slide 26 — Choose the 13:30 route
 
-- **Teach:** Excel ติดตามสถานะ ส่วน SharePoint document library เก็บไฟล์สรุปของ Approved
-- **Visual:** Logbook beside a filing cabinet
-- **Speaker cue:** ใช้ site/library ที่มีอยู่แล้ว ไม่สร้าง list หรือ site ระหว่างคลาส
-- **Link:** [Exercise 7](./docs/exercises/07-archive-approved-request-in-sharepoint.md)
-- **Analogy bridge:** ตู้เอกสารสำหรับเรื่องที่อนุมัติแล้ว → SharePoint document library → เฉพาะ Approved สร้าง text file หนึ่งไฟล์
+- **Teach:** วิทยากรเลือก Approval reinforcement หรือ SharePoint extension เพียงเส้นทางเดียว
+- **Visual:** One decision point leading to two activities that rejoin at Teams
+- **Speaker cue:** หากข้าม SharePoint ให้เปิดกิจกรรม reinforcement และข้ามไป Slide 29 หลัง checkpoint ผ่าน
+- **Links:** [Approval reinforcement](./docs/exercises/07-core-approval-reinforcement.md) และ [SharePoint extension](./docs/exercises/07-archive-approved-request-in-sharepoint.md)
+- **Analogy bridge:** หลังตรวจสมุดรับเรื่องแล้ว เลือกว่าจะตรวจงานซ้ำหรือเพิ่มตู้เอกสาร ก่อนกลับไปแจ้งผลที่เคาน์เตอร์เดียวกัน
 
-### Slide 27 — Create one text file
+### Slide 27 — SharePoint readiness routes
 
-- **Teach:** `Create file` อยู่ใน If yes หลัง Excel update และใช้ชื่อ `Request-[Response Id].txt`
-- **Visual:** Approved branch and file fields
-- **Speaker cue:** ตรวจ Site Address, Folder Path, File Name และ File Content
+- **Teach:** Route A สร้างและตรวจ private Team site; Route B ตรวจ site ที่ IT เตรียมให้ ผู้เรียนเปิดเพียง route เดียว
+- **Visual:** Two isolated route links producing the same readiness record
+- **Speaker cue:** ส่ง direct link ของ route ที่เลือก ไม่ให้ผู้เรียนอ่านหรือทำอีก route; หาก Upload / Open / Delete ไม่ผ่านให้กลับ reinforcement
+- **Link:** [SharePoint extension route selector](./docs/exercises/07-archive-approved-request-in-sharepoint.md)
 
-### Slide 28 — Prove the boundary
+### Slide 28 — Rejoin at the checkpoint
 
-- **Teach:** Approved ต้องมีไฟล์; Rejected ต้องไม่มีไฟล์
-- **Visual:** Two test cards, one file and one no-file result
-- **Speaker cue:** การไม่เกิดไฟล์ใน Rejected เป็นผลที่ต้องตรวจ ไม่ใช่สิ่งที่เดา
+- **Teach:** Reinforcement พิสูจน์ `Response Id` ใน Approval, Excel และ email; SharePoint พิสูจน์ Approved มีไฟล์และ Rejected ไม่มีไฟล์
+- **Visual:** Two evidence paths joining the same Teams start point
+- **Speaker cue:** บันทึก SharePoint เป็น Passed, Skipped by instructor หรือ Blocked; ไม่มีสถานะใดขวาง Exercise 8
 
 ## Slides 29–31: Teams result message
 
@@ -259,8 +262,8 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 ### Slide 32 — Integrated two-path test
 
 - **Teach:** ทดสอบ Form สองรายการ: Approve หนึ่งรายการและ Reject หนึ่งรายการ
-- **Visual:** Acceptance matrix for Excel, SharePoint and Teams
-- **Speaker cue:** Approved: Excel updated, file created, Teams sent. Rejected: Excel updated, no file, Teams sent.
+- **Visual:** Core acceptance matrix for Excel and Teams with an optional SharePoint evidence column
+- **Speaker cue:** Core: Approved/Rejected update Excel and send Teams. Optional SharePoint: Approved creates a file and Rejected does not.
 - **Link:** [Sample requests](./docs/resources/sample-requests.md)
 
 ### Slide 33 — Recover from a controlled failure
@@ -286,14 +289,16 @@ Total: 420 minutes — 330 instruction/activity, 30 breaks and 60 lunch.
 ### Slide 36 — Review and Q&A
 
 - **Teach:** เลือก Trigger, Connector และ checkpoint ให้เหมาะกับงานจริงหนึ่งเรื่อง
-- **Visual:** Six connector cards returning to the complete journey
-- **Speaker cue:** ทบทวน Outlook, Forms, Excel, Approvals, SharePoint, Teams และ error recovery; จบ 16:00
+- **Visual:** Core connector journey with SharePoint shown as an optional extension
+- **Speaker cue:** ทบทวน Outlook, Forms, Excel, Approvals, Teams และ error recovery; SharePoint เป็นหลักฐานเสริมเมื่อเลือกทำ; จบ 16:00
 - **Analogy bridge:** ผู้ช่วยหลังร้านทำตามขั้นตอนที่กำหนด → Day 1 Power Automate; พรุ่งนี้ผู้ช่วยหน้าเคาน์เตอร์จะสนทนาและส่งงานที่ยืนยันแล้วมาให้ flow
 
 ## Optional / take-home references
 
+- [Exercise 7 — SharePoint extension route selector](./docs/exercises/07-archive-approved-request-in-sharepoint.md)
+- [Instructor-selected Approval reinforcement](./docs/exercises/07-core-approval-reinforcement.md)
 - [Exercise 4 — Scheduled Pending summary](./docs/exercises/04-daily-pending-summary.md)
 - [Exercise 6 — Automation Canvas](./docs/exercises/06-automate-my-task.md)
 - [Automation Canvas file](./docs/resources/automation-canvas.md)
 
-These references are not required completion criteria for the live Day 1 journey.
+SharePoint and the take-home references are not required completion criteria for the live Day 1 journey. Approval reinforcement is used only when selected by the instructor.

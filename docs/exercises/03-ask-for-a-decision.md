@@ -100,6 +100,9 @@ flowchart LR
 
 เราได้สร้าง workflow ที่รอผล approval แยกเส้นทาง อัปเดตแถวเดิม และแจ้งผลผู้ขอครบทั้งสองกรณี
 
-ขั้นตอนถัดไป → [เก็บคำขอที่อนุมัติแล้วใน SharePoint](./07-archive-approved-request-in-sharepoint.md)
+ขั้นตอนถัดไปในเส้นทางหลัก → [แจ้งผลผู้ขอผ่าน Microsoft Teams](./08-notify-requester-in-teams.md)
 
-จากนั้น → [แจ้งผลผู้ขอผ่าน Microsoft Teams](./08-notify-requester-in-teams.md)
+ช่วง 13:30 ให้เปิดเพียงกิจกรรมที่วิทยากรประกาศ:
+
+- [ทบทวนและพิสูจน์เส้นทาง Approve/Reject](./07-core-approval-reinforcement.md)
+- [เก็บคำขอ Approved ใน SharePoint — Optional](./07-archive-approved-request-in-sharepoint.md)

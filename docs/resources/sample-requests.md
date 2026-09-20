@@ -2,7 +2,7 @@
 
 ข้อมูลทั้งหมดเป็นข้อมูลสมมติ ผู้เรียนสามารถใช้ทดสอบ Form, approval และผลปลายทาง โดยไม่ต้องนำข้อมูลจริงขององค์กรมาใช้
 
-| Sample | Task title | Description | Requester email | Category | Needed by | Approvals result | Expected SharePoint result | Expected Teams result |
+| Sample | Task title | Description | Requester email | Category | Needed by | Approvals result | Expected SharePoint result (optional) | Expected Teams result |
 |---|---|---|---|---|---|---|---|---|
 | A | Prepare weekly team update | Compile highlights for the Friday team update | ใช้อีเมลฝึกของตนเอง | Operations | วันทำการถัดไป | Approve | สร้างไฟล์ `Request-[Response Id].txt` | ได้ข้อความ Approved |
 | B | Review travel expense note | Check whether the explanation is complete | ใช้อีเมลฝึกของตนเอง | Finance | อีก 3 วัน | Reject | ไม่สร้างไฟล์ | ได้ข้อความ Rejected |

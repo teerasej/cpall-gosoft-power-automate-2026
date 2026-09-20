@@ -1,80 +1,66 @@
-# แบบฝึกหัดที่ 7: เก็บคำขอที่อนุมัติแล้วใน SharePoint
+---
+prev:
+  text: "3 · ขออนุมัติและอัปเดต"
+  link: /exercises/03-ask-for-a-decision
+next:
+  text: "8 · แจ้งผลผ่าน Teams"
+  link: /exercises/08-notify-requester-in-teams
+---
 
-เราจะต่อยอดแขนง `True` (หรือ `If yes` ในหน้าจอเดิม) จากแบบฝึกหัดที่ 3 ให้สร้างไฟล์สรุปคำขอใน SharePoint เมื่อผลเป็น `Approved` เท่านั้น
+# แบบฝึกหัดเสริมที่ 7: เก็บคำขอที่อนุมัติแล้วใน SharePoint
 
-> **License:** ใช้ SharePoint connector ซึ่งเป็น Standard connector ใน Power Automate ไม่ใช้ Premium connector, custom connector, app registration หรือ on-premises data gateway
+> **Optional / Instructor-selected:** ทำกิจกรรมนี้เมื่อวิทยากรประกาศใช้เส้นทาง SharePoint เท่านั้น หากวิทยากรเลือกเส้นทางทบทวน Approval ให้เปิด [ทบทวนและพิสูจน์เส้นทาง Approve/Reject](./07-core-approval-reinforcement.md) แทน
 
-> **Readiness:** ใช้ site และ document library ที่วิทยากร rehearsal แล้วก่อนเริ่มกิจกรรม
+เราจะต่อยอดแขนง `True` (หรือ `If yes` ในหน้าจอเดิม) จากแบบฝึกหัดที่ 3 ให้สร้างไฟล์สรุปคำขอใน SharePoint เมื่อผลเป็น `Approved` เท่านั้น กิจกรรมนี้เป็นส่วนเสริมและไม่เป็นเงื่อนไขการผ่าน Day 1
 
-## Prerequisites
-
-- Flow `Record Task Request - [Your Name]` จาก [แบบฝึกหัดที่ 3](./03-ask-for-a-decision.md) ทำงานครบทั้ง Approved และ Rejected
-- วิทยากรแจ้ง `Site Address` ของ SharePoint training site
-- บัญชีผู้เรียนเปิด site และแก้ไขไฟล์ใน default `Documents` library ได้
-- ใช้ข้อมูลสมมติเท่านั้น
+> **License:** ใช้ SharePoint connector ซึ่งเป็น Standard connector ใน Power Automate ไม่ใช้ Premium connector, custom connector, app registration หรือ on-premises data gateway บัญชี สิทธิ์ connection, Conditional Access และ DLP policy ยังต้องผ่านการตรวจขององค์กร
 
 > **💡 Analogy:** SharePoint document library เหมือนตู้เอกสารกลางของทีม ส่วนโฟลเดอร์ชื่อเราเป็นถาดที่ติดป้ายไว้ชัดเจน
 
-## Workflow ที่เราจะต่อยอด
+## เลือกเส้นทางเตรียม SharePoint หนึ่งเส้นทาง
+
+เปิดเฉพาะเส้นทางที่ตรงกับสถานการณ์ของห้องเรียน ไม่ต้องอ่านหรือทำอีกเส้นทางหนึ่ง
+
+1. [Route A — สร้างและตรวจ SharePoint site ของตนเอง](./07a-create-and-validate-own-site.md)
+2. [Route B — ตรวจและใช้ SharePoint site ที่ IT เตรียมให้](./07b-validate-it-provided-site.md)
+
+วิทยากรสามารถส่งลิงก์ของ Route A หรือ Route B ให้ผู้เรียนโดยตรง เพื่อข้ามหน้าตัดสินใจนี้ได้
+
+ทั้งสองเส้นทางต้องได้ Readiness record เดียวกันก่อนทำส่วนถัดไป:
+
+```text
+Site Address:
+Document library:
+Learner folder:
+Permission check: Upload / Open / Delete passed
+```
+
+> **⚠️ Stop:** หากยังไม่มี site ที่ใช้งานได้ หรือทดสอบ Upload / Open / Delete ไม่ผ่าน ให้หยุดกิจกรรม SharePoint แล้วไปที่ [เส้นทางทบทวน Approval](./07-core-approval-reinforcement.md) หรือ [แบบฝึกหัดที่ 8: Teams](./08-notify-requester-in-teams.md) ตามที่วิทยากรแจ้ง ห้ามเปลี่ยน connection ไปใช้บัญชีของผู้อื่น
+
+## Workflow ส่วนเสริม
 
 ```mermaid
 flowchart LR
     A["Approval Outcome"] --> B{"Approve?"}
     B -->|Yes| C["Update Excel: Approved"]
-    C --> D["Create file in SharePoint"]
+    C -. Optional .-> D["Create file in SharePoint"]
     B -->|No| E["Update Excel: Rejected"]
-    D --> F["Notify requester"]
+    C --> F["Notify requester"]
+    D --> F
     E --> F
 ```
 
 ---
 
-## Setup: สร้าง training site ใหม่ก่อนเริ่มกิจกรรม
-
-**ผู้ทำ:** วิทยากรหรือผู้ที่ได้รับสิทธิ์สร้าง SharePoint site ให้เตรียมส่วนนี้ก่อนเวลาเรียนตามตาราง หากผู้เรียนไม่มีสิทธิ์สร้าง site ให้ใช้ site ที่วิทยากรเตรียมไว้ แล้วเริ่ม Practice 1
-
-1. เปิด Microsoft 365 **App launcher > SharePoint**
-2. ที่หน้า SharePoint เลือก **Build** (หน้าภาษาไทยแสดง **สร้าง**) แล้วเลือก **Site**; บาง tenant ยังใช้ปุ่ม **Create site**
-3. เลือก **Team site > Standard team > Use template**
-4. ใส่ **Site name** เช่น `Power Automate Training - [Class]` และคำอธิบายว่าใช้ข้อมูลสมมติสำหรับฝึก ตรวจ **Group email address** และ **Site address** ว่าใช้ได้
-5. ตั้ง **Privacy settings** เป็น **Private** และเลือกภาษาเริ่มต้นของ site ก่อนสร้าง ในการทดสอบนี้เลือก **English** เพื่อให้ชื่อ library และเมนูตรงกับขั้นตอนด้านล่าง
-6. เลือก **Create site** รอจน site พร้อม แล้วเลือก **Go to site** โดยยังไม่เพิ่มบุคคลที่ไม่เกี่ยวข้อง
-7. เปิด **Documents** ซึ่งเป็น document library ที่สร้างพร้อม site ไม่ต้องสร้าง library ซ้ำ
-8. วิทยากรจัดสิทธิ์ให้เฉพาะกลุ่มผู้เรียนที่กำหนดและทดสอบด้วยบัญชีผู้เรียนก่อนวันอบรม ส่งลิงก์ site ผ่านช่องทางของชั้นเรียน ไม่ใส่ URL ของ tenant จริงในเอกสารสาธารณะ
-
-**Checkpoint:** เปิด site ใหม่ได้ เห็น **Private group** และ **Documents**; การสร้างสำเร็จด้วยบัญชีวิทยากรยังไม่ยืนยันสิทธิ์ของผู้เรียน
-
-## Practice 1: เตรียมถาดเอกสารของเรา
-
-**Primary target:** สร้างโฟลเดอร์ส่วนตัวใน library กลาง เพื่อไม่ให้ชื่อไฟล์ของผู้เรียนชนกัน
-
-1. เปิด SharePoint training site จากลิงก์ที่วิทยากรให้
-2. เปิด default document library ชื่อ `Documents` หรือชื่อที่วิทยากรยืนยัน
-3. เลือก **Create or upload > Folder** (หน้าจอเดิมอาจแสดง **New > Folder**)
-4. ตั้งชื่อโฟลเดอร์เป็น:
-
-   ```text
-   PA-[เลขที่ผู้เรียน 2 หลัก]-[ชื่อภาษาอังกฤษ]
-   ```
-
-   ตัวอย่าง: `PA-07-Narin`
-
-5. ดาวน์โหลด [permission-check.txt](/downloads/permission-check.txt) ลงเครื่อง เปิดโฟลเดอร์ของตนใน SharePoint แล้วเลือก **Create or upload > Files upload** (หน้าจอเดิมอาจแสดง **Upload > Files**) อัปโหลดไฟล์นี้ รอข้อความยืนยัน แล้วเปิดอ่านให้เห็น `Training permission check.` และ `Synthetic practice file.`
-6. ปิด preview เลือกไฟล์ทดสอบ แล้วเลือก **Delete** ยืนยันการส่งไป **Recycle Bin** โดยเก็บโฟลเดอร์ไว้ ไม่ต้องล้าง Recycle Bin
-
-### Expected output
-
-- ผู้เรียนมีโฟลเดอร์ของตัวเองหนึ่งโฟลเดอร์ใน library ที่วิทยากรกำหนด
-
-### Checkpoint
-
-- ผู้เรียนสร้างและลบไฟล์ในโฟลเดอร์ได้ แสดงว่ามีสิทธิ์เขียนก่อนเริ่มแก้ flow
-
----
-
-## Practice 2: สร้างไฟล์เมื่ออนุมัติ
+## Practice 1: สร้างไฟล์เมื่ออนุมัติ
 
 **Primary target:** เพิ่ม `Create file` ในแขนง Approved และ map ข้อมูลคำขอเป็นไฟล์สรุปที่อ่านได้
+
+### Prerequisites
+
+- Flow `Record Task Request - [Your Name]` จาก [แบบฝึกหัดที่ 3](./03-ask-for-a-decision.md) ทำงานครบทั้ง Approved และ Rejected
+- ทำ Route A หรือ Route B สำเร็จและบันทึก Readiness record แล้ว
+- ใช้ข้อมูลสมมติเท่านั้น
 
 1. เปิด flow `Record Task Request - [Your Name]`
 2. ในแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) หา action `Update a row` ที่ตั้ง `Status` เป็น `Approved`
@@ -82,8 +68,8 @@ flowchart LR
 4. ค้นหา connector `SharePoint` แล้วเลือก action `Create file`
 5. กำหนดค่า:
 
-   - **Site Address:** site ที่วิทยากรแจ้ง หาก site ที่เพิ่งสร้างยังไม่อยู่ในรายการ ให้เลือก **Enter custom value** แล้ววาง URL หน้า site ที่เปิดได้จริง โดยไม่รวม path ของ library หรือไฟล์
-   - **Folder Path:** เลือกไอคอน folder (**Open folder**) แล้วเลือก library และโฟลเดอร์ของตน เช่น `PA-07-Narin`; library ที่หน้า SharePoint แสดงว่า `Documents` อาจปรากฏใน picker ว่า `Shared Documents` ให้เลือกจาก picker แทนการเดา path
+   - **Site Address:** ใช้ค่าจาก Readiness record หาก site ไม่อยู่ในรายการ ให้เลือก **Enter custom value** แล้ววาง URL ของ site โดยไม่รวม path ของ library หรือไฟล์
+   - **Folder Path:** เลือกไอคอน folder (**Open folder**) แล้วเลือก library และโฟลเดอร์จาก Readiness record; `Documents` อาจปรากฏใน picker ว่า `Shared Documents` ให้เลือกจาก picker แทนการเดา path
    - **File Name:** พิมพ์ `Request-` ตามด้วย Dynamic content `Response Id` แล้วพิมพ์ `.txt`
    - **File Content:** ใช้ข้อความด้านล่างและแทรก Dynamic content ในตำแหน่งที่กำหนด
 
@@ -96,7 +82,7 @@ flowchart LR
    Decision: Approve
    ```
 
-6. ตรวจว่า `Create file` อยู่ในแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) เท่านั้น
+6. ตรวจว่า `Create file` อยู่ในแขนง **True** (หรือ **If yes**) เท่านั้น
 7. เลือก **Save**
 
 ### Expected output
@@ -110,7 +96,7 @@ flowchart LR
 
 ---
 
-## Practice 3: พิสูจน์ทั้งสองเส้นทาง
+## Practice 2: พิสูจน์ทั้งสองเส้นทาง
 
 **Primary target:** ยืนยันว่า Approved สร้างไฟล์ และ Rejected ไม่สร้างไฟล์
 
@@ -131,27 +117,30 @@ flowchart LR
 
 ### Checkpoint
 
-- เห็นไฟล์ของ Approved หนึ่งไฟล์ และไม่พบไฟล์สำหรับ Response Id ของ Rejected
+- เห็นไฟล์ของ Approved หนึ่งไฟล์ และไม่พบไฟล์สำหรับ `Response Id` ของ Rejected
 
 ## Troubleshooting
 
 | อาการ | ตรวจสอบและแก้ไข |
 |---|---|
-| ไม่เห็น site ใน `Site Address` | เปิด site ใน browser ด้วยบัญชีเดียวกันก่อน แล้วใช้ **Enter custom value** วาง URL ของ site; หากเปิด site ไม่ได้ ให้ตรวจสิทธิ์กับวิทยากร |
+| ไม่เห็น site ใน `Site Address` | เปิด site ใน browser ด้วยบัญชีเดียวกันก่อน แล้วใช้ **Enter custom value** วาง URL จาก Readiness record |
 | เลือก folder ไม่ได้ | ยืนยันชื่อ library และเปิดโฟลเดอร์ด้วย browser; ใช้ path ที่วิทยากรให้เมื่อ picker ไม่แสดง |
 | `Access denied` หรือ `403` | หยุดทดสอบและให้ IT ตรวจ Edit permission; อย่าเปลี่ยน connection ไปใช้บัญชีผู้อื่น |
-| ไฟล์ชื่อซ้ำ | ตรวจว่ากำลังส่ง Form ใหม่และเลือกโฟลเดอร์ของตนเอง; ลบเฉพาะไฟล์ทดสอบของตนก่อนลองใหม่ |
+| ไฟล์ชื่อซ้ำ | ส่ง Form ใหม่และตรวจว่ากำลังใช้โฟลเดอร์ของตน ลบเฉพาะไฟล์ทดสอบของตนก่อนลองใหม่ |
 | Run สำเร็จแต่ยังไม่เห็นไฟล์ | Refresh library รอสักครู่ แล้วเทียบ `Response Id` กับชื่อไฟล์ |
-| Rejected สร้างไฟล์ด้วย | ย้าย `Create file` กลับเข้าแขนง **True** (หรือ **If yes** ในหน้าจอเดิม) ใต้ action ที่อัปเดต Approved |
+| Rejected สร้างไฟล์ด้วย | ย้าย `Create file` กลับเข้าแขนง **True** (หรือ **If yes**) ใต้ action ที่อัปเดต Approved |
 
 ## Summary
 
-เราได้เพิ่มเส้นทางจัดเก็บเอกสารแบบง่ายโดยใช้ library กลางเพียงแห่งเดียว แต่แยกโฟลเดอร์ผู้เรียนเพื่อป้องกันชื่อไฟล์ชนกัน
+เราได้เพิ่มตู้เอกสารกลางเป็นทางเลือกให้แขนง Approved โดยไม่เปลี่ยนผลของเส้นทางหลัก ผู้เรียนที่ข้ามกิจกรรมนี้ยังทำ Teams และแบบฝึกหัดหลักถัดไปได้ตามปกติ
 
-## Microsoft Learn reference
+## Microsoft Learn references
 
+- [Create a team site in SharePoint](https://support.microsoft.com/office/create-a-team-site-in-sharepoint-ef10c1e7-15f3-42a3-98aa-b5972711777d)
+- [Manage site creation in SharePoint](https://learn.microsoft.com/sharepoint/manage-site-creation)
+- [Sharing and permissions in the SharePoint modern experience](https://learn.microsoft.com/sharepoint/modern-experience-sharing-permissions)
 - [SharePoint connector — Standard classification and Create file action](https://learn.microsoft.com/en-us/connectors/sharepointonline/)
 
-แบบฝึกหัดถัดไป → [แจ้งผลผ่าน Microsoft Teams](./08-notify-requester-in-teams.md)
+กลับเข้าสู่เส้นทางหลัก → [แจ้งผลผ่าน Microsoft Teams](./08-notify-requester-in-teams.md)
 
 กลับไป → [เส้นทางการฝึก Day 1](../index.md)

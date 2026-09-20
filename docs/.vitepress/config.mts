@@ -41,14 +41,15 @@ export default withMermaid(
             { text: '1 · ส่งการแจ้งเตือนงาน', link: '/exercises/01-first-task-notification' },
             { text: '2 · รับและบันทึกคำของาน', link: '/exercises/02-collect-and-record-requests' },
             { text: '3 · ขออนุมัติและอัปเดต', link: '/exercises/03-ask-for-a-decision' },
-            { text: '7 · เก็บใน SharePoint', link: '/exercises/07-archive-approved-request-in-sharepoint' },
             { text: '8 · แจ้งผลผ่าน Teams', link: '/exercises/08-notify-requester-in-teams' },
             { text: '5 · รับมือข้อผิดพลาด', link: '/exercises/05-understand-and-recover-from-errors' }
           ]
         },
         {
-          text: 'แบบฝึกหัดเสริม / Take-home',
+          text: 'Instructor-selected / Optional',
           items: [
+            { text: 'ทบทวน Approval · Instructor-selected', link: '/exercises/07-core-approval-reinforcement' },
+            { text: '7 · SharePoint · Optional', link: '/exercises/07-archive-approved-request-in-sharepoint' },
             { text: 'สรุปงานค้างประจำวัน · Optional', link: '/exercises/04-daily-pending-summary' },
             { text: 'Automation Canvas · Optional', link: '/exercises/06-automate-my-task' }
           ]

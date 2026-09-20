@@ -22,16 +22,16 @@ features:
   - title: เริ่มจากผลลัพธ์เล็ก ๆ
     details: สร้าง Instant cloud flow และเห็นอีเมลฉบับแรกก่อนต่อยอดเป็น workflow ที่สมบูรณ์
   - title: เรื่องเดียวตลอดวัน
-    details: ติดตามคำของานเดียวกันผ่าน Forms, Excel, Approvals, SharePoint และ Teams
+    details: ติดตามคำของานเดียวกันผ่าน Forms, Excel, Approvals และ Teams พร้อมเลือกต่อยอดไป SharePoint ได้
   - title: มี Checkpoint ทุกช่วง
     details: ตรวจผลในบริการปลายทางจริงก่อนเดินต่อ เพื่อหาจุดผิดพลาดได้ง่ายขึ้น
 ---
 
-วันนี้เราจะสร้าง workflow รับคำของานแบบทีละขั้นสำหรับผู้เริ่มต้น แต่ละ connector มีผลที่เห็นและตรวจได้ทันที ก่อนนำทุกส่วนมาต่อเป็นเส้นทางเดียวตั้งแต่รับคำขอจนแจ้งผล
+วันนี้พลจะพาพวกเราสร้าง workflow รับคำของานแบบทีละขั้นตอนสำหรับผู้เริ่มต้น แต่ละ connector มีผลลัพธ์ที่เห็นและตรวจสอบได้ทันที ก่อนนำทุกส่วนมาต่อเป็น workflow เดียวตั้งแต่รับคำขอจนแจ้งผล
 
 ทุกคนใช้ไฟล์ Excel ของตัวเองใน `OneDrive for Business` เป็นที่เก็บ workbook ที่เตรียมไว้ โดยไม่ต้องสร้าง flow แยกสำหรับ OneDrive
 
-> **License:** เส้นทาง hands-on ใช้ Standard connectors ได้แก่ `Office 365 Outlook`, `Microsoft Forms`, `Excel Online (Business)`, `Standard approvals`, `SharePoint` และ `Microsoft Teams` รวมถึง Built-in actions ของ Power Automate ไม่ใช้ Premium connector บัญชี สิทธิ์ และ policy ของบริการที่เกี่ยวข้องต้องผ่าน readiness check ก่อนอบรม
+> **License:** เส้นทางหลักใช้ Standard connectors ได้แก่ `Office 365 Outlook`, `Microsoft Forms`, `Excel Online (Business)` และ `Microsoft Teams` รวมถึง `Standard approvals` กับ Built-in actions ของ Power Automate ส่วน SharePoint เป็น Standard connector ในกิจกรรมเสริม ไม่ใช้ Premium connector บัญชี สิทธิ์ และ policy ของบริการที่เกี่ยวข้องต้องผ่านและได้รับอนุญาตให้ใช้งานจากฝ่าย IT หรือผู้ดูแลระบบก่อน
 
 ## สิ่งที่ต้องเตรียม
 
@@ -39,23 +39,29 @@ features:
 - ดาวน์โหลด [task-request-tracker.xlsx](/downloads/task-request-tracker.xlsx) และอัปโหลดไว้ในโฟลเดอร์ `PowerAutomateTraining` ของ OneDrive
 - ใช้อีเมลของตัวเองเป็นผู้ขอและผู้อนุมัติระหว่างการฝึก หรือใช้อีเมลฝึกที่วิทยากรกำหนด
 - เปิดไฟล์ Excel เพื่อตรวจว่า table ชื่อ `RequestsTable` แล้วปิดไฟล์ก่อนทดสอบ flow
-- ใช้ SharePoint training site ที่วิทยากรระบุ ซึ่งมี document library และสิทธิ์เขียนพร้อมแล้ว
 - ตรวจว่า Teams `Workflows` app ใช้งานได้ และใช้ direct chat ตามเส้นทางที่วิทยากร rehearsal แล้ว
+- หากวิทยากรเลือกกิจกรรม SharePoint ให้เปิดเฉพาะ Route A หรือ Route B ที่วิทยากรส่งให้
 
-> **⚠️ Note:** อย่าแก้ไฟล์ Excel ระหว่างที่ flow กำลังเขียนข้อมูล การเปลี่ยนแปลงจาก connector อาจใช้เวลาประมาณ 30 วินาทีจึงจะแสดงครบ
+> **⚠️ Note:** อย่าแก้ไฟล์ Excel ระหว่างที่ flow กำลังเขียนข้อมูล การเปลี่ยนแปลงจาก connector อาจใช้เวลาประมาณ 30 วินาทีจึงจะแสดงผลการทำงานได้ครบถ้วนครับ
 
 ## เส้นทางการฝึกหลัก
 
-ทำตามลำดับ **1 → 2 → 3 → 7 → 8 → 5** หมายเลขหน้าคงเดิมเพื่อให้อ้างอิงตรงกับคู่มือ; แบบฝึกหัด 4 และ 6 อยู่ในส่วนเสริมด้านล่าง
+ทำตามลำดับ **1 → 2 → 3 → 8 → 5** ช่วง 13:30 วิทยากรจะเลือกกิจกรรมทบทวน Approval หรือกิจกรรม SharePoint เพิ่มอีกหนึ่งเส้นทาง ทั้งสองทางกลับมาเริ่มแบบฝึกหัดที่ 8 เหมือนกัน
 
 <div class="learning-path">
   <a href="./exercises/01-first-task-notification"><strong>1 · Outlook</strong>ส่งการแจ้งเตือนงานครั้งแรก</a>
   <a href="./exercises/02-collect-and-record-requests"><strong>2 · Forms + Excel</strong>รับและบันทึกคำของาน</a>
   <a href="./exercises/03-ask-for-a-decision"><strong>3 · Approvals</strong>ขออนุมัติและอัปเดตคำขอ</a>
-  <a href="./exercises/07-archive-approved-request-in-sharepoint"><strong>7 · SharePoint</strong>เก็บคำขอที่อนุมัติแล้ว</a>
   <a href="./exercises/08-notify-requester-in-teams"><strong>8 · Teams</strong>แจ้งผลกลับไปยังผู้ขอ</a>
   <a href="./exercises/05-understand-and-recover-from-errors"><strong>5 · Run history</strong>เข้าใจและรับมือข้อผิดพลาด</a>
 </div>
+
+## กิจกรรมที่วิทยากรเลือกเวลา 13:30
+
+เปิดเพียงหนึ่งกิจกรรมตามที่วิทยากรประกาศ:
+
+- [ทบทวนและพิสูจน์เส้นทาง Approve/Reject](./exercises/07-core-approval-reinforcement.md) — ไม่ต้องเปิดหน้า SharePoint
+- [เก็บคำขอที่อนุมัติแล้วใน SharePoint](./exercises/07-archive-approved-request-in-sharepoint.md) — Optional และเลือก Route A หรือ Route B เพียงเส้นทางเดียว
 
 ## แบบฝึกหัดเสริม / Take-home
 
@@ -73,7 +79,7 @@ features:
 | 11:30–12:00 | Approvals: เพิ่ม `Start and wait for an approval` |
 | 12:00–13:00 | Lunch |
 | 13:00–13:30 | สร้าง Approve/Reject Condition และอัปเดตแถวเดิม |
-| 13:30–14:00 | SharePoint: สร้าง text file สำหรับคำขอ Approved |
+| 13:30–14:00 | Instructor-selected: ทบทวน Approval หรือทำ SharePoint extension |
 | 14:00–14:30 | Teams: ส่งผลไปยัง direct chat |
 | 14:30–14:45 | Break |
 | 14:45–15:15 | ทดสอบ workflow ครบทั้ง Approved และ Rejected |
@@ -99,20 +105,21 @@ flowchart LR
     C --> D{"Outcome"}
     D -->|Approve| E["Update row: Approved"]
     D -->|Reject| F["Update row: Rejected"]
-    E --> G["Create file in SharePoint"]
-    G --> H["Post Approved in Teams"]
+    E --> H["Post Approved in Teams"]
+    E -. Optional .-> G["Create file in SharePoint"]
+    G -.-> H
     F --> I["Post Rejected in Teams"]
     H --> J["Send Approved email"]
     I --> K["Send Rejected email"]
 ```
 
-เมื่อจบวันนี้ ผู้เรียนจะมี workflow รุ่นแรกที่ทดสอบครบสองผลลัพธ์ รู้ว่าผลใดเกิดใน Excel, SharePoint และ Teams และใช้ Run history ตรวจสอบเมื่อ flow ไม่เป็นไปตามคาดได้
+เมื่อจบวันนี้ ผู้เรียนจะมี workflow รุ่นแรกที่ทดสอบครบสองผลลัพธ์ รู้ว่าผลใดเกิดใน Excel และ Teams และใช้ Run history ตรวจสอบเมื่อ flow ไม่เป็นไปตามคาดได้ ผู้ที่เลือก SharePoint จะมีไฟล์ Approved เป็นหลักฐานเพิ่มอีกหนึ่งจุด
 
 ## ขอบเขต License และกิจกรรมเสริม
 
 เส้นทางหลักใช้ Standard connectors และ Built-in actions แต่ยังต้องมีสิทธิ์บริการ Microsoft 365 ที่เกี่ยวข้องและผ่าน policy ขององค์กร คำว่า Standard ไม่ได้หมายความว่าทุกบริการใช้งานได้ฟรีโดยไม่ต้องมี license
 
-แบบฝึกหัด 4 และ 6 เป็น **Optional / Take-home** ไม่เพิ่มเวลาเรียนหลักและไม่เป็นเงื่อนไขการผ่าน Day 1 ส่วน AI Builder เป็น **instructor-only premium demonstration** แยกจาก flow ของผู้เรียน; ผู้เรียนไม่ต้องเพิ่ม AI Builder action หรือเปิด trial ตามวิทยากร หากสิทธิ์วิทยากรไม่พร้อมให้ใช้ saved result
+SharePoint เป็น **Optional / Instructor-selected** ไม่เป็นเงื่อนไขการผ่าน Day 1 ผู้เรียนเปิดเพียง Route A หรือ Route B ที่ตรงกับสถานการณ์ ส่วนแบบฝึกหัด 4 และ 6 เป็น **Optional / Take-home** และ AI Builder เป็น **instructor-only premium demonstration** แยกจาก flow ของผู้เรียน; ผู้เรียนไม่ต้องเพิ่ม AI Builder action หรือเปิด trial ตามวิทยากร หากสิทธิ์วิทยากรไม่พร้อมให้ใช้ saved result
 
 ## Microsoft Learn references
 
