@@ -16,7 +16,7 @@ hero:
       link: /exercises/01-first-task-notification
     - theme: alt
       text: ดาวน์โหลด Excel tracker
-      link: https://raw.githubusercontent.com/teerasej/cpall-gosoft-power-automate-2026/main/docs/public/downloads/task-request-tracker.xlsx
+      link: /downloads/task-request-tracker.xlsx
 
 features:
   - title: เริ่มจากตัวอย่างเล็ก ๆ
@@ -36,7 +36,7 @@ features:
 ## สิ่งที่ต้องเตรียม
 
 - เข้าใช้งาน [Power Automate](https://make.powerautomate.com), `Microsoft Forms`, `Outlook`, `OneDrive for Business` และ `Microsoft Teams` ได้
-- ดาวน์โหลด [task-request-tracker.xlsx](https://raw.githubusercontent.com/teerasej/cpall-gosoft-power-automate-2026/main/docs/public/downloads/task-request-tracker.xlsx) และอัปโหลดไว้ในโฟลเดอร์ `PowerAutomateTraining` ของ OneDrive
+- ดาวน์โหลด [task-request-tracker.xlsx](/downloads/task-request-tracker.xlsx) และอัปโหลดไว้ในโฟลเดอร์ `PowerAutomateTraining` ของ OneDrive
 - ใช้อีเมลของตัวเองเป็นผู้ขอและผู้อนุมัติระหว่างการฝึก หรือใช้อีเมลฝึกที่วิทยากรกำหนด
 - เปิดไฟล์ Excel เพื่อตรวจว่า table ชื่อ `RequestsTable` แล้วปิดไฟล์ก่อนทดสอบ flow
 - ตรวจว่า Teams `Workflows` app ใช้งานได้ และใช้ direct chat ตามเส้นทางที่วิทยากร rehearsal แล้ว
@@ -91,7 +91,7 @@ features:
 
 - [สไลด์ผู้เรียน Power Automate Day 1](/downloads/CPAll-Power-Automate-Day-1.pptx)
 - [ตัวอย่างคำของาน](./resources/sample-requests.md)
-- [Excel tracker](https://raw.githubusercontent.com/teerasej/cpall-gosoft-power-automate-2026/main/docs/public/downloads/task-request-tracker.xlsx)
+- [Excel tracker](/downloads/task-request-tracker.xlsx)
 
 ## ภาพรวม Workflow
 
@@ -128,5 +128,3 @@ SharePoint เป็น **Optional / Instructor-selected** ไม่เป็น
 - [SharePoint connector](https://learn.microsoft.com/en-us/connectors/sharepointonline/)
 - [Microsoft Teams connector](https://learn.microsoft.com/en-us/connectors/teams/)
 - [Send a message in Teams using Power Automate](https://learn.microsoft.com/en-us/power-automate/teams/send-a-message-in-teams)
-
-[แก้ไขหน้านี้บน GitHub](https://github.com/teerasej/cpall-gosoft-power-automate-2026/edit/main/docs/index.md)

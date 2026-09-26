@@ -24,7 +24,7 @@ export default withMermaid(
           items: [
             {
               text: 'ดาวน์โหลด Excel tracker',
-              link: 'https://raw.githubusercontent.com/teerasej/cpall-gosoft-power-automate-2026/main/docs/public/downloads/task-request-tracker.xlsx'
+              link: '/downloads/task-request-tracker.xlsx'
             },
             { text: 'ดาวน์โหลดสไลด์ผู้เรียน', link: '/downloads/CPAll-Power-Automate-Day-1.pptx' },
             { text: 'ตัวอย่างคำของาน', link: '/resources/sample-requests' }
@@ -69,10 +69,6 @@ export default withMermaid(
         text: 'อัปเดตล่าสุด',
         formatOptions: { dateStyle: 'medium', timeStyle: 'short' }
       },
-      editLink: {
-        pattern: 'https://github.com/teerasej/cpall-gosoft-power-automate-2026/edit/main/docs/:path',
-        text: 'แก้ไขหน้านี้บน GitHub'
-      },
       search: {
         provider: 'local',
         options: {
@@ -90,9 +86,6 @@ export default withMermaid(
           }
         }
       },
-      socialLinks: [
-        { icon: 'github', link: 'https://github.com/teerasej/cpall-gosoft-power-automate-2026' }
-      ],
       footer: {
         message: 'เนื้อหาจำลองสำหรับการฝึกอบรม Microsoft Power Automate',
         copyright: 'Power Automate Day 1 · 2026'
